@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-21 13:44:57
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-17 18:47:57
+ * @Last Modified time: 2018-09-17 19:19:03
  * @Description: 镜像分面柱图
  */
 
@@ -120,12 +120,15 @@ export default {
           })
           // 隐藏 value 坐标轴
           view.axis('value', false)
-          // 绘制 柱图
+
+          // 配置柱图的颜色、大小等
           view.interval().size(25).position('name*value').color('type')
         }
       })
       // 隐藏图例
       this.chart.legend(false)
+
+      // 绘制
       this.chart.render()
     }
   },

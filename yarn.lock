@@ -2,17 +2,23 @@
 # yarn lockfile v1
 
 
-"@antv/adjust@~0.0.6":
+"@antv/adjust@~0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@antv/adjust/-/adjust-0.0.7.tgz#01e83c36b28c50eecb98fad9dc662176b4036ab7"
   dependencies:
     "@antv/util" "~1.2.5"
 
-"@antv/attr@~0.0.6":
+"@antv/attr@~0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@antv/attr/-/attr-0.0.7.tgz#333f252ce35fc3efdf8ad48046c263a6be2d7d04"
   dependencies:
     "@antv/util" "~1.2.5"
+
+"@antv/coord@~0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@antv/coord/-/coord-0.0.3.tgz#d5b41b9691fd7b6395ed6ea30f8c39987f06da26"
+  dependencies:
+    "@antv/util" "~1.2.3"
 
 "@antv/data-set@^0.9.1":
   version "0.9.6"
@@ -36,36 +42,25 @@
     topojson-client "~3.0.0"
     wolfy87-eventemitter "~5.1.0"
 
-"@antv/g2@^3.2.7":
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.2.7.tgz#ea3c7c008bbf016af28f8013687b541f291a012d"
+"@antv/g2@^3.2.8":
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/@antv/g2/-/g2-3.2.8.tgz#a448eeb489501a0a8b6cf9abf54eff12ef00c834"
   dependencies:
-    "@antv/adjust" "~0.0.6"
-    "@antv/attr" "~0.0.6"
-    "@antv/g" "~3.1.1"
-    "@antv/interaction" "~0.1.5"
-    "@antv/scale" "~0.0.5"
-    "@antv/util" "~1.0.12"
+    "@antv/adjust" "~0.0.7"
+    "@antv/attr" "~0.0.7"
+    "@antv/coord" "~0.0.3"
+    "@antv/g" "~3.2.2"
+    "@antv/scale" "~0.0.9"
+    "@antv/util" "~1.2.5"
     venn.js "~0.2.20"
     wolfy87-eventemitter "~5.1.0"
 
-"@antv/g@3.1.0-beta.6":
-  version "3.1.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@antv/g/-/g-3.1.0-beta.6.tgz#d9e2f53e288b6fb4dcb2787bba8d6d5527664484"
+"@antv/g@~3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@antv/g/-/g-3.2.2.tgz#ab30f69a9d72e629912aee0461f54d276519c237"
   dependencies:
     "@antv/gl-matrix" "~2.7.1"
-    "@antv/util" "~1.0.11"
-    d3-ease "~1.0.3"
-    d3-interpolate "~1.1.5"
-    d3-timer "~1.0.6"
-    wolfy87-eventemitter "~5.1.0"
-
-"@antv/g@~3.1.1":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@antv/g/-/g-3.1.3.tgz#cb41718d98a6c65af285d9fdd31335b5684472a1"
-  dependencies:
-    "@antv/gl-matrix" "~2.7.1"
-    "@antv/util" "~1.0.11"
+    "@antv/util" "~1.2.3"
     d3-ease "~1.0.3"
     d3-interpolate "~1.1.5"
     d3-timer "~1.0.6"
@@ -81,29 +76,18 @@
   dependencies:
     "@antv/util" "^1.2.4"
 
-"@antv/interaction@~0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@antv/interaction/-/interaction-0.1.5.tgz#6587cf7bdc6820826791dcb060baf61d2fdce77e"
-  dependencies:
-    "@antv/g" "3.1.0-beta.6"
-    "@antv/util" "~1.0.11"
-
-"@antv/scale@~0.0.5":
+"@antv/scale@~0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@antv/scale/-/scale-0.0.9.tgz#24a96d3c3a4a507315a9a335e5a435be4d6ccd45"
   dependencies:
     "@antv/util" "~1.2.5"
     fecha "~2.3.3"
 
-"@antv/util@^1.2.4", "@antv/util@~1.2.4", "@antv/util@~1.2.5":
+"@antv/util@^1.2.4", "@antv/util@~1.2.3", "@antv/util@~1.2.4", "@antv/util@~1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@antv/util/-/util-1.2.5.tgz#8896c5055ec29e4a344b5daa97bf82905f7d40cd"
   dependencies:
     "@antv/gl-matrix" "^2.7.1"
-
-"@antv/util@~1.0.11", "@antv/util@~1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@antv/util/-/util-1.0.12.tgz#b55e921f30f1c8410f3e24a2d889e82568c3df38"
 
 "@babel/code-frame@7.0.0-beta.44":
   version "7.0.0-beta.44"

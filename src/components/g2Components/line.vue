@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-17 18:29:49
+ * @Last Modified time: 2018-09-17 19:29:27
  * @Type: 折线图
  */
 <template>
@@ -142,7 +142,7 @@ export default {
         })
       }
 
-      // 绘制折线和散点
+      // 配置折线和散点的颜色、形状等
       let line = this.chart.line().position('name*value')
       let point = this.chart.point().position('name*value').size(4).shape('circle').style({
         stroke: '#fff',
@@ -155,10 +155,12 @@ export default {
         point.color('type')
       }
 
+      // 折线是否显示为曲线
       if (this.isSmooth) {
         line.shape('smooth')
       }
 
+      // 绘制
       this.chart.render()
     }
   },
