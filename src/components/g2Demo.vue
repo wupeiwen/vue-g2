@@ -2,14 +2,12 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-08-28 18:15:50
+ * @Last Modified time: 2018-09-17 17:11:29
  */
 <template>
   <div>
-    <g2-point :id="'point'" :type="'散点图'"></g2-point>
-    <g2-histogram :id="'interval'"></g2-histogram>
-    <g2-pie :id="'pie'"></g2-pie>
-    <g2-radar :id="'radar'"></g2-radar>
+    <g2-line :id="'line'" :isSmooth="true" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
+    <g2-mirrorInterval :id="'mirrorInterval'" :padding="[50,50,50,50]"></g2-mirrorInterval>
   </div>
 </template>
 
@@ -17,9 +15,7 @@
 
 export default {
   data () {
-    return {
-      data: []
-    }
+    return {}
   },
   methods: {},
   mounted () {}

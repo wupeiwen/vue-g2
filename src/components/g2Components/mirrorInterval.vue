@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-21 13:44:57
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-14 17:04:51
+ * @Last Modified time: 2018-09-17 18:47:57
  * @Description: 镜像分面柱图
  */
 
@@ -15,17 +15,42 @@ import G2 from '@antv/g2'
 
 export default {
   props: {
+    // 数据
     data: {
       type: Array,
       default: () => [
-        { name: '暂无数据', value: 0, type: '数据类别1' },
-        { name: '暂无数据', value: 0, type: '数据类别2' }
+        { name: '1997', value: 86085, type: 'America' },
+        { name: '2007', value: 144776, type: 'America' },
+        { name: '2017', value: 193868, type: 'America' },
+        { name: '1997', value: 9616, type: 'China' },
+        { name: '2007', value: 35715, type: 'China' },
+        { name: '2017', value: 122503, type: 'China' }
       ]
     },
+    // DOM ID
     id: String,
+    // DOM 高度
     height: {
       type: Number,
-      default: 300
+      default: 500
+    },
+    // 坐标轴名称
+    axisName: {
+      type: Object,
+      default: () => {
+        return {
+          name: 'name',
+          value: 'value',
+          type: 'type'
+        }
+      }
+    },
+    // Canvas 内边距
+    padding: {
+      type: Array,
+      default: function () {
+        return ['auto', 'auto']
+      }
     }
   },
   data () {
@@ -46,26 +71,32 @@ export default {
         this.chart.destroy()
       }
       this.chart = new G2.Chart({
-        renderer: 'svg',
         container: this.id,
         forceFit: true,
         height: this.height,
-        padding: [40, 20, 0, 140]
+        padding: this.padding
       })
-      this.chart.source(data, {
-        name: {
-          sync: true
-        },
-        value: {
-          sync: true
-        },
-        type: {
-          sync: true
+
+      // 设置数据设置别名并且设置为异步数据
+      let _this = this
+      let scaleConfig = (function () {
+        let obj = {}
+        for (const key in _this.axisName) {
+          if (_this.axisName.hasOwnProperty(key)) {
+            obj[key] = {}
+            obj[key]['alias'] = _this.axisName[key]
+            obj[key]['sync'] = true
+          }
         }
-      })
+        return obj
+      }())
+      // 为 chart 装载数据
+      this.chart.source(data, scaleConfig)
+
       // 设置 mirror 分面
       this.chart.facet('mirror', {
         fields: ['type'],
+        // 配置 transpose 属性为 true，可以将镜像分面翻转。
         transpose: true,
         // 列标题
         colTitle: {
@@ -90,10 +121,10 @@ export default {
           // 隐藏 value 坐标轴
           view.axis('value', false)
           // 绘制 柱图
-          view.interval().size(25).position('name*value')
-            .color('type', [ '#2FC25A', '#1890FF' ])
+          view.interval().size(25).position('name*value').color('type')
         }
       })
+      // 隐藏图例
       this.chart.legend(false)
       this.chart.render()
     }
