@@ -18,7 +18,6 @@ jobs:
        - yarn build-bundle
        - echo "NPM Building Finished."
        - echo "NPM Publish Started ..."
-       - cd lib
        - npm publish
        - echo "NPM Publish Finished."
 
