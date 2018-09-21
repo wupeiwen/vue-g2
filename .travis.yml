@@ -17,9 +17,6 @@ jobs:
        - npm version
        - yarn build-bundle
        - echo "NPM Building Finished."
-       - echo "NPM Publish Started ..."
-       - npm publish
-       - echo "NPM Publish Finished."
 
      deploy:
        provider: npm
@@ -27,4 +24,4 @@ jobs:
        api_key: "$npm_token"
        skip_cleanup: true
        on:
-         all_branches: true
+         branch: master
