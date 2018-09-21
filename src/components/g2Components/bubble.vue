@@ -2,8 +2,8 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-17 13:45:26
-  * @Description: 散点图
+ * @Last Modified time: 2018-09-20 14:17:21
+  * @Description: 气泡图
  */
 <template>
   <div :id="id"></div>
@@ -18,9 +18,9 @@ export default {
     data: {
       type: Array,
       default: () => [
-        { x: 20, y: 5 },
-        { x: 30, y: 10 },
-        { x: 15, y: 20 }
+        { x: 20, y: 5, size: 5, type: 'type1' },
+        { x: 30, y: 10, size: 8, type: 'type2' },
+        { x: 15, y: 20, size: 15, type: 'type3' }
       ]
     },
     id: String,
@@ -33,7 +33,9 @@ export default {
       default: () => {
         return {
           x: '数据1',
-          y: '数据2'
+          y: '数据2',
+          type: '类型',
+          size: '大小'
         }
       }
     }
@@ -59,7 +61,7 @@ export default {
         container: this.id,
         forceFit: true,
         height: this.height,
-        padding: [30, 20, 50, 50]
+        padding: [30, 120, 50, 50]
       })
       this.chart.source(data, {
         x: {
@@ -73,22 +75,26 @@ export default {
           formatter: item => {
             return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
           }
+        },
+        size: {
+          alias: this.axisName.size,
+          formatter: item => {
+            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
+          }
+        },
+        type: {
+          alias: this.axisName.type
         }
       })
-      this.chart.tooltip({
+      const colorMap = Array.from(new Array(8), (v, i) => { return G2.Global.colors[i] })
+      this.chart.point().position('x*y').shape('circle')
+      // 打开图例
+      this.chart.legend('size', false)
+      this.chart.legend('type', { position: 'right-top' })
+      // 配置 颜色 大小 tooltip
+      this.chart.color('type', colorMap).size('size', [10, 20]).opacity(0.5).tooltip('type*x*y*size', {
         showTitle: false
       })
-      let point = this.chart.point().position('x*y').shape('circle')
-      // 配置 颜色 大小 tooltip
-      point.color('x', function (val) {
-        if (val >= 0.75) {
-          return G2.Global.colors[0]
-        } else if (val >= 0.5) {
-          return G2.Global.colors[1]
-        } else {
-          return G2.Global.colors[2]
-        }
-      }).size(5).opacity(0.8).tooltip('x*y')
       this.chart.render()
     }
   },

@@ -2,8 +2,8 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-17 13:47:23
-  * @Description: 基础散点图
+ * @Last Modified time: 2018-09-20 14:30:24
+  * @Description: 散点图
  */
 <template>
   <div :id="id"></div>
@@ -11,7 +11,6 @@
 
 <script>
 import G2 from '@antv/g2'
-import { percentFormat, numFormat } from '@/utils/index'
 
 export default {
   props: {
@@ -61,41 +60,28 @@ export default {
         container: this.id,
         forceFit: true,
         height: this.height,
-        padding: [30, 120, 50, 50]
+        padding: ['auto', 'auto']
       })
-      this.chart.source(data, {
-        x: {
-          alias: this.axisName.x,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
+
+      // 设置数据的显示别名
+      let _this = this
+      let scaleConfig = (function () {
+        let obj = {}
+        for (const key in _this.axisName) {
+          if (_this.axisName.hasOwnProperty(key)) {
+            obj[key] = _this.axisName[key]
           }
-        },
-        y: {
-          alias: this.axisName.y,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
-          }
-        },
-        size: {
-          alias: this.axisName.size,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
-          }
-        },
-        type: {
-          alias: this.axisName.type
         }
-      })
-      this.chart.legend('size', false)
-      this.chart.tooltip({
+        return obj
+      }())
+      // 为 chart 装载数据
+      this.chart.source(data, scaleConfig)
+
+      this.chart.point().position('x*y').shape('circle')
+      // 配置 颜色 大小 tooltip
+      this.chart.size(5).opacity(0.8).tooltip('x*y', {
         showTitle: false
       })
-      const colorMap = Array.from(new Array(8), (v, i) => { return G2.Global.colors[i] })
-      let point = this.chart.point().position('x*y').shape('circle')
-      // 打开图例
-      this.chart.legend('type', { position: 'right-top' })
-      // 配置 颜色 大小 tooltip
-      point.color('type', colorMap).size('size', [10, 20]).opacity(0.5).tooltip('type*x*y*size')
       this.chart.render()
     }
   },
