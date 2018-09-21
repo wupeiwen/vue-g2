@@ -17,13 +17,15 @@ jobs:
        - npm version
        - yarn build-bundle
        - echo "NPM Building Finished."
+       - echo "NPM Publish Started ..."
+       - cd lib
+       - npm publish
+       - echo "NPM Publish Finished."
 
      deploy:
        provider: npm
        email: javpeiwen2010@gmail.com
        api_key: "$npm_token"
        skip_cleanup: true
-
-branches:
-  only:
-    - master
+       on:
+         all_branches: true
