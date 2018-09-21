@@ -3,7 +3,7 @@ language : node_js
 node_js: stable
 
 install:
-- npm install
+- yarn
 
 stages:
  - name: deploy
@@ -15,13 +15,13 @@ jobs:
      script:
        - echo "NPM Deploying Started ..."
        - npm version
-       - npm run build
+       - yarn build-bundle
        - echo "NPM Building Finished."
 
      deploy:
        provider: npm
        email: javpeiwen2010@gmail.com
-       api_key: "$tocken"
+       api_key: "$npm_token"
        skip_cleanup: true
 
 branches:
