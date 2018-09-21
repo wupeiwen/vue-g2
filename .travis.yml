@@ -1,0 +1,29 @@
+language : node_js
+
+node_js: stable
+
+install:
+- npm install
+
+stages:
+ - name: deploy
+
+jobs:
+ include:
+
+   - stage: deploy
+     script:
+       - echo "NPM Deploying Started ..."
+       - npm version
+       - npm run build
+       - echo "NPM Building Finished."
+
+     deploy:
+       provider: npm
+       email: javpeiwen2010@gmail.com
+       api_key: "$tocken"
+       skip_cleanup: true
+
+branches:
+  only:
+    - master
