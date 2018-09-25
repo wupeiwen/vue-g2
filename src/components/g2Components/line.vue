@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-17 19:29:27
+ * @Last Modified time: 2018-09-25 11:28:17
  * @Type: 折线图
  */
 <template>
@@ -14,6 +14,7 @@ import G2 from '@antv/g2'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
+  name: 'g2-line',
   props: {
     // 数据
     data: {
@@ -87,12 +88,12 @@ export default {
   },
   methods: {
     drawChart: function (data) {
-      // 如果图形存在则销毁后再创建
+      // 销毁实例
       if (this.chart) {
         this.chart.destroy()
       }
 
-      // new Chart对象
+      // 新建实例
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
@@ -162,6 +163,11 @@ export default {
 
       // 绘制
       this.chart.render()
+
+      // 销毁实例
+      this.$once('hook:beforeDestroy', function () {
+        this.chart.destroy()
+      })
     }
   },
   mounted () {

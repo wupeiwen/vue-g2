@@ -2,35 +2,34 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-09-17 15:08:38
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-20 14:19:11
- * @Description: 全局注册图表
+ * @Last Modified time: 2018-09-25 10:29:39
+ * @Description: 图表组件自动化全局注册
  */
 
 import Vue from 'vue'
-// 折线图
-import g2Line from '@/components/g2Components/line'
-// 雷达图
-import g2Radar from '@/components/g2Components/radar'
-// 镜像分面(转置)
-import g2MirrorInterval from '@/components/g2Components/mirrorInterval'
-// 液体填充
-import g2Liquidfill from '@/components/g2Components/liquidfill'
-// 气泡图
-import g2Bubble from '@/components/g2Components/bubble'
-// 散点图
-import g2ScatterPoint from '@/components/g2Components/scatterPoint'
 
-const Components = {
-  g2Line,
-  g2Radar,
-  g2MirrorInterval,
-  g2Liquidfill,
-  g2Bubble,
-  g2ScatterPoint
-}
+const requireComponent = require.context(
+  // 其组件目录的相对路径
+  '@/components/g2Components',
+  // 是否查询其子目录
+  false,
+  // 匹配基础组件文件名的正则表达式
+  /[a-zA-Z]\w+\.(vue|js)$/
+)
 
-Object.keys(Components).forEach(name => {
-  Vue.component(name, Components[name])
+requireComponent.keys().forEach(fileName => {
+  // 获取组件配置
+  const componentConfig = requireComponent(fileName)
+
+  // 设置组件的 PascalCase 命名
+  const componentName = `g2-${fileName.replace(/^\.\/(.*)\.\w+$/, '$1')}`
+
+  // 全局注册组件
+  Vue.component(
+    componentName,
+    // 如果这个组件选项是通过 `export default` 导出的，
+    // 那么就会优先使用 `.default`，
+    // 否则回退到使用模块的根。
+    componentConfig.default || componentConfig
+  )
 })
-
-export default Components

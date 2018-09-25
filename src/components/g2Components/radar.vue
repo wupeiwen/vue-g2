@@ -7,6 +7,7 @@ import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
 
 export default {
+  name: 'g2-radar',
   props: {
     data: {
     // 数据
@@ -103,10 +104,12 @@ export default {
   },
   methods: {
     drawChart: function (data) {
-      // 如果图形存在则销毁后再创建
+      // 销毁实例
       if (this.chart) {
         this.chart.destroy()
       }
+
+      // 新建实例
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
@@ -207,6 +210,11 @@ export default {
 
       // 绘制
       this.chart.render()
+
+      // 销毁实例
+      this.$once('hook:beforeDestroy', function () {
+        this.chart.destroy()
+      })
     }
   },
   mounted () {

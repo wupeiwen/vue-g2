@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-20 14:30:24
+ * @Last Modified time: 2018-09-25 11:28:02
   * @Description: 散点图
  */
 <template>
@@ -13,6 +13,7 @@
 import G2 from '@antv/g2'
 
 export default {
+  name: 'g2-scatterPoint',
   props: {
     data: {
       type: Array,
@@ -52,10 +53,12 @@ export default {
   },
   methods: {
     drawChart: function (data) {
-      // 如果图形存在则销毁后再创建
+      // 销毁实例
       if (this.chart) {
         this.chart.destroy()
       }
+
+      // 新建实例
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
@@ -83,6 +86,11 @@ export default {
         showTitle: false
       })
       this.chart.render()
+
+      // 销毁实例
+      this.$once('hook:beforeDestroy', function () {
+        this.chart.destroy()
+      })
     }
   },
   mounted () {
