@@ -128,7 +128,6 @@ export default {
     { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
 </g2-scatter-point>
 
-
 ### 面积图(g2-area)
 ------
 ```
@@ -150,3 +149,6 @@ export default {
 </g2-area>
 ```
 <g2-area :id="'area'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
+
+### 饼图(g2-pie)
+
