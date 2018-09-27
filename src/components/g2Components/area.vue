@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 10:01:48
+ * @Last Modified time: 2018-09-27 11:45:58
  * @Type: 折线图
  */
 <template>
@@ -14,7 +14,7 @@ import G2 from '@antv/g2'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
-  name: 'g2-line',
+  name: 'g2-area',
   props: {
     // 数据
     data: {
