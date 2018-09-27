@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 09:58:51
+ * @Last Modified time: 2018-09-27 15:22:19
   * @Description: 散点图
  */
 <template>
@@ -14,7 +14,7 @@ import G2 from '@antv/g2'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
-  name: 'g2-scatterPoint',
+  name: 'g2-scatterpoint',
   props: {
     // 数据
     data: {

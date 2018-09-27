@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-21 13:44:57
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-25 11:27:52
+ * @Last Modified time: 2018-09-27 15:22:38
  * @Description: 镜像分面柱图
  */
 
@@ -14,7 +14,7 @@
 import G2 from '@antv/g2'
 
 export default {
-  name: 'g2-mirrorInterval',
+  name: 'g2-mirrorinterval',
   props: {
     // 数据
     data: {

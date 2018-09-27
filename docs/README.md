@@ -33,7 +33,7 @@ new Vue({
 开发环境已经搭建完毕，在需要使用可视化图表的页面通过 html 标签的形式使用，如：
 ```
 <template>
-  <g2-pie :id="'pie'"></g2-pie>
+  <g2-radar :id="'demo'" :isShowArea="false" :showLegend="true"></g2-radar>
 </template>
 
 <script>
@@ -48,14 +48,28 @@ export default {
 <style lang="less">
 </style>
 ```
-<g2-pie :id="'pie'"></g2-pie>
+<g2-radar :id="'demo'" :isShowArea="false" :showLegend="true"></g2-radar>
 
 ## 指南
 ### 折线图(g2-line)
 ------
 ```
 <g2-line :id="'line'" :isSmooth="true" :padding="['auto', 100]" 
-:axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
+ :data="[{ name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }
+ ]"
+ :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-line>
 ```
 <g2-line :id="'line'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
 
@@ -87,9 +101,9 @@ export default {
 ### 气泡图(g2-bubble)
 ------
 ```
-<g2-bubble :id="'bubble'"  :padding="[60, 'auto']"></g2-bubble>
+<g2-bubble :id="'bubble'" :padding="[60, 'auto']"></g2-bubble>
 ```
-<g2-bubble :id="'bubble'"  :padding="[60, 'auto']"></g2-bubble>
+<g2-bubble :id="'bubble'" :padding="[60, 'auto']"></g2-bubble>
 
 ### 散点图(g2-scatterPoint)
 ------
