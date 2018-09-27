@@ -91,12 +91,12 @@ export default {
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill'" :maxValue="1" :isPercent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axisName="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
 
-### 镜像分面柱图(g2-mirrorInterval)
+### 镜像分面柱图(g2-mirror-interval)
 ------
 ```
-<g2-mirrorInterval :id="'mirrorInterval'" :padding="[50, 100]"></g2-mirrorInterval>
+<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"></g2-mirror-interval>
 ```
-<g2-mirrorInterval :id="'mirrorInterval'" :padding="[50, 100]"></g2-mirrorInterval>
+<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"></g2-mirror-interval>
 
 ### 气泡图(g2-bubble)
 ------
@@ -105,28 +105,28 @@ export default {
 ```
 <g2-bubble :id="'bubble'" :padding="[60, 'auto']"></g2-bubble>
 
-### 散点图(g2-scatterpoint)
+### 散点图(g2-scatter-point)
 ------
 #### 基础散点图
 ```
-<g2-scatterpoint :id="'scatterpoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]">
-</g2-scatterpoint>
+<g2-scatter-point :id="'scatter-point'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]">
+</g2-scatter-point>
 ```
-<g2-scatterpoint :id="'scatterpoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]"></g2-scatterpoint>
+<g2-scatter-point :id="'scatter-point'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]"></g2-scatter-point>
 
 #### 多色散点图
 ```
-<g2-scatterpoint :id="'scatterPoint2'" :showLegend="true"
+<g2-scatter-point :id="'scatterPoint2'" :showLegend="true"
  :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
   { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
   { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
-</g2-scatterpoint>
+</g2-scatter-point>
 ```
-<g2-scatterpoint :id="'scatterPoint2'" :showLegend="true"
+<g2-scatter-point :id="'scatterPoint2'" :showLegend="true"
     :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
     { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
     { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
-</g2-scatterpoint>
+</g2-scatter-point>
 
 
 ### 面积图(g2-area)
