@@ -95,3 +95,10 @@ export default {
 <g2-scatterPoint :id="'scatterPoint'" :padding="[50, 100]"></g2-scatterPoint>
 ```
 <g2-scatterPoint :id="'scatterPoint'" :padding="[50, 100]"></g2-scatterPoint>
+
+### 面积图(g2-area)
+------
+```
+<g2-area :id="'area'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
+```
+<g2-area :id="'area'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
