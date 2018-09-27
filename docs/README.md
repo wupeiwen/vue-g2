@@ -105,28 +105,28 @@ export default {
 ```
 <g2-bubble :id="'bubble'" :padding="[60, 'auto']"></g2-bubble>
 
-### 散点图(g2-scatterPoint)
+### 散点图(g2-scatterpoint)
 ------
 #### 基础散点图
 ```
-<g2-scatterPoint :id="'scatterPoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]">
-</g2-scatterPoint>
+<g2-scatterpoint :id="'scatterpoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]">
+</g2-scatterpoint>
 ```
-<g2-scatterPoint :id="'scatterPoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]"></g2-scatterPoint>
+<g2-scatterpoint :id="'scatterpoint'" :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]"></g2-scatterpoint>
 
 #### 多色散点图
 ```
-<g2-scatterPoint :id="'scatterPoint2'" :showLegend="true"
+<g2-scatterpoint :id="'scatterPoint2'" :showLegend="true"
  :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
   { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
   { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
-</g2-scatterPoint>
+</g2-scatterpoint>
 ```
-<g2-scatterPoint :id="'scatterPoint2'" :showLegend="true"
+<g2-scatterpoint :id="'scatterPoint2'" :showLegend="true"
     :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
     { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
     { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
-</g2-scatterPoint>
+</g2-scatterpoint>
 
 
 ### 面积图(g2-area)
