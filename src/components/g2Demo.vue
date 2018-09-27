@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-25 14:58:17
+ * @Last Modified time: 2018-09-27 10:02:03
  */
 <template>
   <div>
@@ -13,6 +13,9 @@
       <g2-liquidfill :id="'liquidfill'" :height="300" :maxValue="1" :isPercent="true" :data="[{ name: '中国', value: 0.6 }]"
       :axisName="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
     </div>
+    <g2-bubble :id="'bubble'" :padding="['auto', 100]"></g2-bubble>
+    <g2-scatterPoint :id="'scatterPoint'" :padding="['auto', 100]"></g2-scatterPoint>
+    <g2-area :id="'area'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
   </div>
 </template>
 

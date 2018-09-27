@@ -2,8 +2,8 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 09:58:51
-  * @Description: 散点图
+ * @Last Modified time: 2018-09-27 10:01:48
+ * @Type: 折线图
  */
 <template>
   <div :id="id"></div>
@@ -14,15 +14,24 @@ import G2 from '@antv/g2'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
-  name: 'g2-scatterPoint',
+  name: 'g2-line',
   props: {
     // 数据
     data: {
       type: Array,
       default: () => [
-        { x: 20, y: 5 },
-        { x: 30, y: 10 },
-        { x: 15, y: 20 }
+        { name: '1997', value: 86085, type: 'America' },
+        { name: '2007', value: 144776, type: 'America' },
+        { name: '2017', value: 193868, type: 'America' },
+        { name: '1997', value: 9616, type: 'China' },
+        { name: '2007', value: 35715, type: 'China' },
+        { name: '2017', value: 122503, type: 'China' },
+        { name: '1997', value: 44122, type: 'Japan' },
+        { name: '2007', value: 45153, type: 'Japan' },
+        { name: '2017', value: 48675, type: 'Japan' },
+        { name: '1997', value: 22159, type: 'Germany' },
+        { name: '2007', value: 34447, type: 'Germany' },
+        { name: '2017', value: 36865, type: 'Germany' }
       ]
     },
     // DOM ID
@@ -30,38 +39,33 @@ export default {
     // DOM 高度
     height: {
       type: Number,
-      default: 300
+      default: 500
     },
     // 坐标轴名称
     axisName: {
       type: Object,
       default: () => {
         return {
-          x: '数据1',
-          y: '数据2',
-          type: '类型'
+          name: 'name',
+          value: 'value',
+          type: 'type'
         }
       }
     },
     // 是否显示图例
     showLegend: {
       type: Boolean,
+      default: true
+    },
+    // value 数据是否是百分数（整数和百分数）
+    isPercent: {
+      type: Boolean,
       default: false
     },
-    // 图例位置
-    legendPosition: {
-      type: String,
-      default: 'bottom-center'
-    },
-    // 数据是否是百分数（整数和百分数）
-    isPercent: {
-      type: Object,
-      default: () => {
-        return {
-          x: false,
-          y: false
-        }
-      }
+    // 是否显示曲线
+    isSmooth: {
+      type: Boolean,
+      default: false
     },
     // 内边距
     padding: {
@@ -105,13 +109,6 @@ export default {
           if (_this.axisName.hasOwnProperty(key)) {
             obj[key] = {}
             obj[key]['alias'] = _this.axisName[key]
-            if (_this.isPercent[key]) {
-              // 将数据格式化为百分数
-              obj[key]['formatter'] = percentFormat
-            } else {
-              // 浮点数保留一位小数，整数不做处理
-              obj[key]['formatter'] = floatIntFormat
-            }
           }
         }
         return obj
@@ -119,27 +116,50 @@ export default {
       // 为 chart 装载数据
       this.chart.source(data, scaleConfig)
 
-      const point = this.chart.point().position('x*y').shape('circle')
+      // 为指定的数据字段(value)进行列定义
+      let valueConfig = (function () {
+        let obj = { formatter: '' }
+        if (_this.isPercent) {
+          // 将数据格式化为百分数
+          obj.formatter = percentFormat
+        } else {
+          // 浮点数保留一位小数，整数不做处理
+          obj.formatter = floatIntFormat
+        }
+        return obj
+      }())
+      this.chart.scale('value', valueConfig)
+
+      // 配置图表tooltip
+      this.chart.tooltip(true, {
+        crosshairs: {
+          type: 'line'
+        }
+      })
 
       // 配置图表图例
       if (this.showLegend) {
-        this.chart.legend('type', { position: this.legendPosition })
-      } else {
-        this.chart.legend('type', false)
+        this.chart.legend('type', {
+          position: 'bottom-center'
+        })
       }
 
-      // 配置图表tooltip
-      this.chart.tooltip({
-        showTitle: false
+      // 配置折线和散点的颜色、形状等
+      let area = this.chart.area().position('name*value')
+      let point = this.chart.point().position('name*value').size(4).shape('circle').style({
+        stroke: '#fff',
+        lineWidth: 1
       })
-      point.tooltip('x*y')
 
-      // 配置大小
-      point.size(5).opacity(0.8)
-
-      // 配置多类型时的颜色
+      // 配置多条折线时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
+        area.color('type')
         point.color('type')
+      }
+
+      // 折线是否显示为曲线
+      if (this.isSmooth) {
+        area.shape('smooth')
       }
 
       // 绘制

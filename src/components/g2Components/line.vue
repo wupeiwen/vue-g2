@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-25 11:28:17
+ * @Last Modified time: 2018-09-27 09:20:40
  * @Type: 折线图
  */
 <template>
@@ -107,7 +107,8 @@ export default {
         let obj = {}
         for (const key in _this.axisName) {
           if (_this.axisName.hasOwnProperty(key)) {
-            obj[key] = _this.axisName[key]
+            obj[key] = {}
+            obj[key]['alias'] = _this.axisName[key]
           }
         }
         return obj

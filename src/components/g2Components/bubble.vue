@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-25 11:28:20
+ * @Last Modified time: 2018-09-27 10:30:06
   * @Description: 气泡图
  */
 <template>
@@ -11,24 +11,28 @@
 
 <script>
 import G2 from '@antv/g2'
-import { percentFormat, numFormat } from '@/utils/index'
+import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-bubble',
   props: {
+    // 数据
     data: {
       type: Array,
       default: () => [
-        { x: 20, y: 5, size: 5, type: 'type1' },
+        { x: 20, y: 5, size: 15, type: 'type1' },
         { x: 30, y: 10, size: 8, type: 'type2' },
         { x: 15, y: 20, size: 15, type: 'type3' }
       ]
     },
+    // DOM ID
     id: String,
+    // DOM 高度
     height: {
       type: Number,
       default: 300
     },
+    // 坐标轴名称
     axisName: {
       type: Object,
       default: () => {
@@ -38,6 +42,41 @@ export default {
           type: '类型',
           size: '大小'
         }
+      }
+    },
+    // 是否显示图例
+    showLegend: {
+      type: Boolean,
+      default: true
+    },
+    // 图例位置
+    legendPosition: {
+      type: String,
+      default: 'bottom-center'
+    },
+    // 数据是否是百分数（整数和百分数）
+    isPercent: {
+      type: Object,
+      default: () => {
+        return {
+          x: false,
+          y: false
+        }
+      }
+    },
+    minSize: {
+      type: Number,
+      default: 10
+    },
+    maxSize: {
+      type: Number,
+      default: 20
+    },
+    // 内边距
+    padding: {
+      type: Array,
+      default: function () {
+        return ['auto', 'auto']
       }
     }
   },
@@ -64,40 +103,52 @@ export default {
         container: this.id,
         forceFit: true,
         height: this.height,
-        padding: [30, 120, 50, 50]
+        padding: this.padding
       })
-      this.chart.source(data, {
-        x: {
-          alias: this.axisName.x,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
+
+      // 设置数据的显示别名
+      let _this = this
+      let scaleConfig = (function () {
+        let obj = {}
+        for (const key in _this.axisName) {
+          if (_this.axisName.hasOwnProperty(key)) {
+            obj[key] = {}
+            obj[key]['alias'] = _this.axisName[key]
+            if (_this.isPercent[key]) {
+              // 将数据格式化为百分数
+              obj[key]['formatter'] = percentFormat
+            } else {
+              // 浮点数保留一位小数，整数不做处理
+              obj[key]['formatter'] = floatIntFormat
+            }
           }
-        },
-        y: {
-          alias: this.axisName.y,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
-          }
-        },
-        size: {
-          alias: this.axisName.size,
-          formatter: item => {
-            return (item <= 1 && item > 0) ? percentFormat(item) : numFormat(item)
-          }
-        },
-        type: {
-          alias: this.axisName.type
         }
-      })
+        return obj
+      }())
+      // 为 chart 装载数据
+      this.chart.source(data, scaleConfig)
+
       const colorMap = Array.from(new Array(8), (v, i) => { return G2.Global.colors[i] })
-      this.chart.point().position('x*y').shape('circle')
-      // 打开图例
+      let bullle = this.chart.point().position('x*y').shape('circle')
+
+      // 配置图表图例
       this.chart.legend('size', false)
-      this.chart.legend('type', { position: 'right-top' })
-      // 配置 颜色 大小 tooltip
-      this.chart.color('type', colorMap).size('size', [10, 20]).opacity(0.5).tooltip('type*x*y*size', {
+      if (this.showLegend) {
+        this.chart.legend('type', { position: this.legendPosition })
+      } else {
+        this.chart.legend('type', false)
+      }
+
+      // 配置图表tooltip
+      this.chart.tooltip({
         showTitle: false
       })
+      bullle.tooltip('type*x*y')
+
+      // 配置 颜色 大小
+      bullle.color('type', colorMap).size('size', [this.minSize, this.maxSize]).opacity(0.5)
+
+      // 绘制
       this.chart.render()
 
       // 销毁实例

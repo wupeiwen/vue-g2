@@ -1,7 +1,8 @@
 >基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
 
-## 快速开始
-### 安装
+[查看在线文档](https://wupeiwen.github.io/vue-g2)
+
+### 安装依赖
 ------
 可以通过 npm 添加依赖
 ```
@@ -48,27 +49,6 @@ export default {
 <style lang="less">
 </style>
 ```
-效果图：
-
-![vue-g2 饼图](http://7xu37n.com1.z0.glb.clouddn.com/vue-g2%E9%A5%BC%E5%9B%BE.jpg)
-
-## 进度
-目前完成了直方图（g2-groupedColumn）、柱状图（g2-histogram）、液体填充（g2-液体填充）、镜像分面柱图（g2-mirrorInterval）、饼图（g2-pie）、散点图（g2-point）、雷达图（g2-radar）的封装工作。
-
-## 指南 （待完善）
-### 直方图（g2-groupedColumn）
-
-### 柱状图（g2-histogram）
-
-### 液体填充（g2-liquidfill）
-
-### 镜像分面柱图（g2-mirrorInterval）
-
-### 饼图（g2-pie）
-<!-- ![vue-g2 饼图](http://7xu37n.com1.z0.glb.clouddn.com/vue-g2%E9%A5%BC%E5%9B%BE.jpg) -->
-### 散点图（g2-point）
-
-### 雷达图（g2-radar）
 
 
 
