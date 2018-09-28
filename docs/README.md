@@ -151,4 +151,41 @@ export default {
 <g2-area :id="'area'" :isSmooth="true" :padding="['auto', 100]" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
 
 ### 饼图(g2-pie)
+------
+#### 基础饼图
+```
+<g2-pie :id="'pie'" :type="'pie'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+```
+<g2-pie :id="'pie'" :type="'pie'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+#### 饼图--内部label
+```
+<g2-pie :id="'pie2'" :type="'pie'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :labelOption="{show:true}"></g2-pie>
+```
+<g2-pie :id="'pie2'" :type="'pie'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :labelOption="{show:true}"></g2-pie>
+#### 基础环图
+```
+<g2-pie :id="'ring'" :type="'ring'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+```
+<g2-pie :id="'ring'" :type="'ring'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+#### 环图--辅助文字
+```
+<g2-pie :id="'ring2'" :type="'ring'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :guide="{name:'全部', value:6}"></g2-pie>
+<g2-pie :id="'ring3'" :type="'ring'" :axisName="{name:'类别', value:'人次(次)'}" 
+  :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" :guide="{name:'登录', value:'75%'}">
+</g2-pie>
+```
+<g2-pie :id="'ring2'" :type="'ring'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :guide="{name:'全部', value:6}"></g2-pie>
+<g2-pie :id="'ring3'" :type="'ring'" :axisName="{name:'类别', value:'人次(次)'}" :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" :guide="{name:'登录', value:'75%'}"></g2-pie>
+#### 南丁格尔玫瑰图
+```
+<g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
+```
+<g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
+#### 南丁格尔玫瑰环图
+```
+<g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+```
+<g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+
+
 
