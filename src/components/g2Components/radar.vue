@@ -53,8 +53,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          a: 'a',
-          b: 'b'
+          a: 'a'
         }
       }
     },
