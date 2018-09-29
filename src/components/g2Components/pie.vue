@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:56
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-28 15:45:28
+ * @Last Modified time: 2018-09-29 15:00:33
  * @Description: 饼图
  */
 <template>
@@ -68,7 +68,7 @@ export default {
       default: () => {
         return {
           show: false,
-          Offset: 20
+          offset: 20
         }
       }
     },
