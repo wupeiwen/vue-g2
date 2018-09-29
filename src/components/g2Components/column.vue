@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-29 11:35:52
+ * @Last Modified time: 2018-09-29 14:09:10
  * @Type: 折线图
  */
 <template>
@@ -125,11 +125,7 @@ export default {
       this.chart.scale('value', valueConfig)
 
       // 配置图表tooltip
-      this.chart.tooltip(true, {
-        crosshairs: {
-          type: 'line'
-        }
-      })
+      this.chart.tooltip(true)
 
       // 配置图表图例
       if (this.showLegend) {
