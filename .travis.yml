@@ -7,16 +7,13 @@ install:
 
 stages:
  - name: deploy
-   if: branch = master
 
 jobs:
  include:
 
    - stage: deploy
      script:
-       - echo "NPM Deploying Started ..."
        - yarn build-bundle
-       - echo "NPM Building Finished."
 
      deploy:
        provider: npm
