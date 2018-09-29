@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-29 14:09:10
+ * @Last Modified time: 2018-09-29 15:28:39
  * @Type: 折线图
  */
 <template>
@@ -106,11 +106,22 @@ export default {
         padding: this.padding
       })
 
+      // 设置数据的显示别名
+      let _this = this
+      let scaleConfig = (function () {
+        let obj = {}
+        for (const key in _this.axisName) {
+          if (_this.axisName.hasOwnProperty(key)) {
+            obj[key] = {}
+            obj[key]['alias'] = _this.axisName[key]
+          }
+        }
+        return obj
+      }())
       // 为 chart 装载数据
-      this.chart.source(data)
+      this.chart.source(data, scaleConfig)
 
       // 为指定的数据字段(value)进行列定义
-      let _this = this
       let valueConfig = (function () {
         let obj = { formatter: '' }
         if (_this.isPercent) {
