@@ -58,8 +58,19 @@ export default {
 ## 指南
 ### 折线图(g2-line)
 ------
+#### * 基础折线图
 ```
-<g2-line :id="'line'" :is-smooth="true" :padding="['auto', 100]"
+<g2-line :id="'line1'" :is-smooth="false" :padding="['auto', 100]"
+ :data="[{ name: '1997', value: 86085 },
+  { name: '2007', value: 144776 },
+  { name: '2017', value: 193868 }]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+</g2-line>
+```
+<g2-line :id="'line1'" :is-smooth="false" :padding="['auto', 100]" :data="[{ name: '1997', value: 86085 },{ name: '2007', value: 144776 },{ name: '2017', value: 193868 }]" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-line>
+#### * 多条折线图
+```
+<g2-line :id="'line2'" :is-smooth="false" :padding="['auto', 100]"
  :data="[{ name: '1997', value: 86085, type: 'America' },
   { name: '2007', value: 144776, type: 'America' },
   { name: '2017', value: 193868, type: 'America' },
@@ -76,7 +87,145 @@ export default {
  :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
 </g2-line>
 ```
-<g2-line :id="'line'" :is-smooth="true" :padding="['auto', 100]" :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
+<g2-line :id="'line2'" :is-smooth="false" :padding="['auto', 100]" :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
+#### * 曲线折线图
+```
+<g2-line :id="'line3'" :is-smooth="true" :padding="['auto', 100]"
+ :data="[{ name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }
+ ]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-line>
+```
+<g2-line :id="'line3'" :is-smooth="true" :padding="['auto', 100]" :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
+
+### 柱状图(g2-column)
+------
+#### * 基础柱状图
+```
+<g2-column :id="'column1'" :is-bar="false"
+ :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
+  ,{name: '2017', value: 193868}]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+</g2-column>
+```
+<g2-column :id="'column1'" :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-column>
+#### * 分组柱状图
+```
+<g2-column :id="'column2'" :type="'dodge'" :is-bar="false"
+ :data="[
+  { name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">  
+</g2-column>
+```
+<g2-column :id="'column2'" :type="'dodge'" :is-bar="false" :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-column>
+#### * 堆叠柱状图
+```
+<g2-column :id="'column3'" :type="'fold'" :is-bar="false"
+ :data="[
+  { name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-column>
+```
+<g2-column :id="'column3'" :type="'fold'" :is-bar="false" :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-column>
+#### * 基础条形图
+```
+<g2-column :id="'column4'" :is-bar="true" 
+ :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
+  ,{name: '2017', value: 193868}]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+</g2-column>
+```
+<g2-column :id="'column4'" :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
+#### * 分组条形图
+```
+<g2-column :id="'column5'" :type="'dodge'" :is-bar="true"
+ :data="[
+  { name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-column>
+```
+<g2-column :id="'column5'" :type="'dodge'" :is-bar="true"></g2-column>
+#### * 堆叠条形图
+```
+<g2-column :id="'column6'" :type="'fold'" :is-bar="true"
+ :data="[
+  { name: '1997', value: 86085, type: 'America' },
+  { name: '2007', value: 144776, type: 'America' },
+  { name: '2017', value: 193868, type: 'America' },
+  { name: '1997', value: 9616, type: 'China' },
+  { name: '2007', value: 35715, type: 'China' },
+  { name: '2017', value: 122503, type: 'China' },
+  { name: '1997', value: 44122, type: 'Japan' },
+  { name: '2007', value: 45153, type: 'Japan' },
+  { name: '2017', value: 48675, type: 'Japan' },
+  { name: '1997', value: 22159, type: 'Germany' },
+  { name: '2007', value: 34447, type: 'Germany' },
+  { name: '2017', value: 36865, type: 'Germany' }]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-column>
+```
+<g2-column :id="'column6'" :type="'fold'" :is-bar="true"></g2-column>
+
+### 镜像分面-转置(g2-mirror-interval)
+------
+```
+<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"
+  :data="[
+    { name: '1997', value: 86085, type: 'America' },
+    { name: '2007', value: 144776, type: 'America' },
+    { name: '2017', value: 193868, type: 'America' },
+    { name: '1997', value: 9616, type: 'China' },
+    { name: '2007', value: 35715, type: 'China' },
+    { name: '2017', value: 122503, type: 'China' }]"
+  :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}">
+</g2-mirror-interval>
+```
+<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"  :data="[{ name: '1997', value: 86085, type: 'America' },{ name: '2007', value: 144776, type: 'America' },{ name: '2017', value: 193868, type: 'America' },{ name: '1997', value: 9616, type: 'China' },{ name: '2007', value: 35715, type: 'China' },{ name: '2017', value: 122503, type: 'China' }]">
+</g2-mirror-interval>
 
 ### 雷达图(g2-radar)
 ------
@@ -166,13 +315,20 @@ export default {
 <g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
 ```
 <g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
-#### * 饼图--内部label
+#### * 饼图--外部label
 ```
 <g2-pie :id="'pie2'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
- :label-option="{show:true}">
+ :label-option="{show:true, offset: 20}">
 </g2-pie>
 ```
-<g2-pie :id="'pie2'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}" :label-option="{show:true}"></g2-pie>
+<g2-pie :id="'pie2'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}" :label-option="{show:true, offset: 20}"></g2-pie>
+#### * 饼图--内部label
+```
+<g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :label-option="{show:true, offset: -20}">
+</g2-pie>
+```
+<g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}" :label-option="{show:true, offset: -20}"></g2-pie>
 #### * 基础环图
 ```
 <g2-pie :id="'ring'" :type="'ring'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
@@ -206,118 +362,6 @@ export default {
 </g2-pie>
 ```
 <g2-pie :id="'nightingale2'" :type="'nightingale'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
-
-### 柱状图(g2-column)
-------
-#### * 基础柱状图
-```
-<g2-column :id="'column1'" :is-bar="false"
- :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
-  ,{name: '2017', value: 193868}]">
-</g2-column>
-```
-<g2-column :id="'column1'" :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
-#### * 分组柱状图
-```
-<g2-column :id="'column2'" :type="'dodge'" :is-bar="false"
- :data="[
-  { name: '1997', value: 86085, type: 'America' },
-  { name: '2007', value: 144776, type: 'America' },
-  { name: '2017', value: 193868, type: 'America' },
-  { name: '1997', value: 9616, type: 'China' },
-  { name: '2007', value: 35715, type: 'China' },
-  { name: '2017', value: 122503, type: 'China' },
-  { name: '1997', value: 44122, type: 'Japan' },
-  { name: '2007', value: 45153, type: 'Japan' },
-  { name: '2017', value: 48675, type: 'Japan' },
-  { name: '1997', value: 22159, type: 'Germany' },
-  { name: '2007', value: 34447, type: 'Germany' },
-  { name: '2017', value: 36865, type: 'Germany' }]">
-</g2-column>
-```
-<g2-column :id="'column2'" :type="'dodge'" :is-bar="false"></g2-column>
-#### * 堆叠柱状图
-```
-<g2-column :id="'column3'" :type="'fold'" :is-bar="false"
- :data="[
-  { name: '1997', value: 86085, type: 'America' },
-  { name: '2007', value: 144776, type: 'America' },
-  { name: '2017', value: 193868, type: 'America' },
-  { name: '1997', value: 9616, type: 'China' },
-  { name: '2007', value: 35715, type: 'China' },
-  { name: '2017', value: 122503, type: 'China' },
-  { name: '1997', value: 44122, type: 'Japan' },
-  { name: '2007', value: 45153, type: 'Japan' },
-  { name: '2017', value: 48675, type: 'Japan' },
-  { name: '1997', value: 22159, type: 'Germany' },
-  { name: '2007', value: 34447, type: 'Germany' },
-  { name: '2017', value: 36865, type: 'Germany' }]">
-</g2-column>
-```
-<g2-column :id="'column3'" :type="'fold'" :is-bar="false"></g2-column>
-#### * 基础条形图
-```
-<g2-column :id="'column4'" :is-bar="true" 
- :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
-  ,{name: '2017', value: 193868}]">
-</g2-column>
-```
-<g2-column :id="'column4'" :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
-#### * 分组条形图
-```
-<g2-column :id="'column5'" :type="'dodge'" :is-bar="true"
- :data="[
-  { name: '1997', value: 86085, type: 'America' },
-  { name: '2007', value: 144776, type: 'America' },
-  { name: '2017', value: 193868, type: 'America' },
-  { name: '1997', value: 9616, type: 'China' },
-  { name: '2007', value: 35715, type: 'China' },
-  { name: '2017', value: 122503, type: 'China' },
-  { name: '1997', value: 44122, type: 'Japan' },
-  { name: '2007', value: 45153, type: 'Japan' },
-  { name: '2017', value: 48675, type: 'Japan' },
-  { name: '1997', value: 22159, type: 'Germany' },
-  { name: '2007', value: 34447, type: 'Germany' },
-  { name: '2017', value: 36865, type: 'Germany' }]">
-</g2-column>
-```
-<g2-column :id="'column5'" :type="'dodge'" :is-bar="true"></g2-column>
-#### * 堆叠条形图
-```
-<g2-column :id="'column6'" :type="'fold'" :is-bar="true"
- :data="[
-  { name: '1997', value: 86085, type: 'America' },
-  { name: '2007', value: 144776, type: 'America' },
-  { name: '2017', value: 193868, type: 'America' },
-  { name: '1997', value: 9616, type: 'China' },
-  { name: '2007', value: 35715, type: 'China' },
-  { name: '2017', value: 122503, type: 'China' },
-  { name: '1997', value: 44122, type: 'Japan' },
-  { name: '2007', value: 45153, type: 'Japan' },
-  { name: '2017', value: 48675, type: 'Japan' },
-  { name: '1997', value: 22159, type: 'Germany' },
-  { name: '2007', value: 34447, type: 'Germany' },
-  { name: '2017', value: 36865, type: 'Germany' }]">
-</g2-column>
-```
-<g2-column :id="'column6'" :type="'fold'" :is-bar="true"></g2-column>
-
-### 镜像分面(转置)(g2-mirror-interval)
-------
-```
-<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"
-  :data="[
-    { name: '1997', value: 86085, type: 'America' },
-    { name: '2007', value: 144776, type: 'America' },
-    { name: '2017', value: 193868, type: 'America' },
-    { name: '1997', value: 9616, type: 'China' },
-    { name: '2007', value: 35715, type: 'China' },
-    { name: '2017', value: 122503, type: 'China' }
-  ]">
-</g2-mirror-interval>
-```
-<g2-mirror-interval :id="'mirror-interval'" :padding="[50, 100]"  :data="[{ name: '1997', value: 86085, type: 'America' },{ name: '2007', value: 144776, type: 'America' },{ name: '2017', value: 193868, type: 'America' },{ name: '1997', value: 9616, type: 'China' },{ name: '2007', value: 35715, type: 'China' },{ name: '2017', value: 122503, type: 'China' }]">
-</g2-mirror-interval>
 
 ### 其他
 ------
