@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-29 08:34:09
+ * @Last Modified time: 2018-09-29 14:23:59
  */
 <template>
   <div>
@@ -28,7 +28,12 @@
     <g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
     <g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
     <g2-word-cloud :id="'wordcloud'" :height="400"></g2-word-cloud>
-
+    <g2-column :id="'column1'" :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
+    <g2-column :id="'column2'" :type="'dodge'" :is-bar="false"></g2-column>
+    <g2-column :id="'column3'" :type="'fold'" :is-bar="false"></g2-column>
+    <g2-column :id="'column4'" :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
+    <g2-column :id="'column5'" :type="'dodge'" :is-bar="true"></g2-column>
+    <g2-column :id="'column6'" :type="'fold'" :is-bar="true"></g2-column>
   </div>
 </template>
 
