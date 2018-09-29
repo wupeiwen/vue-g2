@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-28 10:25:33
+ * @Last Modified time: 2018-09-29 08:34:09
  */
 <template>
   <div>
@@ -27,6 +27,7 @@
     <g2-pie :id="'ring3'" :type="'ring'" :axisName="{name:'类别', value:'人次(次)'}" :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" :guide="{name:'登录', value:'75%'}"></g2-pie>
     <g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
     <g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
+    <g2-word-cloud :id="'wordcloud'" :height="400"></g2-word-cloud>
 
   </div>
 </template>

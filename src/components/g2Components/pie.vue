@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:56
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-28 10:35:35
+ * @Last Modified time: 2018-09-28 15:45:28
  * @Description: 饼图
  */
 <template>
@@ -215,10 +215,22 @@ export default {
       this.chart.render()
 
       // 注册点击事件
-      this.chart.on('interval:click', ev => {
-        const data = ev.data._origin
-        _this.$emit('itemClick', data)
-      })
+      if (this.type === 'ring') {
+        this.chart.on('intervalStack:click', ev => {
+          const data = ev.data._origin
+          _this.$emit('itemClick', data)
+        })
+      } else if (this.type === 'pie') {
+        this.chart.on('intervalStack:click', ev => {
+          const data = ev.data._origin
+          _this.$emit('itemClick', data)
+        })
+      } else if (this.type === 'nightingale') {
+        this.chart.on('interval:click', ev => {
+          const data = ev.data._origin
+          _this.$emit('itemClick', data)
+        })
+      }
 
       // 销毁实例
       this.$once('hook:beforeDestroy', function () {
