@@ -1,6 +1,7 @@
 >基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
 
 [查看在线文档](https://wupeiwen.github.io/vue-g2)
+[查看npm](https://www.npmjs.com/package/vue-g2)
 
 ### 安装依赖
 ------
