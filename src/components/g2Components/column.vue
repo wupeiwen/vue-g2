@@ -106,11 +106,22 @@ export default {
         padding: this.padding
       })
 
+      // 设置数据的显示别名
+      let _this = this
+      let scaleConfig = (function () {
+        let obj = {}
+        for (const key in _this.axisName) {
+          if (_this.axisName.hasOwnProperty(key)) {
+            obj[key] = {}
+            obj[key]['alias'] = _this.axisName[key]
+          }
+        }
+        return obj
+      }())
       // 为 chart 装载数据
-      this.chart.source(data)
+      this.chart.source(data, scaleConfig)
 
       // 为指定的数据字段(value)进行列定义
-      let _this = this
       let valueConfig = (function () {
         let obj = { formatter: '' }
         if (_this.isPercent) {
