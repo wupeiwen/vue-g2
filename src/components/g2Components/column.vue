@@ -3,7 +3,7 @@
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
  * @Last Modified time: 2018-09-29 14:09:10
- * @Type: 折线图
+ * @Type: 柱状图/条形图
  */
 <template>
   <div :id="id"></div>
@@ -52,7 +52,7 @@ export default {
         }
       }
     },
-    // 分组柱状图和堆叠柱状图(dodge、fold)
+    // 分组或堆叠(dodge、fold)
     type: {
       type: String,
       default: 'fold'

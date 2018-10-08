@@ -1,9 +1,9 @@
 /*
  * @Author: wupeiwen javapeiwen2010@gmail.com
- * @Date: 2018-08-19 22:10:56
+ * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-14 17:02:15
- * @Description: 基础直方图
+ * @Last Modified time: 2018-10-08 15:39:08
+ * @Description: 直方图
  */
 <template>
   <div :id="id"></div>
@@ -15,23 +15,54 @@ import DataSet from '@antv/data-set'
 
 export default {
   props: {
+    // 数据
     data: {
       type: Array,
       default: () => [
-        { name: 1, value: 0 },
-        { name: 2, value: 0 }
+        { x: 1, y: 1 },
+        { x: 2, y: 2 },
+        { x: 3, y: 3 },
+        { x: 4, y: 4 },
+        { x: 5, y: 5 },
+        { x: 6, y: 6 },
+        { x: 7, y: 7 },
+        { x: 8, y: 8 },
+        { x: 9, y: 9 },
+        { x: 10, y: 10 },
+        { x: 11, y: 11 },
+        { x: 12, y: 12 }
       ]
     },
+    // DOM ID
     id: String,
+    // DOM 高度
     height: {
       type: Number,
       default: 300
     },
+    // 坐标轴名称
     axisName: {
       type: Object,
       default: () => {
-        return { name: '类别', value: '数值' }
+        return { x: '区间', y: '统计' }
       }
+    },
+    // 内边距
+    padding: {
+      type: Array,
+      default: function () {
+        return ['auto', 'auto']
+      }
+    },
+    // 分组数
+    bins: {
+      type: Number,
+      default: 0
+    },
+    // 分组长度
+    binWidth: {
+      type: Number,
+      default: 4
     }
   },
   data () {
@@ -47,17 +78,21 @@ export default {
   },
   methods: {
     drawChart: function (data) {
-      // 如果图形存在则销毁后再创建
+      // 销毁实例
       if (this.chart) {
         this.chart.destroy()
       }
+
+      // 新建实例
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
-        padding: 'auto'
+        padding: this.padding
       })
-      this.chart.axis('name', {
+
+      // 配置x轴
+      this.chart.axis('x', {
         tickLine: null,
         title: {
           autoRotate: false,
@@ -72,7 +107,9 @@ export default {
           autoRotate: false
         }
       })
-      this.chart.axis('value', {
+
+      // 配置y轴
+      this.chart.axis('y', {
         tickLine: null,
         title: {
           autoRotate: false,
@@ -84,25 +121,48 @@ export default {
           position: 'end'
         }
       })
+
+      // 为 chart 装载数据
       const ds = new DataSet()
       const dv = ds.createView().source(data)
-      dv.transform({
-        type: 'bin.histogram',
-        field: 'name',
-        bins: 10,
-        as: ['name', 'value']
-      })
+
+      // 分箱步长（会覆盖bins选项）
+      if (this.binWidth > 0) {
+        dv.transform({
+          type: 'bin.histogram',
+          field: 'y',
+          binWidth: this.binWidth, // 分箱步长
+          offset: 0,
+          as: ['x', 'y']
+        })
+      } else {
+        dv.transform({
+          type: 'bin.histogram',
+          field: 'y',
+          bins: this.bins, // 分箱个数
+          offset: 0,
+          as: ['x', 'y']
+        })
+      }
+
       this.chart.source(dv, {
-        name: {
+        x: {
           sync: true,
-          alias: this.axisName.name
+          alias: this.axisName.x
         },
-        value: {
+        y: {
           sync: true,
-          alias: this.axisName.value
+          alias: this.axisName.y
         }
       })
-      this.chart.interval().position('name*value')
+
+      // 配置图表tooltip
+      this.chart.tooltip(true)
+
+      // 配置图形
+      this.chart.interval().position('x*y')
+
+      // 绘制
       this.chart.render()
     }
   },
