@@ -20,7 +20,7 @@
   dependencies:
     "@antv/util" "~1.2.3"
 
-"@antv/data-set@^0.9.1":
+"@antv/data-set@^0.9.6":
   version "0.9.6"
   resolved "https://registry.yarnpkg.com/@antv/data-set/-/data-set-0.9.6.tgz#3273a5cb8230ad368a2e8075bce030ac330b2a69"
   dependencies:
