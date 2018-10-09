@@ -128,10 +128,6 @@ export default {
         this.chart.legend('type', false)
       }
 
-      // 配置图表tooltip
-      this.chart.tooltip({
-        showTitle: false
-      })
       point.tooltip('x*y')
 
       // 配置大小
