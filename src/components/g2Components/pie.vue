@@ -215,22 +215,10 @@ export default {
       this.chart.render()
 
       // 注册点击事件
-      if (this.type === 'ring') {
-        this.chart.on('intervalStack:click', ev => {
-          const data = ev.data._origin
-          _this.$emit('itemClick', data)
-        })
-      } else if (this.type === 'pie') {
-        this.chart.on('intervalStack:click', ev => {
-          const data = ev.data._origin
-          _this.$emit('itemClick', data)
-        })
-      } else if (this.type === 'nightingale') {
-        this.chart.on('interval:click', ev => {
-          const data = ev.data._origin
-          _this.$emit('itemClick', data)
-        })
-      }
+      this.chart.on('interval:click', ev => {
+        const data = ev.data._origin
+        _this.$emit('itemClick', data)
+      })
 
       // 销毁实例
       this.$once('hook:beforeDestroy', function () {
