@@ -128,6 +128,10 @@ export default {
         this.chart.legend('type', false)
       }
 
+      // 配置颜色 tooltip
+      this.chart.tooltip({
+        showTitle: false
+      })
       point.tooltip('x*y')
 
       // 配置大小
@@ -136,6 +140,7 @@ export default {
       // 配置多类型时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
         point.color('type')
+        point.tooltip('type*x*y')
       }
 
       // 绘制
