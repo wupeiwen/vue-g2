@@ -53,7 +53,7 @@ export default {
 <style lang="less">
 </style>
 ```
-![饼图](https://github.com/wupeiwen/vue-g2/tree/dev/public/vue-g2-pie.gif "饼图-外部label")
+![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-pie.gif "饼图-外部label")
 
 
 
