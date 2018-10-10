@@ -328,12 +328,15 @@ export default {
 ------
 #### * 基础饼图
 ```
-<g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+<g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]">
+</g2-pie>
 ```
 <g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
 #### * 饼图--外部label
 ```
 <g2-pie :id="'pie2'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
  :label-option="{show:true, offset: 20}">
 </g2-pie>
 ```
@@ -341,23 +344,27 @@ export default {
 #### * 饼图--内部label
 ```
 <g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
  :label-option="{show:true, offset: -20}">
 </g2-pie>
 ```
 <g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}" :label-option="{show:true, offset: -20}"></g2-pie>
 #### * 基础环图
 ```
-<g2-pie :id="'ring'" :type="'ring'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+<g2-pie :id="'ring'" :type="'ring'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]">
+</g2-pie>
 ```
 <g2-pie :id="'ring'" :type="'ring'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
 #### * 环图--辅助文字
 ```
 <g2-pie :id="'ring2'" :type="'ring'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
  :guide="{name:'全部', value:6}">
 </g2-pie>
 
 <g2-pie :id="'ring3'" :type="'ring'" :axis-name="{name:'类别', value:'人次(次)'}"
-  :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" 
+  :data="[{name:'登录', value:1500},{name:'未登录', value:500}]"
   :guide="{name:'登录', value:'75%'}">
 </g2-pie>
 ```
@@ -367,6 +374,7 @@ export default {
 ```
 <g2-pie :id="'nightingale'" :type="'nightingale'"
  :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
  :inner-radius="0">
 </g2-pie>
 ```
@@ -375,6 +383,7 @@ export default {
 ```
 <g2-pie :id="'nightingale2'" :type="'nightingale'"
  :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+ :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
 </g2-pie>
 ```
 <g2-pie :id="'nightingale2'" :type="'nightingale'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
@@ -384,7 +393,7 @@ export default {
 #### * 液体填充(g2-liquidfill)
 ```
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill'" :height="300"
- :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]" 
+ :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
  :axis-name="{name:'国家', value:'GDP占比'}">
 </g2-liquidfill>
 ```

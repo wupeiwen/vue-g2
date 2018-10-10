@@ -35,7 +35,10 @@ new Vue({
 开发环境已经搭建完毕，在需要使用可视化图表的页面通过 html 标签的形式使用，如：
 ```
 <template>
-  <g2-pie :id="'pie'"></g2-pie>
+  <g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+   :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
+   :label-option="{show:true, offset: 20}">
+  </g2-pie>
 </template>
 
 <script>
@@ -50,6 +53,7 @@ export default {
 <style lang="less">
 </style>
 ```
+![饼图](https://github.com/wupeiwen/vue-g2/tree/dev/public/vue-g2-pie.gif "饼图-外部label")
 
 
 
