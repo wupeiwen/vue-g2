@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-08 15:40:06
+ * @Last Modified time: 2018-10-11 12:04:10
  */
 <template>
   <div>
@@ -35,6 +35,9 @@
     <g2-column :id="'column5'" :type="'dodge'" :is-bar="true"></g2-column>
     <g2-column :id="'column6'" :type="'fold'" :is-bar="true"></g2-column>
     <g2-histogram :id="'histogram'" :bin-width="4"></g2-histogram>
+    <g2-double-axis-column :id="'doubleAxisColumn'" :axis-name="{name: '年份',value1: '数量',value2: '占比'}"
+     :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]">
+     </g2-double-axis-column>
   </div>
 </template>
 
