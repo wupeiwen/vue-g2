@@ -212,8 +212,11 @@ export default {
 
 ### 双y(x)轴柱状图(g2-double-axis-column)
 ```
-<g2-double-axis-column :id="'doubleAxisColumn'" :axis-name="{name: '年份',value1: '数量',value2: '占比'}"
- :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]">
+<g2-double-axis-column :id="'doubleAxisColumn'" 
+ :axis-name="{name: '年份',value1: '数量',value2: '占比'}"
+ :data="[{ name: '1997', value1: 86085, value2: 0.3 },
+  { name: '2007', value1: 144776, value2: 0.2 },
+  { name: '2017', value1: 193868, value2: 0.6 }]">
 </g2-double-axis-column>
 ```
 <g2-double-axis-column :id="'doubleAxisColumn'" :axis-name="{name: '年份',value1: '数量',value2: '占比'}" :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]"></g2-double-axis-column>
