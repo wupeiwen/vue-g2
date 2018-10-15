@@ -309,7 +309,7 @@ export default {
 <g2-scatter-point :id="'scatterPoint2'" :show-legend="true"
     :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
     { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
-    { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]"
+    { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
 </g2-scatter-point>
 
 #### · 基于x(y)轴数值范围分类的多色散点图
