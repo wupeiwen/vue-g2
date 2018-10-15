@@ -63,6 +63,24 @@ export default {
         }
       }
     },
+    // 区间范围分色
+    intervalRange: {
+      type: Object,
+      default: function () {
+        return {
+          use: false,
+          axis: 'x',
+          limit: [18, 24]
+        }
+      }
+    },
+    // 分色
+    intervalColor: {
+      type: Array,
+      default: function () {
+        return G2.Global.colors
+      }
+    },
     // 内边距
     padding: {
       type: Array,
@@ -139,8 +157,25 @@ export default {
 
       // 配置多类型时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
-        point.color('type')
         point.tooltip('type*x*y')
+        if (this.intervalRange.use) {
+          // 基于区间范围分色
+          point.color(this.intervalRange.axis, (value) => {
+            let color = ''
+            this.intervalRange.limit.map((item, index) => {
+              if (value >= item) {
+                color = this.intervalColor[index + 1]
+              } else {
+                color = color === '' ? this.intervalColor[0] : color
+              }
+            })
+            return color
+          })
+          this.chart.legend(this.intervalRange.axis, false)
+        } else {
+          // 基于类型分色
+          point.color('type')
+        }
       }
 
       // 绘制
