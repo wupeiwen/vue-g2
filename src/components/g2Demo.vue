@@ -18,7 +18,16 @@
     <g2-scatter-point :id="'scatter-point2'" :showLegend="true"
       :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
        { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
-       { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
+       { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]"
+      :intervalRange="{use: false}">
+    </g2-scatter-point>
+    <g2-scatter-point :id="'scatter-point3'" :showLegend="true"
+      :data="[{ x: 0.2, y: 5, type: 'type1' },{ x: 0.15, y: 10, type: 'type2' },
+       { x: 0.35, y: 10, type: 'type1' },{ x: 0.9, y: 5, type: 'type2' },
+       { x: 0.45, y: 7, type: 'type3' },{ x: 0.6, y: 14, type: 'type4' }]"
+      :intervalColor="['#FACC14', '#2FC25B', '#1890FF']"
+      :intervalRange="{use: true, axis: 'x', limit: [0.25, 0.5]}"
+      :isPercent="{x: true, y: false}">
     </g2-scatter-point>
     <g2-area :id="'area2'" :isSmooth="true" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-area>
     <g2-pie :id="'pie'" :type="'pie'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
