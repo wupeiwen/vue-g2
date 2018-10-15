@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-11 12:04:10
+ * @Last Modified time: 2018-10-15 15:10:55
  */
 <template>
   <div>
@@ -47,6 +47,9 @@
     <g2-double-axis-column :id="'doubleAxisColumn'" :axis-name="{name: '年份',value1: '数量',value2: '占比'}"
      :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]">
      </g2-double-axis-column>
+    <g2-sparkline :id="'sparkline1'" :type="'line'" :color="'#1890FF'"></g2-sparkline>
+    <g2-sparkline :id="'sparkline2'" :type="'area'" :color="'#2FC25B'"></g2-sparkline>
+    <g2-sparkline :id="'sparkline3'" :type="'interval'" :color="'#FACC14'"></g2-sparkline>
   </div>
 </template>
 

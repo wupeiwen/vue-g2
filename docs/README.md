@@ -309,27 +309,27 @@ export default {
 <g2-scatter-point :id="'scatterPoint2'" :show-legend="true"
     :data="[{ x: 20, y: 5, type: 'type1' },{ x: 20, y: 10, type: 'type2' },
     { x: 30, y: 10, type: 'type1' },{ x: 30, y: 5, type: 'type2' },
-    { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]"
+    { x: 20, y: 7, type: 'type3' },{ x: 15, y: 14, type: 'type4' }]">
 </g2-scatter-point>
 
 #### · 基于x(y)轴数值范围分类的多色散点图
 ```
-<g2-scatter-point :id="'scatter-point3'" :showLegend="true"
+<g2-scatter-point :id="'scatter-point3'" :show-legend="true"
  :data="[{ x: 0.2, y: 5, type: 'type1' },{ x: 0.15, y: 10, type: 'type2' },
   { x: 0.35, y: 10, type: 'type1' },{ x: 0.9, y: 5, type: 'type2' },
   { x: 0.45, y: 7, type: 'type3' },{ x: 0.6, y: 14, type: 'type4' }]"
-  :isPercent="{x: true, y: false}"
-  :intervalColor="['#FACC14', '#2FC25B', '#1890FF']"
-  :intervalRange="{use: true, axis: 'x', limit: [0.25, 0.5]}">
+  :is-percent="{x: true, y: false}"
+  :interval-color="['#FACC14', '#2FC25B', '#1890FF']"
+  :interval-range="{use: true, axis: 'x', limit: [0.25, 0.5]}">
 </g2-scatter-point>
 ```
-<g2-scatter-point :id="'scatter-point3'" :showLegend="true"
+<g2-scatter-point :id="'scatter-point3'" :show-legend="true"
     :data="[{ x: 0.2, y: 5, type: 'type1' },{ x: 0.15, y: 10, type: 'type2' },
     { x: 0.35, y: 10, type: 'type1' },{ x: 0.9, y: 5, type: 'type2' },
     { x: 0.45, y: 7, type: 'type3' },{ x: 0.6, y: 14, type: 'type4' }]"
-    :isPercent="{x: true, y: false}"
-    :intervalColor="['#FACC14', '#2FC25B', '#1890FF']"
-    :intervalRange="{use: true, axis: 'x', limit: [0.25, 0.5]}">
+    :is-percent="{x: true, y: false}"
+    :interval-color="['#FACC14', '#2FC25B', '#1890FF']"
+    :interval-range="{use: true, axis: 'x', limit: [0.25, 0.5]}">
 </g2-scatter-point>
 
 ### 面积图(g2-area)
@@ -417,6 +417,41 @@ export default {
 </g2-pie>
 ```
 <g2-pie :id="'nightingale2'" :type="'nightingale'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
+
+### 迷你图(g2-sparkline)
+#### · 迷你折线图
+```
+<g2-sparkline :id="'sparkline1'"
+ :axis-name="{name: '日期', value: '数值'}"
+ :data="[{name:'2018-01'，value: 86085}...]"
+ :color="'#1890FF'"
+ :is-percent="false"
+ :type="'line'">
+</g2-sparkline>
+```
+<g2-sparkline :id="'sparkline1'" :type="'line'" :axis-name="{name: '日期', value: '数值'}" :color="'#1890FF'" :is-percent="false"></g2-sparkline>
+#### · 迷你面积图
+```
+<g2-sparkline :id="'sparkline2'"
+ :axis-name="{name: '日期', value: '数值'}"
+ :data="[{name:'2018-01'，value: 86085}...]"
+ :color="'#2FC25B'"
+ :is-percent="false"
+ :type="'area'">
+</g2-sparkline>
+```
+<g2-sparkline :id="'sparkline2'" :type="'area'" :axis-name="{name: '日期', value: '数值'}" :color="'#2FC25B'" :is-percent="false"></g2-sparkline>
+#### · 迷你柱状图
+```
+<g2-sparkline :id="'sparkline3'"
+ :axis-name="{name: '日期', value: '数值'}"
+ :data="[{name:'2018-01'，value: 86085}...]"
+ :color="'#FACC14'"
+ :is-percent="false"
+ :type="'interval'">
+</g2-sparkline>
+```
+<g2-sparkline :id="'sparkline3'" :type="'interval'" :axis-name="{name: '日期', value: '数值'}" :color="'#FACC14'" :is-percent="false"></g2-sparkline>
 
 ### 其他
 ------
