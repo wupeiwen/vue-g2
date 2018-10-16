@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 17:32:25
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-16 11:28:23
+ * @Last Modified time: 2018-10-16 14:08:14
  * @Type: 进度条
  */
 <template>
@@ -99,7 +99,7 @@ export default {
       }
 
       // padding top
-      const paddingTop = this.showGuide.name || this.showGuide.value ? parseInt(this.font.size) + 5 : 0
+      const paddingTop = this.showGuide.name || this.showGuide.value || this.markLine.use ? parseInt(this.font.size) + 5 : 0
 
       // 新建实例
       this.chart = new G2.Chart({
