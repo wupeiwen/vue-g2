@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-15 18:01:12
+ * @Last Modified time: 2018-10-16 14:13:19
  */
 <template>
   <div>
@@ -51,7 +51,22 @@
     <g2-sparkline :id="'sparkline2'" :type="'area'" :color="'#2FC25B'"></g2-sparkline>
     <g2-sparkline :id="'sparkline3'" :type="'interval'" :color="'#FACC14'"></g2-sparkline>
     <div style="width:300px;">
-      <g2-progress-bar :id="'progressbar'"></g2-progress-bar>
+      <g2-progress-bar :id="'progressbar1'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+        :is-percent="false">
+      </g2-progress-bar>
+      <g2-progress-bar :id="'progressbar2'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+        :show-guide="{name:false, value:false}" :is-percent="false">
+      </g2-progress-bar>
+      <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+        :color="['#FFB6C1', '#e8e8e8']" :show-guide="{name:true, value:true}"
+        :is-percent="false">
+      </g2-progress-bar>
+      <g2-progress-bar :id="'progressbar4'" :height="26" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+        :color="['#FFB6C1', '#e8e8e8']" :show-guide="{name:false, value:false}" :mark-line="{use:false}"
+        :is-percent="false">
+      </g2-progress-bar>
     </div>
   </div>
 </template>
