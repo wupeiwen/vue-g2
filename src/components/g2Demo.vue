@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-15 15:10:55
+ * @Last Modified time: 2018-10-15 18:01:12
  */
 <template>
   <div>
@@ -50,6 +50,9 @@
     <g2-sparkline :id="'sparkline1'" :type="'line'" :color="'#1890FF'"></g2-sparkline>
     <g2-sparkline :id="'sparkline2'" :type="'area'" :color="'#2FC25B'"></g2-sparkline>
     <g2-sparkline :id="'sparkline3'" :type="'interval'" :color="'#FACC14'"></g2-sparkline>
+    <div style="width:300px;">
+      <g2-progress-bar :id="'progressbar'"></g2-progress-bar>
+    </div>
   </div>
 </template>
 
