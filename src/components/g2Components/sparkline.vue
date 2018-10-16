@@ -1,9 +1,9 @@
 /*
  * @Author: wupeiwen javapeiwen2010@gmail.com
- * @Date: 2018-08-19 22:18:59
+ * @Date: 2018-10-15 15:00:00
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-15 14:54:05
- * @Type: 折线图
+ * @Last Modified time: 2018-10-15 17:41:00
+ * @Type: 迷你图
  */
 <template>
   <div :id="id"></div>
@@ -14,7 +14,7 @@ import G2 from '@antv/g2'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
-  name: 'g2-area',
+  name: 'g2-sparkline',
   props: {
     // 数据
     data: {
@@ -47,8 +47,7 @@ export default {
       default: () => {
         return {
           name: 'name',
-          value: 'value',
-          type: 'type'
+          value: 'value'
         }
       }
     },
