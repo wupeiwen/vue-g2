@@ -30,7 +30,7 @@ new Vue({
 
 ### 开始使用
 ------
-开发环境已经搭建完毕，在需要使用可视化图表的页面通过 html 标签的形式使用，如：
+开发环境已经搭建完毕, 在需要使用可视化图表的页面通过 html 标签的形式使用, 如：
 ```
 <template>
   <g2-radar :id="'radar-demo'" :is-show-area="false" :show-legend="false"
@@ -423,7 +423,7 @@ export default {
 ```
 <g2-sparkline :id="'sparkline1'"
  :axis-name="{name: '日期', value: '数值'}"
- :data="[{name:'2018-01'，value: 86085}...]"
+ :data="[{name:'2018-01', value: 86085}...]"
  :color="'#1890FF'"
  :is-percent="false"
  :type="'line'">
@@ -434,7 +434,7 @@ export default {
 ```
 <g2-sparkline :id="'sparkline2'"
  :axis-name="{name: '日期', value: '数值'}"
- :data="[{name:'2018-01'，value: 86085}...]"
+ :data="[{name:'2018-01', value: 86085}...]"
  :color="'#2FC25B'"
  :is-percent="false"
  :type="'area'">
@@ -445,7 +445,7 @@ export default {
 ```
 <g2-sparkline :id="'sparkline3'"
  :axis-name="{name: '日期', value: '数值'}"
- :data="[{name:'2018-01'，value: 86085}...]"
+ :data="[{name:'2018-01', value: 86085}...]"
  :color="'#FACC14'"
  :is-percent="false"
  :type="'interval'">
@@ -453,6 +453,51 @@ export default {
 ```
 <g2-sparkline :id="'sparkline3'" :type="'interval'" :axis-name="{name: '日期', value: '数值'}" :color="'#FACC14'" :is-percent="false"></g2-sparkline>
 
+### 进度条(g2-progress-bar)
+#### · 基础进度条
+```
+<g2-progress-bar :id="'progressbar1'"
+ :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
+ :is-percent="true">
+</g2-progress-bar>
+
+<g2-progress-bar :id="'progressbar2'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :is-percent="false">
+</g2-progress-bar>
+```
+<div style="width:300px;">
+  <g2-progress-bar :id="'progressbar1'" :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]" :is-percent="true"></g2-progress-bar>
+</div>
+<div style="width:300px;">
+  <g2-progress-bar :id="'progressbar2'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :is-percent="false"></g2-progress-bar>
+</div>
+
+#### · 隐藏辅助元素的进度条
+```
+<g2-progress-bar :id="'progressbar3'"
+ :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
+ :show-guide="{name: false, value: false}"
+ :is-percent="true">
+</g2-progress-bar>
+```
+<div style="width:300px;">
+  <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]" :show-guide="{name: false, value: false}" :is-percent="true"></g2-progress-bar>
+</div>
+
+#### · 带有标记线的进度条
+```
+<g2-progress-bar :id="'progressbar4'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
+```
+<div style="width:300px;">
+  <g2-progress-bar :id="'progressbar4'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}" :is-percent="false"></g2-progress-bar>
+</div>
 ### 其他
 ------
 #### · 液体填充(g2-liquidfill)
