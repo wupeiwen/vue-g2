@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 15:00:00
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-15 17:41:00
+ * @Last Modified time: 2018-10-17 11:12:53
  * @Type: 迷你图
  */
 <template>
@@ -46,8 +46,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: 'name',
-          value: 'value'
+          name: '类型',
+          value: '数量'
         }
       }
     },
@@ -93,7 +93,10 @@ export default {
         padding: 0
       })
 
-      // 设置数据的显示别名
+      // 为 chart 装载数据
+      this.chart.source(data)
+
+      // 进行列定义
       let _this = this
       let scaleConfig = (function () {
         let obj = {}
@@ -101,26 +104,15 @@ export default {
           if (_this.axisName.hasOwnProperty(key)) {
             obj[key] = {}
             obj[key]['alias'] = _this.axisName[key]
+            if (key === 'value') {
+              // 数据格式, 将数据转为百分数或浮点数(保留一位小数), 整数不做处理
+              obj[key]['formatter'] = _this.isPercent ? percentFormat : floatIntFormat
+            }
           }
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
-
-      // 为指定的数据字段(value)进行列定义
-      let valueConfig = (function () {
-        let obj = { formatter: '' }
-        if (_this.isPercent) {
-          // 将数据格式化为百分数
-          obj.formatter = percentFormat
-        } else {
-          // 浮点数保留一位小数，整数不做处理
-          obj.formatter = floatIntFormat
-        }
-        return obj
-      }())
-      this.chart.scale('value', valueConfig)
+      this.chart.scale(scaleConfig)
 
       // 配置图表tooltip
       this.chart.tooltip(true, {
@@ -139,7 +131,6 @@ export default {
       if (this.type) {
         this.chart[this.type]().position('name*value').color(this.color)
       }
-
       // 绘制
       this.chart.render()
 

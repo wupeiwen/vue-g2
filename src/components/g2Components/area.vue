@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 11:45:58
+ * @Last Modified time: 2018-10-17 11:16:07
  * @Type: 折线图
  */
 <template>
@@ -101,7 +101,10 @@ export default {
         padding: this.padding
       })
 
-      // 设置数据的显示别名
+      // 为 chart 装载数据
+      this.chart.source(data)
+
+      // 进行列定义
       let _this = this
       let scaleConfig = (function () {
         let obj = {}
@@ -109,26 +112,15 @@ export default {
           if (_this.axisName.hasOwnProperty(key)) {
             obj[key] = {}
             obj[key]['alias'] = _this.axisName[key]
+            if (key === 'value') {
+              // 数据格式, 将数据转为百分数或浮点数(保留一位小数), 整数不做处理
+              obj[key]['formatter'] = _this.isPercent ? percentFormat : floatIntFormat
+            }
           }
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
-
-      // 为指定的数据字段(value)进行列定义
-      let valueConfig = (function () {
-        let obj = { formatter: '' }
-        if (_this.isPercent) {
-          // 将数据格式化为百分数
-          obj.formatter = percentFormat
-        } else {
-          // 浮点数保留一位小数，整数不做处理
-          obj.formatter = floatIntFormat
-        }
-        return obj
-      }())
-      this.chart.scale('value', valueConfig)
+      this.chart.scale(scaleConfig)
 
       // 配置图表tooltip
       this.chart.tooltip(true, {

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-11 11:58:57
+ * @Last Modified time: 2018-10-17 11:19:20
  * @Type: 双Y轴柱状图/条形图
  */
 <template>
@@ -131,7 +131,7 @@ export default {
 
       // 为指定的数据字段(value1,value2)进行格式化
       let _this = this
-      let valueConfig = (function () {
+      let scaleConfig = (function () {
         let obj = {}
         for (const key in _this.isPercent) {
           obj[_this.axisName[key]] = {}
@@ -145,7 +145,7 @@ export default {
         }
         return obj
       }())
-      this.chart.scale(valueConfig)
+      this.chart.scale(scaleConfig)
 
       // 配置图表tooltip
       this.chart.tooltip(true)
