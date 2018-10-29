@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 17:32:25
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-16 14:08:14
+ * @Last Modified time: 2018-10-29 13:43:23
  * @Type: 进度条
  */
 <template>
@@ -171,6 +171,22 @@ export default {
       }
 
       if (this.markLine.use) {
+        // 根据数值大小动态调整文本的对齐方式
+        let textAlign = (() => {
+          let percent = 0
+          if (this.isPercent) {
+            percent = this.markLine.value
+          } else {
+            percent = this.markLine.value / (this.data[0].value + this.data[1].value)
+          }
+          if (percent >= 0.7) {
+            return 'right'
+          } else if (percent <= 0.3) {
+            return 'left'
+          } else {
+            return 'center'
+          }
+        })()
         // 配置辅助元素-value
         this.chart.guide().line({
           start: {
@@ -189,7 +205,7 @@ export default {
             autoRotate: false,
             content: `${this.markLine.name}: ${this.isPercent ? percentFormat(this.markLine.value) : floatIntFormat(this.markLine.value)}`,
             style: {
-              textAlign: 'center',
+              textAlign: textAlign,
               fill: this.font.color,
               fontSize: String(Number(this.font.size) - 2)
             }

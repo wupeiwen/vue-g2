@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-16 14:13:19
+ * @Last Modified time: 2018-10-29 13:49:56
  */
 <template>
   <div>
@@ -56,7 +56,7 @@
         :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar2'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
-        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
         :show-guide="{name:false, value:false}" :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"

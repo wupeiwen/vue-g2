@@ -491,12 +491,12 @@ export default {
 <g2-progress-bar :id="'progressbar4'"
  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+ :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
  :is-percent="false">
 </g2-progress-bar>
 ```
 <div style="width:300px;">
-  <g2-progress-bar :id="'progressbar4'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}" :is-percent="false"></g2-progress-bar>
+  <g2-progress-bar :id="'progressbar4'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}" :is-percent="false"></g2-progress-bar>
 </div>
 ### 其他
 ------
