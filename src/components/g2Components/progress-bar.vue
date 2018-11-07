@@ -112,10 +112,10 @@ export default {
       let ds = new DataSet()
       let dv = ds.createView().source(data)
       dv.transform({
-        type: 'fold',
-        fields: ['value'], // 展开字段集
-        key: 'type', // key字段
-        value: 'value' // value字段
+        type: 'percent',
+        field: 'value',
+        dimension: 'name',
+        as: 'percent'
       })
       // 为 chart 装载数据
       this.chart.source(dv)
@@ -133,7 +133,7 @@ export default {
       this.chart.axis(false)
 
       // 配置图表
-      this.chart.intervalStack().position('1*value').color('name', this.color)
+      this.chart.intervalStack().position('1*percent').color('name', this.color)
 
       if (this.showGuide.name) {
         // 配置辅助元素-name
@@ -154,8 +154,7 @@ export default {
         // 辅助元素-value 格式化-整数或百分比
         const value = this.isPercent ? percentFormat(this.data[0].value) : floatIntFormat(this.data[0].value)
         // 辅助元素-value x轴偏移量
-        const valueOffsetX = this.isPercent ? this.chart._attrs.width - ((String(value).length - 1) * Number(this.font.size)) : this.chart._attrs.width - (String(value).length * Number(this.font.size))
-
+        const valueOffsetX = this.isPercent ? this.chart._attrs.width - (String(value).length * Number(this.font.size)) : this.chart._attrs.width - ((String(value).length - 1) * Number(this.font.size))
         // 配置辅助元素-value
         this.chart.guide().text({
           top: true,
@@ -172,13 +171,8 @@ export default {
 
       if (this.markLine.use) {
         // 根据数值大小动态调整文本的对齐方式
+        let percent = this.markLine.value / (this.data[0].value + this.data[1].value)
         let textAlign = (() => {
-          let percent = 0
-          if (this.isPercent) {
-            percent = this.markLine.value
-          } else {
-            percent = this.markLine.value / (this.data[0].value + this.data[1].value)
-          }
           if (percent >= 0.7) {
             return 'right'
           } else if (percent <= 0.3) {
@@ -189,14 +183,8 @@ export default {
         })()
         // 配置辅助元素-value
         this.chart.guide().line({
-          start: {
-            1: 0,
-            value: this.markLine.value
-          },
-          end: {
-            1: 1,
-            value: this.markLine.value
-          },
+          start: [0, percent],
+          end: [1, percent],
           lineStyle: {
             stroke: this.markLine.lineColor
           },
