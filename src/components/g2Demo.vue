@@ -67,6 +67,13 @@
         :color="['#FFB6C1', '#e8e8e8']" :show-guide="{name:false, value:false}" :mark-line="{use:false}"
         :is-percent="false">
       </g2-progress-bar>
+      <g2-progress-bar :id="'progressbar5'"
+        :data="[{name:'中国', value: 0}, {name:'其他', value: 1}]"
+        :color="['#FF7C81','#F0F2F5']"
+        :mark-line="{use:false}"
+        :show-guide="{name: true, value: true}"
+        :is-percent="true">
+      </g2-progress-bar>
     </div>
   </div>
 </template>
