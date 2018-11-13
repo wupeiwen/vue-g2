@@ -43,7 +43,7 @@
     <g2-column :id="'column4'" :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
     <g2-column :id="'column5'" :type="'dodge'" :is-bar="true"></g2-column>
     <g2-column :id="'column6'" :type="'fold'" :is-bar="true"></g2-column>
-    <g2-histogram :id="'histogram'" :bin-width="4"></g2-histogram>
+    <g2-histogram :id="'histogram'" :bins="0" :bin-width="10" :data="[50,50,49,64,61]" :axisName="{x: '年龄', y: '数量'}"></g2-histogram>
     <g2-double-axis-column :id="'doubleAxisColumn'" :axis-name="{name: '年份',value1: '数量',value2: '占比'}"
      :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]">
      </g2-double-axis-column>
