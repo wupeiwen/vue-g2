@@ -18,20 +18,7 @@ export default {
     // 数据
     data: {
       type: Array,
-      default: () => [
-        { x: 1, y: 1 },
-        { x: 2, y: 2 },
-        { x: 3, y: 3 },
-        { x: 4, y: 4 },
-        { x: 5, y: 5 },
-        { x: 6, y: 6 },
-        { x: 7, y: 7 },
-        { x: 8, y: 8 },
-        { x: 9, y: 9 },
-        { x: 10, y: 10 },
-        { x: 11, y: 11 },
-        { x: 12, y: 12 }
-      ]
+      default: () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     // DOM ID
     id: String,
@@ -122,6 +109,7 @@ export default {
         }
       })
 
+      data = data.map(item => { return { x: Number(item), y: Number(item) } })
       // 为 chart 装载数据
       const ds = new DataSet()
       const dv = ds.createView().source(data)
@@ -145,16 +133,30 @@ export default {
         })
       }
 
-      this.chart.source(dv, {
-        x: {
-          sync: true,
-          alias: this.axisName.x
-        },
-        y: {
-          sync: true,
-          alias: this.axisName.y
-        }
-      })
+      if (this.binWidth > 0) {
+        this.chart.source(dv, {
+          x: {
+            sync: true,
+            alias: this.axisName.x,
+            tickInterval: this.binWidth // 分箱步长
+          },
+          y: {
+            sync: true,
+            alias: this.axisName.y
+          }
+        })
+      } else {
+        this.chart.source(dv, {
+          x: {
+            sync: true,
+            alias: this.axisName.x
+          },
+          y: {
+            sync: true,
+            alias: this.axisName.y
+          }
+        })
+      }
 
       // 配置图表tooltip
       this.chart.tooltip(true)
