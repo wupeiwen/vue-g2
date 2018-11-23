@@ -1,5 +1,11 @@
 >基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
 
+![](https://travis-ci.org/Alamofire/Alamofire.svg?branch=master)
+[![](https://img.shields.io/npm/v/vue-g2.svg)](https://www.npmjs.com/package/vue-g2)
+![](https://img.shields.io/bundlephobia/min/vue-g2.svg)
+![](https://img.shields.io/npm/dt/vue-g2.svg)
+[![](https://img.shields.io/badge/-详细文档-green.svg)](https://wupeiwen.github.io/vue-g2)
+
 ## 快速开始
 ### 安装依赖
 ------
@@ -262,6 +268,7 @@ export default {
 ```
 <g2-radar :id="'radar'" :is-show-area="true" :show-legend="true" :axis-name="{a:'companya',b:'companyb',c:'companyc'}" :data="[{item: 'Design',a: 70,b: 30,c: 11},{item: 'Development',a: 60,b: 70,c: 11},{item: 'Marketing',a: 50,b: 60,c: 11},{item: 'Users',a: 40,b: 50,c: 11},{item: 'Test',a: 60,b: 70,c: 11}]">
 </g2-radar>
+
 #### · 雷达图(线)
 ```
 <g2-radar :id="'radar2'" :is-show-area="false" :show-legend="true"
@@ -483,15 +490,52 @@ export default {
 #### · 带有标记线的进度条
 ```
 <g2-progress-bar :id="'progressbar4'"
- :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :data="[{name:'中国', value: 0}, {name:'其他', value: 5000}]"
  :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
  :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
  :is-percent="false">
 </g2-progress-bar>
+<g2-progress-bar :id="'progressbar5'"
+ :data="[{name:'中国', value: 5000}, {name:'其他', value: 5000}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
+ :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
+<g2-progress-bar :id="'progressbar6'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
+ :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
+
 ```
 <div style="width:300px;">
-  <g2-progress-bar :id="'progressbar4'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}" :is-percent="false"></g2-progress-bar>
+<g2-progress-bar :id="'progressbar4'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
+ :mark-line="{use:true, name: '最小值', value: 0, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
+<g2-progress-bar :id="'progressbar5'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
+ :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
+<g2-progress-bar :id="'progressbar6'"
+ :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+ :color="['#FFB6C1', '#e8e8e8']"
+ :show-guide="{name: false, value: false}"
+ :mark-line="{use:true, name: '最大值', value: 10109, lineColor: '#1890FF'}"
+ :is-percent="false">
+</g2-progress-bar>
 </div>
+
 ### 其他
 ------
 #### · 液体填充(g2-liquidfill)
@@ -503,6 +547,7 @@ export default {
 ```
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axis-name="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
+
 #### · 带图片遮罩的词云(g2-word-cloud)
 ```
 <g2-word-cloud :id="'wordcloud'" :height="400"
