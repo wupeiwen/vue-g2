@@ -1,7 +1,12 @@
 >基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
 
-[查看在线文档](https://wupeiwen.github.io/vue-g2)
-[查看npm](https://www.npmjs.com/package/vue-g2)
+![](https://travis-ci.org/Alamofire/Alamofire.svg?branch=master)
+[![](https://img.shields.io/npm/v/vue-g2.svg)](https://www.npmjs.com/package/vue-g2)
+![](https://img.shields.io/bundlephobia/min/vue-g2.svg)
+![](https://img.shields.io/npm/dt/vue-g2.svg)
+[![](https://img.shields.io/badge/-详细文档-green.svg)](https://wupeiwen.github.io/vue-g2)
+
+## 快速开始
 
 ### 安装依赖
 ------
@@ -35,7 +40,7 @@ new Vue({
 开发环境已经搭建完毕，在需要使用可视化图表的页面通过 html 标签的形式使用，如：
 ```
 <template>
-  <g2-pie :id="'pie3'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+  <g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
    :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
    :label-option="{show:true, offset: 20}">
   </g2-pie>
