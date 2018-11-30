@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-29 13:49:56
+ * @Last Modified time: 2018-11-30 10:58:30
  */
 <template>
   <div>
@@ -36,7 +36,7 @@
     <g2-pie :id="'ring3'" :type="'ring'" :axisName="{name:'类别', value:'人次(次)'}" :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" :guide="{name:'登录', value:'75%'}"></g2-pie>
     <g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
     <g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
-    <g2-word-cloud :id="'wordcloud'" :height="400"></g2-word-cloud>
+    <g2-word-cloud :id="'wordcloud'"></g2-word-cloud>
     <g2-column :id="'column1'" :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
     <g2-column :id="'column2'" :type="'dodge'" :is-bar="false"></g2-column>
     <g2-column :id="'column3'" :type="'fold'" :is-bar="false"></g2-column>
