@@ -540,17 +540,24 @@ export default {
 ------
 #### · 液体填充(g2-liquidfill)
 ```
-<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill'" :height="300"
+<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill1'" :height="300"
  :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
  :axis-name="{name:'国家', value:'GDP占比'}">
 </g2-liquidfill>
+<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :height="300"
+ :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
+ :axis-name="{name:'国家', value:'GDP占比'}" :color="red">
+</g2-liquidfill>
 ```
-<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
+<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill1'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axis-name="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
+
+<g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
+    :axis-name="{name:'国家', value:'GDP占比'}" :color="red"></g2-liquidfill>
 
 #### · 带图片遮罩的词云(g2-word-cloud)
 ```
-<g2-word-cloud :id="'wordcloud'" :height="400"
+<g2-word-cloud :id="'wordcloud1'" :height="300" :width="600"
   :data="[{ 'value': 6, 'name': 'Analysis' }, { 'value': 6, 'name': 'Data Mining' },
    { 'value': 6, 'name': 'Data Vis' }, { 'value': 6, 'name': 'Design' },
    { 'value': 6, 'name': 'Grammar' }, { 'value': 6, 'name': 'Graphics' },
@@ -559,10 +566,23 @@ export default {
    { 'value': 6, 'name': 'Quantitative' }, { 'value': 6, 'name': 'Relation' },
    { 'value': 6, 'name': 'Statistics' }, { 'value': 6, 'name': '可视化' },
    { 'value': 6, 'name': '数据' }, { 'value': 6, 'name': '数据可视化' }]"
-  :imageSrc="'base64/url'">
+  :use-image="true" :imageSrc="'base64/url'">
+</g2-word-cloud>
+<g2-word-cloud :id="'wordcloud2'" :height="300" :width="600"
+  :data="[{ 'value': 6, 'name': 'Analysis' }, { 'value': 6, 'name': 'Data Mining' },
+   { 'value': 6, 'name': 'Data Vis' }, { 'value': 6, 'name': 'Design' },
+   { 'value': 6, 'name': 'Grammar' }, { 'value': 6, 'name': 'Graphics' },
+   { 'value': 6, 'name': 'Graph' }, { 'value': 6, 'name': 'Hierarchy' },
+   { 'value': 6, 'name': 'Labeling' }, { 'value': 6, 'name': 'Layout' },
+   { 'value': 6, 'name': 'Quantitative' }, { 'value': 6, 'name': 'Relation' },
+   { 'value': 6, 'name': 'Statistics' }, { 'value': 6, 'name': '可视化' },
+   { 'value': 6, 'name': '数据' }, { 'value': 6, 'name': '数据可视化' }]"
+  :use-image="false">
 </g2-word-cloud>
 ```
-<g2-word-cloud :id="'wordcloud'" :height="400" ></g2-word-cloud>
+<g2-word-cloud :id="'wordcloud1'"  :height="300" :width="600" :use-image="true"></g2-word-cloud>
+<g2-word-cloud :id="'wordcloud2'"  :height="300" :width="600" :use-image="false"></g2-word-cloud>
+
 
 
 
