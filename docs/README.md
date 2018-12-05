@@ -546,14 +546,14 @@ export default {
 </g2-liquidfill>
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :height="300"
  :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
- :axis-name="{name:'国家', value:'GDP占比'}" :color="red">
+ :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'">
 </g2-liquidfill>
 ```
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill1'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axis-name="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
 
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
-    :axis-name="{name:'国家', value:'GDP占比'}" :color="red"></g2-liquidfill>
+    :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'"></g2-liquidfill>
 
 #### · 带图片遮罩的词云(g2-word-cloud)
 ```
