@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-17 11:15:57
+ * @Last Modified time: 2018-12-05 17:11:21
  * @Type: 柱状图/条形图
  */
 <template>
@@ -64,6 +64,11 @@ export default {
     },
     // 是否显示图例
     showLegend: {
+      type: Boolean,
+      default: true
+    },
+    // 是否显示网格线
+    showGrid: {
       type: Boolean,
       default: true
     },
@@ -136,6 +141,14 @@ export default {
           position: 'bottom-center'
         })
       }
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis('value', {
+          grid: null
+        })
+      }
+
       if (this.isBar) {
         this.chart.coord().transpose()
       }

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-17 11:19:20
+ * @Last Modified time: 2018-12-05 17:07:59
  * @Type: 双Y轴柱状图/条形图
  */
 <template>
@@ -53,6 +53,11 @@ export default {
     showLegend: {
       type: Boolean,
       default: true
+    },
+    // 是否显示网格线
+    showGrid: {
+      type: Boolean,
+      default: false
     },
     // value 数据是否是百分数（整数和百分数）
     isPercent: {
@@ -154,6 +159,16 @@ export default {
       if (this.showLegend) {
         this.chart.legend('type', {
           position: 'bottom-center'
+        })
+      }
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis(`${this.axisName.value1}`, {
+          grid: null
+        })
+        this.chart.axis(`${this.axisName.value2}`, {
+          grid: null
         })
       }
 

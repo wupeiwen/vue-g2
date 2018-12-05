@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 15:22:19
+ * @Last Modified time: 2018-12-05 17:11:30
   * @Description: 散点图
  */
 <template>
@@ -42,6 +42,11 @@ export default {
           type: '类型'
         }
       }
+    },
+    // 是否显示网格线
+    showGrid: {
+      type: Boolean,
+      default: true
     },
     // 是否显示图例
     showLegend: {
@@ -144,6 +149,13 @@ export default {
         this.chart.legend('type', { position: this.legendPosition })
       } else {
         this.chart.legend('type', false)
+      }
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis('y', {
+          grid: null
+        })
       }
 
       // 配置颜色 tooltip

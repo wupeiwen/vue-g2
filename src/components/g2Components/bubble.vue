@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 10:30:06
+ * @Last Modified time: 2018-12-05 17:11:18
   * @Description: 气泡图
  */
 <template>
@@ -46,6 +46,11 @@ export default {
     },
     // 是否显示图例
     showLegend: {
+      type: Boolean,
+      default: true
+    },
+    // 是否显示网格线
+    showGrid: {
       type: Boolean,
       default: true
     },
@@ -130,6 +135,13 @@ export default {
 
       const colorMap = Array.from(new Array(8), (v, i) => { return G2.Global.colors[i] })
       let bullle = this.chart.point().position('x*y').shape('circle')
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis('y', {
+          grid: null
+        })
+      }
 
       // 配置图表图例
       this.chart.legend('size', false)
