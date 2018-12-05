@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-17 11:16:07
+ * @Last Modified time: 2018-12-05 17:11:13
  * @Type: 折线图
  */
 <template>
@@ -66,6 +66,11 @@ export default {
     isSmooth: {
       type: Boolean,
       default: false
+    },
+    // 是否显示网格线
+    showGrid: {
+      type: Boolean,
+      default: true
     },
     // 内边距
     padding: {
@@ -133,6 +138,13 @@ export default {
       if (this.showLegend) {
         this.chart.legend('type', {
           position: 'bottom-center'
+        })
+      }
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis('value', {
+          grid: null
         })
       }
 

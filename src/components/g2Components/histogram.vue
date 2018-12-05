@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-08 15:39:08
+ * @Last Modified time: 2018-12-05 17:11:24
  * @Description: 直方图
  */
 <template>
@@ -33,6 +33,11 @@ export default {
       default: () => {
         return { x: '区间', y: '统计' }
       }
+    },
+    // 是否显示网格线
+    showGrid: {
+      type: Boolean,
+      default: true
     },
     // 内边距
     padding: {
@@ -108,6 +113,13 @@ export default {
           position: 'end'
         }
       })
+
+      // 配置坐标轴网格线
+      if (!this.showGrid) {
+        this.chart.axis('y', {
+          grid: null
+        })
+      }
 
       data = data.map(item => { return { x: Number(item), y: Number(item) } })
       // 为 chart 装载数据
