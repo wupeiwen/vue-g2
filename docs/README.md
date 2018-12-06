@@ -566,14 +566,15 @@ export default {
 </g2-liquidfill>
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :height="300"
  :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
- :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'">
+ :axis-name="{name:'国家', value:'GDP占比'}"
+ :color="{ backgroundColor: '', labelColor: '' }">
 </g2-liquidfill>
 ```
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill1'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axis-name="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
 
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
-    :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'"></g2-liquidfill>
+    :axis-name="{name:'国家', value:'GDP占比'}" :color="{ backgroundColor: 'red', labelColor: 'yellow' }"></g2-liquidfill>
 
 #### · 带图片遮罩的词云(g2-word-cloud)
 ```
@@ -603,6 +604,52 @@ export default {
 <g2-word-cloud :id="'wordcloud1'"  :height="300" :width="600" :use-image="true"></g2-word-cloud>
 <g2-word-cloud :id="'wordcloud2'"  :height="300" :width="600" :use-image="false"></g2-word-cloud>
 
+## 通用参数
+### 颜色说明
+支持字符串、16进制、rgb、rgba等形式的数值
+``````
+'white'
+'#000000' / '#000'
+'rgb(255,255,255)' / 'rgba(255,255,255,1)'
+``````
+
+### 坐标轴颜色参数
+------
+#### 1.通用调整方案
+适用于: 
+* area 面积图
+* bubble 气泡图
+* column 柱状图/条形图
+* double-axis-column  双Y轴柱状图/条形图 (三个轴，x,y1,y2)
+* line 折线图
+* scatter-point 散点图
+``````
+  axisColor:{ lineColor: '#123', labelColor: '#456' }
+``````
 
 
+#### 2.需要特殊调整
+适用于: 
+* histogram 直方图 
+``````
+  axisColor:{ titleColor: '#123', labelColor: '#456' }
+``````
+适用于:
+* mirror-interval 镜像分面柱图
+``````
+  axisColor:{ labelColor: '#456' }
+``````
+适用于: 
+* liquidfill 液体填充 
+``````
+  color:{ backgroundColor: '#123', labelColor: '#456' }
+``````
+适用于:
+* progress-bar 进度条 
+``````
+  标记线  markLine:{lineColor: '#1890FF',labelColor: '#000000'}
+  辅助元素 guide: {labelColor:'#000000',labelSize:'14'}
+``````
+
+(注: pie radar 还未作调整)
 
