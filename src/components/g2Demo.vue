@@ -2,12 +2,12 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:34
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-11-30 10:58:30
+ * @Last Modified time: 2018-12-06 15:48:39
  */
 <template>
   <div>
     <g2-line :id="'line'" :isSmooth="true" :axisName="{name:'年份', value:'GDP(亿美元)', type:'国家'}"></g2-line>
-    <!-- <g2-radar :id="'radar'" :isShowArea="false" :showLegend="false"></g2-radar> -->
+    <g2-radar :id="'radar'" :isShowArea="false" :showLegend="false"></g2-radar>
     <g2-mirror-interval :id="'mirrorInterval'" :padding="[50, 100]"></g2-mirror-interval>
     <div style="width: 300px;margin: auto;">
       <g2-liquidfill :id="'liquidfill'" :padding="[50, 'auto']" :maxValue="1" :isPercent="true" :data="[{ name: '中国', value: 0.6 }]"
@@ -36,7 +36,7 @@
     <g2-pie :id="'ring3'" :type="'ring'" :axisName="{name:'类别', value:'人次(次)'}" :data="[{name:'登录', value:1500},{name:'未登录', value:500}]" :guide="{name:'登录', value:'75%'}"></g2-pie>
     <g2-pie :id="'nightingale'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}"></g2-pie>
     <g2-pie :id="'nightingale2'" :type="'nightingale'" :axisName="{name:'年份', value:'GDP(亿美元)'}" :innerRadius="0"></g2-pie>
-    <g2-word-cloud :id="'wordcloud'"></g2-word-cloud>
+    <g2-word-cloud :id="'wordcloud'" :data='[]'></g2-word-cloud>
     <g2-column :id="'column1'" :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
     <g2-column :id="'column2'" :type="'dodge'" :is-bar="false"></g2-column>
     <g2-column :id="'column3'" :type="'fold'" :is-bar="false"></g2-column>
@@ -52,26 +52,26 @@
     <g2-sparkline :id="'sparkline3'" :type="'interval'" :color="'#FACC14'"></g2-sparkline>
     <div style="width:300px;">
       <g2-progress-bar :id="'progressbar1'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
-        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
-        :is-percent="false">
+        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use: true, name: '均值', value: 5000, lineColor: '#1890FF', labelColor: '#000000', labelSize:'14'}"
+        :guide="{showName: false, showValue: false}" :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar2'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
-        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
-        :show-guide="{name:false, value:false}" :is-percent="false">
+        :color="['#FFB6C1', '#e8e8e8']" :mark-line="{use: true, name: '均值', value: 9999, lineColor: '#1890FF', labelColor: '#000000', labelSize:'14'}"
+        :guide="{showName: false, showValue: false}" :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
-        :color="['#FFB6C1', '#e8e8e8']" :show-guide="{name:true, value:true}"
+        :color="['#FFB6C1', '#e8e8e8']" :guide="{showName: true, showValue: true, labelColor: '#000000', labelSize:'14'}"
         :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar4'" :height="26" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
-        :color="['#FFB6C1', '#e8e8e8']" :show-guide="{name:false, value:false}" :mark-line="{use:false}"
+        :color="['#FFB6C1', '#e8e8e8']" :guide="{showName: false, showValue: false}" :mark-line="{use:false}"
         :is-percent="false">
       </g2-progress-bar>
       <g2-progress-bar :id="'progressbar5'"
         :data="[{name:'中国', value: 0}, {name:'其他', value: 1}]"
         :color="['#FF7C81','#F0F2F5']"
         :mark-line="{use:false}"
-        :show-guide="{name: true, value: true}"
+        :guide="{showName: true, showValue: true, labelColor: '#000000', labelSize:'14'}"
         :is-percent="true">
       </g2-progress-bar>
     </div>
