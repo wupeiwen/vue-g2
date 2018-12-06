@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-09-28 10:56:50
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-11-30 11:14:53
+ * @Last Modified time: 2018-12-06 13:54:00
  * @Description: 词云
  */
 
@@ -63,6 +63,9 @@ export default {
   },
   methods: {
     drawChart: function (data) {
+      if (data === '' || data === null || data.length === 0) {
+        data = [{ 'value': 20, 'name': '暂无数据' }, { 'value': 0, 'name': '' }]
+      }
       function getTextAttrs (cfg) {
         return Object.assign({}, {
           fillOpacity: cfg.opacity,
@@ -89,7 +92,7 @@ export default {
         }
       })
 
-      var dv = new DataSet.View().source(this.data)
+      var dv = new DataSet.View().source(data)
       var range = dv.range('value')
       var min = range[0]
       var max = range[1]
