@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-27 14:29:48
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-11-30 09:42:29
+ * @Last Modified time: 2018-12-06 13:32:50
  * @Description: 液体填充
  */
 
@@ -58,9 +58,15 @@ export default {
         return ['auto', 'auto']
       }
     },
+    // 颜色配置
     color: {
-      type: String,
-      default: '#1890FF'
+      type: Object,
+      default: function () {
+        return {
+          labelColor: 'rgba(0,0,0,0.65)',
+          backgroundColor: '#1890FF'
+        }
+      }
     }
   },
   data () {
@@ -115,7 +121,7 @@ export default {
       this.chart.axis(false)
 
       // 配置液体流动的边框颜色等
-      this.chart.interval().position('name*value').color('name', this.color)
+      this.chart.interval().position('name*value').color('name', this.color.backgroundColor)
         .shape('liquid-fill-gauge').style({
           lineWidth: 2,
           opacity: 0.65
@@ -134,8 +140,7 @@ export default {
         content: guideContent,
         // 文本辅助元素样式
         style: {
-          fill: 'rgba(0,0,0,0.65)',
-          opacity: 0.75,
+          fill: this.color.labelColor,
           fontSize: this.height / 8,
           textAlign: 'center'
         }
