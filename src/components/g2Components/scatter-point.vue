@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-05 17:11:30
+ * @Last Modified time: 2018-12-06 13:14:32
   * @Description: 散点图
  */
 <template>
@@ -11,7 +11,7 @@
 
 <script>
 import G2 from '@antv/g2'
-import { percentFormat, floatIntFormat } from '@/utils/index'
+import { percentFormat, floatIntFormat, AxisOption } from '@/utils/index'
 
 export default {
   name: 'g2-scatterpoint',
@@ -40,6 +40,16 @@ export default {
           x: '数据1',
           y: '数据2',
           type: '类型'
+        }
+      }
+    },
+    // 坐标轴颜色
+    axisColor: {
+      type: Object,
+      default: () => {
+        return {
+          lineColor: 'red',
+          labelColor: 'green'
         }
       }
     },
@@ -151,12 +161,9 @@ export default {
         this.chart.legend('type', false)
       }
 
-      // 配置坐标轴网格线
-      if (!this.showGrid) {
-        this.chart.axis('y', {
-          grid: null
-        })
-      }
+      // 坐标轴配置
+      this.chart.axis('x', new AxisOption('x', this.axisColor))
+      this.chart.axis('y', new AxisOption('y', this.axisColor, this.showGrid))
 
       // 配置颜色 tooltip
       this.chart.tooltip({

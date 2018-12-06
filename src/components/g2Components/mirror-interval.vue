@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-21 13:44:57
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-27 15:22:38
+ * @Last Modified time: 2018-12-06 14:10:56
  * @Description: 镜像分面柱图
  */
 
@@ -43,6 +43,15 @@ export default {
           name: 'name',
           value: 'value',
           type: 'type'
+        }
+      }
+    },
+    // 坐标轴颜色 'rgba(0, 0, 0, 0.85)'
+    axisColor: {
+      type: Object,
+      default: () => {
+        return {
+          labelColor: 'green'
         }
       }
     },
@@ -96,6 +105,7 @@ export default {
       // 为 chart 装载数据
       this.chart.source(data, scaleConfig)
 
+      const labelColor = this.axisColor.labelColor
       // 设置 mirror 分面
       this.chart.facet('mirror', {
         fields: ['type'],
@@ -107,7 +117,7 @@ export default {
           style: {
             fontSize: 14,
             textAlign: 'center',
-            fill: 'rgba(0, 0, 0, 0.85)'
+            fill: labelColor
           }
         },
         eachView (view) {
@@ -118,7 +128,10 @@ export default {
             tickLine: null,
             title: null,
             label: {
-              autoRotate: false
+              autoRotate: false,
+              textStyle: {
+                fill: labelColor
+              }
             }
           })
           // 隐藏 value 坐标轴

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 17:32:25
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-10-29 13:43:23
+ * @Last Modified time: 2018-12-06 15:55:13
  * @Type: 进度条
  */
 <template>
@@ -47,16 +47,6 @@ export default {
       type: Boolean,
       default: false
     },
-    // 标记元素
-    showGuide: {
-      type: Object,
-      default: function () {
-        return {
-          name: true,
-          value: true
-        }
-      }
-    },
     // 标记线
     markLine: {
       type: Object,
@@ -65,17 +55,21 @@ export default {
           use: false,
           name: '均值',
           value: 0.5,
-          lineColor: '#1890FF'
+          lineColor: '#1890FF',
+          labelColor: '#000000',
+          labelSize: '14'
         }
       }
     },
-    // 字体
-    font: {
+    // 辅助元素
+    guide: {
       type: Object,
       default: function () {
         return {
-          color: '#000000',
-          size: '14'
+          showName: true,
+          showValue: true,
+          labelColor: '#000000',
+          labelSize: '14'
         }
       }
     }
@@ -99,7 +93,15 @@ export default {
       }
 
       // padding top
-      const paddingTop = this.showGuide.name || this.showGuide.value || this.markLine.use ? parseInt(this.font.size) + 5 : 0
+      let paddingTop = 0
+      if (this.guide.showName || this.guide.showValue) {
+        this.guide.labelSize = this.guide.labelSize || '14'
+        paddingTop = parseInt(this.guide.labelSize) + 5
+      }
+      if (this.markLine.use) {
+        this.markLine.labelSize = this.markLine.labelSize || '14'
+        paddingTop = parseInt(this.markLine.labelSize) + 5
+      }
 
       // 新建实例
       this.chart = new G2.Chart({
@@ -135,40 +137,41 @@ export default {
       // 配置图表
       this.chart.intervalStack().position('1*percent').color('name', this.color)
 
-      if (this.showGuide.name) {
+      if (this.guide.showName) {
         // 配置辅助元素-name
         this.chart.guide().text({
           top: true,
           position: [0, 0],
           content: this.data[0].name,
           style: {
-            fill: this.font.color,
-            fontSize: this.font.size
+            fill: this.guide.labelColor,
+            fontSize: this.guide.labelSize || '14'
           },
           offsetX: 0,
           offsetY: -30
         })
       }
 
-      if (this.showGuide.value) {
+      if (this.guide.showValue) {
         // 辅助元素-value 格式化-整数或百分比
         const value = this.isPercent ? percentFormat(this.data[0].value) : floatIntFormat(this.data[0].value)
         // 辅助元素-value x轴偏移量
-        const valueOffsetX = this.isPercent ? this.chart._attrs.width - (String(value).length * Number(this.font.size)) : this.chart._attrs.width - ((String(value).length - 1) * Number(this.font.size))
+        const valueOffsetX = this.isPercent ? this.chart._attrs.width - (String(value).length * Number(this.guide.labelSize)) : this.chart._attrs.width - ((String(value).length - 1) * Number(this.guide.labelSize))
         // 配置辅助元素-value
         this.chart.guide().text({
           top: true,
           position: [0, 0],
           content: value,
           style: {
-            fill: this.font.color,
-            fontSize: this.font.size
+            fill: this.guide.labelColor,
+            fontSize: this.guide.labelSize || '14'
           },
           offsetX: valueOffsetX,
           offsetY: -30
         })
       }
 
+      // 配置标记线 markLine
       if (this.markLine.use) {
         // 根据数值大小动态调整文本的对齐方式
         let percent = this.markLine.value / (this.data[0].value + this.data[1].value)
@@ -181,7 +184,6 @@ export default {
             return 'center'
           }
         })()
-        // 配置辅助元素-value
         this.chart.guide().line({
           start: [0, percent],
           end: [1, percent],
@@ -194,8 +196,8 @@ export default {
             content: `${this.markLine.name}: ${this.isPercent ? percentFormat(this.markLine.value) : floatIntFormat(this.markLine.value)}`,
             style: {
               textAlign: textAlign,
-              fill: this.font.color,
-              fontSize: String(Number(this.font.size) - 2)
+              fill: this.markLine.labelColor,
+              fontSize: String(Number(this.markLine.labelSize) - 2) || '12'
             }
           }
         })

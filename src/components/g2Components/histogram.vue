@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-05 17:11:24
+ * @Last Modified time: 2018-12-06 13:26:49
  * @Description: 直方图
  */
 <template>
@@ -32,6 +32,16 @@ export default {
       type: Object,
       default: () => {
         return { x: '区间', y: '统计' }
+      }
+    },
+    // 坐标轴颜色
+    axisColor: {
+      type: Object,
+      default: () => {
+        return {
+          titleColor: 'red',
+          labelColor: 'green'
+        }
       }
     },
     // 是否显示网格线
@@ -89,14 +99,17 @@ export default {
         title: {
           autoRotate: false,
           textStyle: {
-            fill: 'rgba(0, 0, 0, 0.7)',
+            fill: this.axisColor.titleColor,
             fontSize: '14',
             textBaseline: 'bottom'
           },
           position: 'end'
         },
         label: {
-          autoRotate: false
+          autoRotate: false,
+          textStyle: {
+            fill: this.axisColor.labelColor
+          }
         }
       })
 
@@ -106,20 +119,19 @@ export default {
         title: {
           autoRotate: false,
           textStyle: {
-            fill: 'rgba(0, 0, 0, 0.7)',
+            fill: this.axisColor.titleColor,
             fontSize: '14',
             textBaseline: 'bottom'
           },
           position: 'end'
-        }
+        },
+        label: {
+          textStyle: {
+            fill: this.axisColor.labelColor
+          }
+        },
+        grid: !this.showGrid ? null : {}
       })
-
-      // 配置坐标轴网格线
-      if (!this.showGrid) {
-        this.chart.axis('y', {
-          grid: null
-        })
-      }
 
       data = data.map(item => { return { x: Number(item), y: Number(item) } })
       // 为 chart 装载数据

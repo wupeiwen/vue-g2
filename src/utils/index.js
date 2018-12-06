@@ -64,3 +64,19 @@ export let floatIntFormat = (value) => {
 
 // 颜色组
 export const color = ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864']
+
+// axis配置类
+export class AxisOption {
+  constructor (type, axisColor, showGrid) {
+    let axisOption = { label: { textStyle: { fill: axisColor.labelColor } }, line: {} }
+    if (type === 'x' || type === 'name') {
+      axisOption['line']['stroke'] = axisColor.lineColor
+      return axisOption
+    } else {
+      if (showGrid) {
+        axisOption['grid'] = null
+      }
+      return axisOption
+    }
+  }
+}

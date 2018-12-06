@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-05 17:07:59
+ * @Last Modified time: 2018-12-06 13:18:08
  * @Type: 双Y轴柱状图/条形图
  */
 <template>
@@ -12,7 +12,7 @@
 <script>
 import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
-import { percentFormat, floatIntFormat } from '@/utils/index'
+import { percentFormat, floatIntFormat, AxisOption } from '@/utils/index'
 
 export default {
   name: 'g2-column',
@@ -41,6 +41,16 @@ export default {
           name: 'name',
           value1: 'value1',
           value2: 'value2'
+        }
+      }
+    },
+    // 坐标轴颜色
+    axisColor: {
+      type: Object,
+      default: () => {
+        return {
+          lineColor: 'red',
+          labelColor: 'green'
         }
       }
     },
@@ -162,15 +172,10 @@ export default {
         })
       }
 
-      // 配置坐标轴网格线
-      if (!this.showGrid) {
-        this.chart.axis(`${this.axisName.value1}`, {
-          grid: null
-        })
-        this.chart.axis(`${this.axisName.value2}`, {
-          grid: null
-        })
-      }
+      // 坐标轴配置
+      this.chart.axis('name', new AxisOption('name', this.axisColor))
+      this.chart.axis(`${this.axisName.value1}`, new AxisOption(`${this.axisName.value1}`, this.axisColor, this.showGrid))
+      this.chart.axis(`${this.axisName.value2}`, new AxisOption(`${this.axisName.value2}`, this.axisColor, this.showGrid))
 
       // 是否是条形图
       if (this.isBar) {

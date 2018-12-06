@@ -458,33 +458,53 @@ export default {
 #### · 基础进度条
 ```
 <g2-progress-bar :id="'progressbar1'"
- :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
- :is-percent="true">
+  :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
+  :color="['#FF7C81','#F0F2F5']"
+  :mark-line="{use: false}"
+  :guide="{showName: true, showValue: true, 
+   labelColor: '#000000', labelSize:'14'}"
+  :is-percent="true">
 </g2-progress-bar>
 
 <g2-progress-bar :id="'progressbar2'"
- :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
- :color="['#FFB6C1', '#e8e8e8']"
- :is-percent="false">
+  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+  :color="['#FF7C81','#F0F2F5']"
+  :mark-line="{use: false}"
+  :guide="{showName: true, showValue: true, 
+   labelColor: '#000000', labelSize:'14'}"
+  :is-percent="false">
 </g2-progress-bar>
 ```
 <div style="width:300px;">
-  <g2-progress-bar :id="'progressbar1'" :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]" :is-percent="true"></g2-progress-bar>
+ <g2-progress-bar :id="'progressbar1'"
+  :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
+  :color="['#FF7C81','#F0F2F5']"
+  :mark-line="{use: false}"
+  :guide="{showName: true, showValue: true, labelColor: '#000000', labelSize:'14'}"
+  :is-percent="true">
+ </g2-progress-bar>
 </div>
 <div style="width:300px;">
-  <g2-progress-bar :id="'progressbar2'" :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]" :color="['#FFB6C1', '#e8e8e8']" :height="45" :is-percent="false"></g2-progress-bar>
+ <g2-progress-bar :id="'progressbar2'"
+  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
+  :color="['#FF7C81','#F0F2F5']"
+  :mark-line="{use: false}"
+  :guide="{showName: true, showValue: true, labelColor: '#000000', labelSize:'14'}"
+  :is-percent="false">
+ </g2-progress-bar>
 </div>
 
 #### · 隐藏辅助元素的进度条
 ```
 <g2-progress-bar :id="'progressbar3'"
  :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]"
- :show-guide="{name: false, value: false}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: false}"
  :is-percent="true">
 </g2-progress-bar>
 ```
 <div style="width:300px;">
-  <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]" :show-guide="{name: false, value: false}" :is-percent="true"></g2-progress-bar>
+  <g2-progress-bar :id="'progressbar3'" :data="[{name:'中国', value: 0.88}, {name:'其他', value: 0.12}]" :guide="{showName: false, showValue: false}" :mark-line="{use: false}":is-percent="true"></g2-progress-bar>
 </div>
 
 #### · 带有标记线的进度条
@@ -492,22 +512,22 @@ export default {
 <g2-progress-bar :id="'progressbar4'"
  :data="[{name:'中国', value: 0}, {name:'其他', value: 5000}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '均值', value: 0, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 <g2-progress-bar :id="'progressbar5'"
  :data="[{name:'中国', value: 5000}, {name:'其他', value: 5000}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '均值', value: 5000, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 <g2-progress-bar :id="'progressbar6'"
  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '均值', value: 9999, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '均值', value: 9999, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 
@@ -516,22 +536,22 @@ export default {
 <g2-progress-bar :id="'progressbar4'"
  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '最小值', value: 0, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '最小值', value: 0, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 <g2-progress-bar :id="'progressbar5'"
  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '均值', value: 5000, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '均值', value: 5000, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 <g2-progress-bar :id="'progressbar6'"
  :data="[{name:'中国', value: 8878}, {name:'其他', value: 1231}]"
  :color="['#FFB6C1', '#e8e8e8']"
- :show-guide="{name: false, value: false}"
- :mark-line="{use:true, name: '最大值', value: 10109, lineColor: '#1890FF'}"
+ :guide="{showName: false, showValue: false}"
+ :mark-line="{use: true, name: '最大值', value: 10109, lineColor: '#1890FF',labelColor:'#000000', labelSize: '14'}"
  :is-percent="false">
 </g2-progress-bar>
 </div>
@@ -546,14 +566,15 @@ export default {
 </g2-liquidfill>
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :height="300"
  :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
- :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'">
+ :axis-name="{name:'国家', value:'GDP占比'}"
+ :color="{ backgroundColor: '', labelColor: '' }">
 </g2-liquidfill>
 ```
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill1'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
     :axis-name="{name:'国家', value:'GDP占比'}"></g2-liquidfill>
 
 <g2-liquidfill style="width: 300px;margin: auto;" :id="'liquidfill2'" :max-value="1" :is-percent="true" :data="[{ name: '中国', value: 0.6 }]"
-    :axis-name="{name:'国家', value:'GDP占比'}" :color="'red'"></g2-liquidfill>
+    :axis-name="{name:'国家', value:'GDP占比'}" :color="{ backgroundColor: 'red', labelColor: 'yellow' }"></g2-liquidfill>
 
 #### · 带图片遮罩的词云(g2-word-cloud)
 ```
@@ -583,6 +604,52 @@ export default {
 <g2-word-cloud :id="'wordcloud1'"  :height="300" :width="600" :use-image="true"></g2-word-cloud>
 <g2-word-cloud :id="'wordcloud2'"  :height="300" :width="600" :use-image="false"></g2-word-cloud>
 
+## 通用参数
+### 颜色说明
+支持字符串、16进制、rgb、rgba等形式的数值
+``````
+'white'
+'#000000' / '#000'
+'rgb(255,255,255)' / 'rgba(255,255,255,1)'
+``````
+
+### 坐标轴颜色参数
+------
+#### 1.通用调整方案
+适用于: 
+* area 面积图
+* bubble 气泡图
+* column 柱状图/条形图
+* double-axis-column  双Y轴柱状图/条形图 (三个轴，x,y1,y2)
+* line 折线图
+* scatter-point 散点图
+``````
+  axisColor:{ lineColor: '#123', labelColor: '#456' }
+``````
 
 
+#### 2.需要特殊调整
+适用于: 
+* histogram 直方图 
+``````
+  axisColor:{ titleColor: '#123', labelColor: '#456' }
+``````
+适用于:
+* mirror-interval 镜像分面柱图
+``````
+  axisColor:{ labelColor: '#456' }
+``````
+适用于: 
+* liquidfill 液体填充 
+``````
+  color:{ backgroundColor: '#123', labelColor: '#456' }
+``````
+适用于:
+* progress-bar 进度条 
+``````
+  标记线  markLine:{lineColor: '#1890FF',labelColor: '#000000'}
+  辅助元素 guide: {labelColor:'#000000',labelSize:'14'}
+``````
+
+(注: pie radar 还未作调整)
 
