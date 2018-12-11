@@ -1,24 +1,20 @@
 language : node_js
 
-node_js: stable
+node_js:
+  - 8.11.2 
+
+branches:
+  only:
+  - master
 
 install:
 - yarn
 
-stages:
- - name: deploy
+script:
+- yarn build-bundle
 
-jobs:
- include:
-
-   - stage: deploy
-     script:
-       - yarn build-bundle
-
-     deploy:
-       provider: npm
-       email: javpeiwen2010@gmail.com
-       api_key: "$npm_token"
-       skip_cleanup: true
-       on:
-         branch: master
+deploy:
+  provider: npm
+  email: javpeiwen2010@gmail.com
+  api_key: "$npm_token"
+  skip_cleanup: true
