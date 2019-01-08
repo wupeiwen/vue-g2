@@ -51,7 +51,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          labelColor: 'green'
+          labelColor: '#999'
         }
       }
     },

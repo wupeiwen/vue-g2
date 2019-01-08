@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-06 13:11:43
+ * @Last Modified time: 2019-01-08 08:52:25
  * @Type: 柱状图/条形图
  */
 <template>
@@ -57,8 +57,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          lineColor: 'red',
-          labelColor: 'green'
+          lineColor: '#ccc',
+          labelColor: '#999'
         }
       }
     },
