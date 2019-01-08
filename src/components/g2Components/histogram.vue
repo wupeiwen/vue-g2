@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-06 13:26:49
+ * @Last Modified time: 2019-01-08 08:52:06
  * @Description: 直方图
  */
 <template>
@@ -39,8 +39,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          titleColor: 'red',
-          labelColor: 'green'
+          titleColor: '#ccc',
+          labelColor: '#999'
         }
       }
     },
