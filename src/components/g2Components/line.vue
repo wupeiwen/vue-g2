@@ -82,6 +82,10 @@ export default {
       type: Boolean,
       default: true
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 内边距
     padding: {
       type: Array,
@@ -137,12 +141,17 @@ export default {
       }())
       this.chart.scale(scaleConfig)
 
+      // 是否使用tooltip
+      if (this.useTooltip) {
       // 配置图表tooltip
-      this.chart.tooltip(true, {
-        crosshairs: {
-          type: 'line'
-        }
-      })
+        this.chart.tooltip(true, {
+          crosshairs: {
+            type: 'line'
+          }
+        })
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 配置图表图例
       if (this.showLegend) {

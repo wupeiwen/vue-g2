@@ -26,6 +26,10 @@ export default {
       type: Boolean,
       default: true
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 图片地址(url/base64)
     imageSrc: {
       type: String,
@@ -154,15 +158,20 @@ export default {
       // 关闭坐标轴
       _this.chart.axis(false)
 
-      // 配置颜色 tooltip
-      _this.chart.tooltip({
-        showTitle: false
-      })
-
       // 选择坐标系
       _this.chart.coord().reflect()
 
-      _this.chart.point().position('x*y').color('text').shape('cloud').tooltip('name*value')
+      const point = _this.chart.point().position('x*y').color('text').shape('cloud')
+
+      // 是否使用tooptip
+      if (_this.useTooltip) {
+        _this.chart.tooltip({
+          showTitle: false
+        })
+        point.tooltip('name*value')
+      } else {
+        _this.chart.tooltip(false)
+      }
 
       // 渲染
       _this.chart.render()

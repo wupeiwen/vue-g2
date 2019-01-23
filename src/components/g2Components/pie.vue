@@ -53,6 +53,10 @@ export default {
         return {}
       }
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 图例配置
     legendOption: {
       type: Object,
@@ -183,14 +187,22 @@ export default {
       // 关闭坐标轴
       this.chart.axis(false)
 
-      // 配置颜色 tooltip
-      this.chart.tooltip({
-        showTitle: false
-      })
+      // 配置颜色
       interval.color('name', this.colorMap).style({
         lineWidth: 3,
         stroke: '#fff'
-      }).tooltip('name*value*percent')
+      })
+
+      //  是否使用tooltip
+      if (this.useTooltip) {
+        // 配置 tooltip
+        this.chart.tooltip({
+          showTitle: false
+        })
+        interval.tooltip('name*value*percent')
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 配置文本
       if (this.labelOption.show) {

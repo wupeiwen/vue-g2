@@ -78,7 +78,7 @@ export default {
       default: false
     },
     // 是否显示tooltip
-    showTooltip: {
+    useTooltip: {
       type: Boolean,
       default: true
     },
@@ -183,8 +183,8 @@ export default {
         this.chart.legend(false)
       }
 
-      // 是否显示tooltip
-      if (this.showTooltip) {
+      // 是否使用tooltip
+      if (this.useTooltip) {
         // 配置tooltip
         this.chart.tooltip(true)
       } else {

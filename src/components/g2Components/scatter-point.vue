@@ -78,6 +78,10 @@ export default {
         }
       }
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 区间范围分色
     intervalRange: {
       type: Object,
@@ -165,11 +169,15 @@ export default {
       this.chart.axis('x', new AxisOption('x', this.axisColor))
       this.chart.axis('y', new AxisOption('y', this.axisColor, this.showGrid))
 
-      // 配置颜色 tooltip
-      this.chart.tooltip({
-        showTitle: false
-      })
-      point.tooltip('x*y')
+      // 是否使用tooptip
+      if (this.useTooltip) {
+        this.chart.tooltip({
+          showTitle: false
+        })
+        point.tooltip('x*y')
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 配置大小
       point.size(5).opacity(0.8)
