@@ -653,3 +653,8 @@ export default {
 
 (注: pie radar 还未作调整)
 
+### 隐藏或使用图表的tooptip
+useTooltip默认为使用(true)状态，关闭的话将值置为false即可
+``````
+  useTooltip: false
+``````
