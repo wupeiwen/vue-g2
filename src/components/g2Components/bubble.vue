@@ -64,6 +64,11 @@ export default {
       type: Boolean,
       default: true
     },
+    // 是否显示网格线
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 图例位置
     legendPosition: {
       type: String,
@@ -158,11 +163,16 @@ export default {
         this.chart.legend('type', false)
       }
 
-      // 配置图表tooltip
-      this.chart.tooltip({
-        showTitle: false
-      })
-      bullle.tooltip('type*x*y')
+      // 是否使用tooltip
+      if (this.useTooltip) {
+        // 配置图表tooltip
+        this.chart.tooltip({
+          showTitle: false
+        })
+        bullle.tooltip('type*x*y')
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 配置 颜色 大小
       bullle.color('type', colorMap).size('size', [this.minSize, this.maxSize]).opacity(0.5)

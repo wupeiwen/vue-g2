@@ -55,6 +55,10 @@ export default {
         }
       }
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // Canvas 内边距
     padding: {
       type: Array,
@@ -143,6 +147,14 @@ export default {
       })
       // 隐藏图例
       this.chart.legend(false)
+
+      // 是否使用tooltip
+      if (this.useTooltip) {
+        // 配置tooltip
+        this.chart.tooltip(true)
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 绘制
       this.chart.render()

@@ -87,6 +87,10 @@ export default {
       type: Boolean,
       default: false
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // 内边距
     padding: {
       type: Array,
@@ -142,8 +146,13 @@ export default {
       }())
       this.chart.scale(scaleConfig)
 
-      // 配置图表tooltip
-      this.chart.tooltip(true)
+      // 是否使用tooltip
+      if (this.useTooltip) {
+        // 配置图表tooltip
+        this.chart.tooltip(true)
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 配置图表图例
       if (this.showLegend) {

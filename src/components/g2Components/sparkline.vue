@@ -65,6 +65,10 @@ export default {
     isPercent: {
       type: Boolean,
       default: false
+    },
+    useTooltip: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -114,12 +118,17 @@ export default {
       }())
       this.chart.scale(scaleConfig)
 
-      // 配置图表tooltip
-      this.chart.tooltip(true, {
-        crosshairs: {
-          type: 'line'
-        }
-      })
+      // 是否使用tooptip
+      if (this.useTooltip) {
+        // 配置图表tooltip
+        this.chart.tooltip(true, {
+          crosshairs: {
+            type: 'line'
+          }
+        })
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 隐藏图表图例
       this.chart.legend(false)

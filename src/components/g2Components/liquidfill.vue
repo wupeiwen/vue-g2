@@ -51,6 +51,10 @@ export default {
       type: Boolean,
       default: true
     },
+    useTooltip: {
+      type: Boolean,
+      default: true
+    },
     // Canvas 内边距
     padding: {
       type: Array,
@@ -126,6 +130,14 @@ export default {
           lineWidth: 2,
           opacity: 0.65
         })
+
+      // 是否使用tooltip
+      if (this.useTooltip) {
+        // 配置tooltip
+        this.chart.tooltip(true)
+      } else {
+        this.chart.tooltip(false)
+      }
 
       // 添加文本辅助元素
       const guideContent = this.isPercent ? percentFormat(this.data[0].value) : floatIntFormat(this.data[0].value)
