@@ -40,7 +40,7 @@ new Vue({
 开发环境已经搭建完毕，在需要使用可视化图表的页面通过 html 标签的形式使用，如：
 ```
 <template>
-  <g2-pie :id="'pie'" :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+  <g2-pie :type="'pie'" :axis-name="{name:'年份', value:'GDP(亿美元)'}"
    :data="[{ name: '2016', value: 2 },{ name: '2017', value: 1 },{ name: '2018', value: 3 }]"
    :label-option="{show:true, offset: 20}">
   </g2-pie>
@@ -60,5 +60,32 @@ export default {
 ```
 ![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-pie.gif "饼图-外部label")
 
+## 关于自定义图表
+目前可以通过`<g2-custom></<g2-custom>>`标签来实现自定义图表，满足更复杂的业务需求。实现过程可参考如下代码：
+```
+<!-- 通过<g2-custom>标签实现简单柱图 -->
+<template>
+    <g2-custom :option="customOption"></g2-custom>
+</template>
 
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {}
+  },
+  methods: {
+    customOption (chart, dataset) {
+      <!-- chart 为图表实例，dataset为数据集实例 -->
+      let data = [{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]
+      let dv = dataset.createView().source(data)
+      chart.source(dv)
+      chart.interval().position('name*value')
+    }
+  }
+}
+</script>
 
+<style lang="less">
+</style>
+```

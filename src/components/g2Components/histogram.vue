@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-01-08 08:52:06
+ * @Last Modified time: 2019-03-29 15:15:16
  * @Description: 直方图
  */
 <template>
@@ -20,8 +20,6 @@ export default {
       type: Array,
       default: () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -200,6 +198,10 @@ export default {
       // 绘制
       this.chart.render()
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)
