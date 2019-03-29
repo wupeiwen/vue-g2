@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-01-08 08:52:24
+ * @Last Modified time: 2019-03-29 15:15:13
  * @Type: 双Y轴柱状图/条形图
  */
 <template>
@@ -26,8 +26,6 @@ export default {
         { name: '2017', value1: 193868, value2: 0.6 }
       ]
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -210,6 +208,10 @@ export default {
         this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)

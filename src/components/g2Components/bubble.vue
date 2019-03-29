@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-01-08 08:52:27
+ * @Last Modified time: 2019-03-29 15:14:57
   * @Description: 气泡图
  */
 <template>
@@ -25,8 +25,6 @@ export default {
         { x: 15, y: 20, size: 15, type: 'type3' }
       ]
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -185,6 +183,10 @@ export default {
         this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)

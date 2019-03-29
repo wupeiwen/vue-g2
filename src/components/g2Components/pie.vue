@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:56
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-09-29 15:00:33
+ * @Last Modified time: 2019-03-29 15:15:39
  * @Description: 饼图
  */
 <template>
@@ -25,7 +25,6 @@ export default {
         { name: '2018', value: 3 }
       ]
     },
-    id: String,
     height: {
       type: Number,
       default: 300
@@ -237,6 +236,10 @@ export default {
         this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)
