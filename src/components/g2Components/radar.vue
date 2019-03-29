@@ -41,8 +41,6 @@ export default {
         }]
       }
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -215,6 +213,10 @@ export default {
         this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-09-28 10:56:50
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-06 13:54:00
+ * @Last Modified time: 2019-03-29 15:16:02
  * @Description: 词云
  */
 
@@ -35,8 +35,6 @@ export default {
       type: String,
       default: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAADICAMAAABlASxnAAAAhFBMVEX///8h3vT1/v/9//8l3/Tw/f4x4fVD4/Y34vX5/v8o3/R77Pk84vWY8PrI9/xc5/fr/P6v9Pul8vuf8fqG7vlW5vdK5fbT+f1w6vjh+/6M7vlq6fgs4PXZ+v3O+P289fy49fyC7fkr4PXm+/6S7/pl6Pd16/hh6Pep8/vC9vze+v3A9vzdw9osAAAESUlEQVR42u3dCZaiMBAG4Co2AREEEcV9t2fm/veb1Z5+M7aiBCyS/ztCHkkqtSgBAAAAAAAAAAAAAAAAAAAAAAAA6M6Ns3w+LnwvZPa8qDj3B+kyIPiHvRocfb7GKfrpnuDCfZsv+KbeNrYJyErPDlfgbydkuK9bjysrMpMPsNWRH+MdXDLTKuHHLWYmLlc55+d4mWlnfTAL+Wm9mEwS97iWvjl7Mci5rsiUj+trwQrMjDi5NgtWIhmS7uwZqxItSW/BlNVZfCOdWQmr5KSkL3fMimWkK2vM3PBqWZM0G8y2eX7I1p3OG1pjbkD6N394SHz+yOmdspI6yT5yE5w1/eCmxx1f1cu7mAfrczPCJU1OO76hGFnULRk3xU/4Hq9biZ2Vwy+1OHTn63J9frVoTR1xZAHm3diLGYvgdyGxs1+wDM6IxDuzGH3pabANC3KU/QgKeizJWfRqDViWqeCdaHksTJ/EOrA4Yu9EeR8Ws7MimUYsUCQzlrdlXYUXc5LoC8u0IYHmLJMvMGPjOizUjMR5Y6l28qr/CYu1JWHk7kLmnbTwQVS+4V4cb7n7vWvRYzpQ/lKioD+CVZafeyH/Ekbj/igOqH0yI9KLCf3wdZCE/J9wPFhSu4Ys2pbcUXGrNjukFq1ZNP8U8k3OdEK36Z2dedT55nKZ8NZ5yOnzzWjQ+V6V92ZTC0LWw3FIVxh1GT7AX1HTVqwN540aVGbTiHUyo4aUh4K1s7VJPXsjOC9TR06q2ake8cI1A1Lri75L9UNKCg21CNk/F05ImVRKz1pjIovUsE6svykp8VXr0+rdmhSYCOz/+EhScfbLjg0xo7rWgkteioV7qifWJRfTQt/gUvuQ4SNnSDW4eqUXGn0j2pq+mz/lBfp0bl8n44m4NOcivDjSk+wxGye06DkpG2hNT7FeP6Fa1ev74Mw73X8qtBmfaIOrzfhEC2J6nG1Y7P5upF//VXP6tqEtRXeo+qVny5iM3zVJrE/jdguSpS6N221wZoFhjX21FKVxvWo1eHG35y7bFa7xLqzOiXG+V7dYdXuWsF3+EJdhdWeb7jEy7/fsw9qo0upt3t2NyPDuhMWqzinpNqNzDo+2ixiaf79uZyF0UFbTN7AWfUNCN00Z/goD3SegVYqRVVY12VMyfHDC47C6McqG1UVd/SWxV/BQsajOIYSllYXd+AMBGTw0O1QX0R1bhouE7tib1wT/qT5qhyqLFiU+rYsJ3ZUz/OLZdJdlag/uv6Zo/6vuC/2GhOl9vo1BVuU/6jMxaZz8E56FMbrKBpgNq6wX0AWiLaWDT/aMTZZjmK6ycUAP2hh7JxYuPWxpaKNItKcnWEbG8r09PWdjXjA/dulZVm5YfisPqIZyatBy9WKqqewbUvPxBgHVZ2UGVF/9gUWKDN/mOvfYeNO1TUqVOoYSiyjpj5aC/1wZAAAAAAAAAAAAAAAAAAAAAAAA4N13ldiNbr8pwIsAAAAASUVORK5CYII='
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -187,6 +185,10 @@ export default {
         _this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 17:32:25
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2018-12-06 15:55:13
+ * @Last Modified time: 2019-03-29 15:15:43
  * @Type: 进度条
  */
 <template>
@@ -28,8 +28,6 @@ export default {
         'value': 0.12
       }]
     },
-    // DOM ID
-    id: String,
     // DOM 高度
     height: {
       type: Number,
@@ -211,6 +209,10 @@ export default {
         this.chart.destroy()
       })
     }
+  },
+  created () {
+    const uuidv4 = require('uuid/v4')
+    this.id = uuidv4()
   },
   mounted () {
     this.drawChart(this.data)
