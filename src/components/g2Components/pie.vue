@@ -187,10 +187,7 @@ export default {
       this.chart.axis(false)
 
       // 配置颜色
-      interval.color('name', this.colorMap).style({
-        lineWidth: 3,
-        stroke: '#fff'
-      })
+      interval.color('name', this.colorMap)
 
       //  是否使用tooltip
       if (this.useTooltip) {
