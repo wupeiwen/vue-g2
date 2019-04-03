@@ -73,7 +73,7 @@ export class AxisOption {
       axisOption['line']['stroke'] = axisColor.lineColor
       return axisOption
     } else {
-      if (showGrid) {
+      if (showGrid === false) {
         axisOption['grid'] = null
       }
       return axisOption
