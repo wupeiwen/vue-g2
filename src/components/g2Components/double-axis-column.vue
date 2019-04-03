@@ -177,6 +177,8 @@ export default {
         this.chart.legend('type', {
           position: 'bottom-center'
         })
+      } else {
+        this.chart.legend('type', false)
       }
 
       // 坐标轴配置
