@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:15:21
+ * @Last Modified time: 2019-04-03 13:29:42
  * @Type: 折线图
  */
 <template>
@@ -62,6 +62,11 @@ export default {
     },
     // 是否显示图例
     showLegend: {
+      type: Boolean,
+      default: true
+    },
+    // 是否显示点
+    showPoint: {
       type: Boolean,
       default: true
     },
@@ -166,15 +171,21 @@ export default {
 
       // 配置折线和散点的颜色、形状等
       let line = this.chart.line().position('name*value')
-      let point = this.chart.point().position('name*value').size(4).shape('circle').style({
-        stroke: '#fff',
-        lineWidth: 1
-      })
+      let point
+
+      if (this.showPoint) {
+        point = this.chart.point().position('name*value').size(4).shape('circle').style({
+          stroke: '#fff',
+          lineWidth: 1
+        })
+      }
 
       // 配置多条折线时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
         line.color('type')
-        point.color('type')
+        if (this.showPoint) {
+          point.color('type')
+        }
       }
 
       // 折线是否显示为曲线
