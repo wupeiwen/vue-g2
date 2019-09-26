@@ -16,7 +16,7 @@ npm i @antv/g2 @antv/data-set vue-g2 --save
 ```
 或者通过 yarn 添加依赖
 ```
-yarn add @antv/g2 @antv/data-set vue-g2 --save
+yarn add @antv/g2 @antv/data-set vue-g2
 ```
 
 ### 引入
