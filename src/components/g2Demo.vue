@@ -75,19 +75,17 @@
         :is-percent="true">
       </g2-progress-bar>
     </div>
-    <g2-custom :option="customOption"></g2-custom>
+    <g2-custom :option="customOption" :data="[{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]"></g2-custom>
   </div>
 </template>
 
 <script>
-
 export default {
   data () {
     return {}
   },
   methods: {
-    customOption (chart, dataset) {
-      let data = [{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]
+    customOption (chart, dataset, data) {
       let dv = dataset.createView().source(data)
       chart.source(dv)
       chart.interval().position('name*value')
