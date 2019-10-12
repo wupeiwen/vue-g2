@@ -30,6 +30,10 @@ export default {
     },
     option: {
       Type: Function
+    },
+    data: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
@@ -62,7 +66,7 @@ export default {
       let dataset = new DataSet()
 
       // 自定义构建
-      this.option(this.chart, dataset)
+      this.option(this.chart, dataset, data)
 
       // 绘制
       this.chart.render()
