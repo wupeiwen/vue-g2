@@ -65,7 +65,9 @@ export default {
 ```vue
 <!-- 通过<g2-custom>标签实现简单柱图 -->
 <template>
-  <g2-custom :option="customOption"></g2-custom>
+  <g2-custom :option="customOption" 
+  :data="[{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]">
+  </g2-custom>
 </template>
 
 <script>
@@ -75,9 +77,8 @@ export default {
     return {}
   },
   methods: {
-    customOption (chart, dataset) {
-      // chart 为图表实例，dataset 为数据集实例
-      const data = [{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]
+    customOption (chart, dataset, data) {
+      // chart 为图表实例，dataset 为数据集实例， data为图表数据
       const dv = dataset.createView().source(data)
       chart.source(dv)
       chart.interval().position('name*value')
