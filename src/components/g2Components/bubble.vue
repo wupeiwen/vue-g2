@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:14:57
+ * @Last Modified time: 2019-12-31 10:39:14
   * @Description: 气泡图
  */
 <template>
@@ -103,6 +103,15 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -117,7 +126,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
@@ -146,7 +155,8 @@ export default {
       // 为 chart 装载数据
       this.chart.source(data, scaleConfig)
 
-      const colorMap = Array.from(new Array(8), (v, i) => { return G2.Global.colors[i] })
+      const defaultColorMap = ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864']
+      const colorMap = Array.from(new Array(8), (v, i) => { return defaultColorMap[i] })
       let bullle = this.chart.point().position('x*y').shape('circle')
 
       // 坐标轴配置

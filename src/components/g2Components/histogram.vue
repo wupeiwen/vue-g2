@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:15:16
+ * @Last Modified time: 2019-12-31 10:33:54
  * @Description: 直方图
  */
 <template>
@@ -74,6 +74,22 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    },
+    DataSet: function () {
+      if (typeof window !== 'undefined' && window.DataSet) {
+        return window.DataSet
+      } else {
+        return DataSet
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -88,7 +104,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
@@ -137,7 +153,7 @@ export default {
 
       data = data.map(item => { return { x: Number(item), y: Number(item) } })
       // 为 chart 装载数据
-      const ds = new DataSet()
+      const ds = new this.DataSet()
       const dv = ds.createView().source(data)
 
       // 分箱步长（会覆盖bins选项）

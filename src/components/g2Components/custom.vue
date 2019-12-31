@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2019-03-29 13:50:04
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:59:01
+ * @Last Modified time: 2019-12-31 10:33:51
  * @Type: 自定义图表
  */
 <template>
@@ -41,6 +41,22 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    },
+    DataSet: function () {
+      if (typeof window !== 'undefined' && window.DataSet) {
+        return window.DataSet
+      } else {
+        return DataSet
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -55,7 +71,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
@@ -63,7 +79,7 @@ export default {
       })
 
       // 创建DataSet数据集实例
-      let dataset = new DataSet()
+      let dataset = new this.DataSet()
 
       // 自定义构建
       this.option(this.chart, dataset, data)

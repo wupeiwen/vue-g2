@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-27 14:29:48
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:15:22
+ * @Last Modified time: 2019-12-31 10:33:59
  * @Description: 液体填充
  */
 
@@ -76,6 +76,15 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -90,7 +99,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,

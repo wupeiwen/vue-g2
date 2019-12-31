@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:15:51
+ * @Last Modified time: 2019-12-31 10:34:08
   * @Description: 散点图
  */
 <template>
@@ -95,7 +95,7 @@ export default {
     intervalColor: {
       type: Array,
       default: function () {
-        return G2.Global.colors
+        return ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864']
       }
     },
     // 内边距
@@ -109,6 +109,15 @@ export default {
   data () {
     return {
       chart: null
+    }
+  },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
     }
   },
   watch: {
@@ -125,7 +134,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,

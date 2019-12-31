@@ -93,6 +93,22 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    },
+    DataSet: function () {
+      if (typeof window !== 'undefined' && window.DataSet) {
+        return window.DataSet
+      } else {
+        return DataSet
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -106,8 +122,13 @@ export default {
         this.chart.destroy()
       }
 
+      console.log(window)
+      console.log(window.G2)
+      console.log(this.G2)
+      console.log(this.G2.Chart)
+
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
@@ -121,7 +142,7 @@ export default {
           fields.push(this.axisName[key])
         }
       }
-      let dv = new DataSet.DataView()
+      let dv = new this.DataSet.DataView()
         .source(data).transform({
           type: 'rename',
           map: this.axisName

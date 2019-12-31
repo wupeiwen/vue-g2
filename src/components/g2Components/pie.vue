@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:56
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:15:39
+ * @Last Modified time: 2019-12-31 10:34:03
  * @Description: 饼图
  */
 <template>
@@ -32,7 +32,7 @@ export default {
     colorMap: {
       type: Array,
       default: () => {
-        return G2.Global.colors_pie_16
+        return ['#1890FF', '#73C9E6', '#13C2C2', '#6CD9B3', '#2FC25B', '#9DD96C', '#FACC14', '#E6965C', '#F04864', '#D66BCA', '#8543E0', '#8E77ED', '#3436C7', '#737EE6', '#223273', '#7EA2E6']
       }
     },
     // 坐标轴名称
@@ -97,6 +97,22 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    },
+    DataSet: function () {
+      if (typeof window !== 'undefined' && window.DataSet) {
+        return window.DataSet
+      } else {
+        return DataSet
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -111,7 +127,7 @@ export default {
       }
 
       // 新建实例
-      this.chart = new G2.Chart({
+      this.chart = new this.G2.Chart({
         container: this.id,
         forceFit: true,
         height: this.height,
@@ -119,7 +135,7 @@ export default {
       })
 
       // 生成占比数据percent
-      const ds = new DataSet()
+      const ds = new this.DataSet()
       const dv = ds.createView()
         .source(data)
         .transform({

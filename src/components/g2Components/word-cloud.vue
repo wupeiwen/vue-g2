@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-09-28 10:56:50
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-03-29 15:16:02
+ * @Last Modified time: 2019-12-31 10:49:52
  * @Description: 词云
  */
 
@@ -57,6 +57,22 @@ export default {
       chart: null
     }
   },
+  computed: {
+    G2: function () {
+      if (typeof window !== 'undefined' && window.G2) {
+        return window.G2
+      } else {
+        return G2
+      }
+    },
+    DataSet: function () {
+      if (typeof window !== 'undefined' && window.DataSet) {
+        return window.DataSet
+      } else {
+        return DataSet
+      }
+    }
+  },
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
@@ -68,6 +84,7 @@ export default {
       if (data === '' || data === null || data.length === 0) {
         data = [{ 'value': 20, 'name': '暂无数据' }, { 'value': 0, 'name': '' }]
       }
+
       function getTextAttrs (cfg) {
         return Object.assign({}, {
           fillOpacity: cfg.opacity,
@@ -82,7 +99,7 @@ export default {
       }
 
       // 给point注册一个词云的shape
-      G2.Shape.registerShape('point', 'cloud', {
+      this.G2.Shape.registerShape('point', 'cloud', {
         drawShape: function drawShape (cfg, container) {
           var attrs = getTextAttrs(cfg)
           return container.addShape('text', {
@@ -94,7 +111,7 @@ export default {
         }
       })
 
-      var dv = new DataSet.View().source(data)
+      var dv = new this.DataSet.View().source(data)
       var range = dv.range('value')
       var min = range[0]
       var max = range[1]
@@ -114,7 +131,7 @@ export default {
         _this.chart.destroy()
       }
       // 新建实例
-      _this.chart = new G2.Chart({
+      _this.chart = new this.G2.Chart({
         container: _this.id,
         width: _this.width,
         height: _this.height,
