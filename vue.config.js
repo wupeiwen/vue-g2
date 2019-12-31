@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  baseUrl: '/',
+  publicPath: '/',
   outputDir: 'lib',
   lintOnSave: true,
   runtimeCompiler: false,
