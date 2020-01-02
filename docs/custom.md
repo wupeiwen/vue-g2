@@ -1,18 +1,16 @@
-### 自定义图表(g2-custom)
+# 自定义图表(g2-custom)
+>为了实现更多样的需求，目前可以通过`<g2-custom></g2-custom>`标签来实现自定义图表，实现过程可参考如下代码：
 ------
-目前可以通过`<g2-custom></g2-custom>`标签来实现自定义图表，满足更复杂的业务需求。实现过程可参考如下代码：
-
-<vuep :options="{ 'lineNumbers': false, mode: 'javascript', theme: 'darcula' }" template="#demo"></vuep>
+<vuep :options="{ 'lineNumbers': true, mode: 'text/x-vue', theme: 'darcula' }" template="#demo"></vuep>
 
 <script v-pre type="text/x-template" id="demo">
 <!-- 通过<g2-custom>标签实现简单柱图 -->
 <template>
-  <g2-custom :height="380" :option="customOption" 
-    :data="data">
-  </g2-custom>
+  <g2-custom :height="380" :data="data" :option="customOption"></g2-custom>
 </template>
 
 <script>
+// !!!注意: 在vue中使用时需要将"module.exports = {"改为"export default {"
 module.exports = {
   name: 'app',
   data () {

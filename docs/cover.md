@@ -1,5 +1,6 @@
 ![logo](/logo.png)
-## vue-g2  |  基于Vue和AntV/G2的可视化组件库
+## vue-g2 | 基于Vue和AntV/G2的可视化组件库
+###  语义化标签&nbsp;&nbsp;&nbsp;&nbsp;开箱即用
 
 ![](https://travis-ci.com/wupeiwen/vue-g2.svg?branch=master)
 [![](https://img.shields.io/npm/v/vue-g2.svg)](https://www.npmjs.com/package/vue-g2)

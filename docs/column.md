@@ -1,4 +1,5 @@
-# 柱状图(g2-column)
+# 柱状(条形)图(g2-column)
+>柱状图有别于直方图，柱状图无法显示数据在一个区间内的连续变化趋势。柱状图描述的是分类数据，回答的是每一个分类中“有多少？”这个问题。需要注意的是，当柱状图显示的分类很多时会导致分类名层叠或文本旋转等显示问题，不利于阅读，相比于柱状(纵向柱状)图，条形(横向柱状)图更适用于此类分类较多的场景。
 ------
 ## 基础柱状图
 ```vue
@@ -114,15 +115,6 @@
 </g2-double-axis-column>
 ```
 <g2-double-axis-column :axis-name="{name: '年份',value1: '数量',value2: '占比'}" :data="[{ name: '1997', value1: 86085, value2: 0.3 },{ name: '2007', value1: 144776, value2: 0.2 },{ name: '2017', value1: 193868, value2: 0.6 }]"></g2-double-axis-column>
-
-## 直方图(g2-histogram)
-------
-```vue
-<g2-histogram :bin-width="4"
- :bins="0" :data="[1,2,3,4,5,6,7,8,9,10]">
-</g2-histogram>
-```
-<g2-histogram :bin-width="4" :bins="0"></g2-histogram>
 
 ## 镜像分面-转置(g2-mirror-interval)
 ------

@@ -1,3 +1,10 @@
+>vue-g2 | 基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
+
+![](https://travis-ci.com/wupeiwen/vue-g2.svg?branch=master)
+[![](https://img.shields.io/npm/v/vue-g2.svg)](https://www.npmjs.com/package/vue-g2)
+![](https://img.shields.io/bundlephobia/min/vue-g2.svg)
+![](https://img.shields.io/npm/dt/vue-g2.svg)
+
 ## NPM方式
 ------
 ### 1.安装依赖
@@ -29,12 +36,11 @@ new Vue({
 在需要使用可视化图表的vue组件中通过 html 标签的形式使用, 如：
 ```vue
 <template>
-  <g2-radar 
-   :is-show-area="false" 
-   :show-legend="false"
-   :axis-name="{a:'companya'}" 
-   :data="radarData">
-  </g2-radar>
+  <g2-pie type="pie" 
+    :axis-name="{ name: '年份', value: 'GDP(亿美元)' }"
+    :data="data"
+    :label-option="{ show: true, offset: 20 }">
+  </g2-pie>
 </template>
 
 <script>
@@ -42,12 +48,10 @@ export default {
   name: 'app',
   data () {
     return {
-      radarData: [
-        {item: 'Design',a: 70},
-        {item: 'Development',a: 60},
-        {item: 'Marketing',a: 50},
-        {item: 'Users',a: 40},
-        {item: 'Test',a: 60}
+      data: [
+        { name: '2016', value: 2 }, 
+        { name: '2017', value: 1 }, 
+        { name: '2018', value: 3 }
       ]
     }
   }
@@ -57,7 +61,7 @@ export default {
 <style>
 </style>
 ```
-<g2-radar :is-show-area="false" :show-legend="false" :axis-name="{a:'companya',b:'companyb',c:'companyc'}" :data="[{item: 'Design',a: 70},{item: 'Development',a: 60},{item: 'Marketing',a: 50},{item: 'Users',a: 40},{item: 'Test',a: 60}]"></g2-radar>
+![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-pie.gif "饼图-外部标签")
 
 ## CDN方式
 ------

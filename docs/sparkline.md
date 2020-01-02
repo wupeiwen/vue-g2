@@ -1,4 +1,5 @@
 # 迷你图(g2-sparkline)
+>隐藏了轴、图例、便签等元素的极简图表，通常用在较小面积的区域，目前有`line`折线、`area`面积、`interval`柱状三种类别。
 ## 迷你折线图
 ```vue
 <g2-sparkline
