@@ -6,7 +6,7 @@
 <script v-pre type="text/x-template" id="demo">
 <!-- 通过<g2-custom>标签实现简单柱图 -->
 <template>
-  <g2-custom :height="380" :data="data" :option="customOption"></g2-custom>
+  <g2-custom style="height: 300px; width: 800px; margin: 0 auto;" :data="data" :option="customOption"></g2-custom>
 </template>
 
 <script>

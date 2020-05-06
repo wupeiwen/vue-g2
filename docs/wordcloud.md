@@ -3,7 +3,7 @@
 ------
 ## 普通词云图
 ```vue
-<g2-word-cloud :height="300" :width="600"
+<g2-word-cloud style="height: 400px; width: 600px; margin: 0 auto;"
   :data="[
    { 'value': 6, 'name': 'Analysis' }, { 'value': 6, 'name': 'Data Mining' },
    { 'value': 6, 'name': 'Data Vis' }, { 'value': 6, 'name': 'Design' },
@@ -17,12 +17,12 @@
   :use-image="false">
 </g2-word-cloud>
 ```
-<g2-word-cloud :height="300" :width="600" :use-image="false"></g2-word-cloud>
+<g2-word-cloud style="height: 400px; width: 600px; margin: 0 auto;" :use-image="false"></g2-word-cloud>
 
 ## 使用图片遮罩的词云图
 `imageSrc`属性需要传入遮罩图片base64, 不使用该属性时默认为云朵。
 ```vue
-<g2-word-cloud :height="300" :width="600"
+<g2-word-cloud style="height: 400px; width: 600px; margin: 0 auto;"
   :data="[
    { 'value': 6, 'name': 'Analysis' }, { 'value': 6, 'name': 'Data Mining' },
    { 'value': 6, 'name': 'Data Vis' }, { 'value': 6, 'name': 'Design' },
@@ -36,4 +36,4 @@
   :use-image="true" :imageSrc="'base64/url'">
 </g2-word-cloud>
 ```
-<g2-word-cloud :height="300" :width="600" :use-image="true"></g2-word-cloud>
+<g2-word-cloud style="height: 400px; width: 600px; margin: 0 auto;" :use-image="true"></g2-word-cloud>
