@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:18:59
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:34:08
+ * @Last Modified time: 2020-05-06 15:54:27
   * @Description: 散点图
  */
 <template>
@@ -10,11 +10,12 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
+import chartMix from '@/utils/chart.js'
 import { percentFormat, floatIntFormat, AxisOption } from '@/utils/index'
 
 export default {
-  name: 'g2-scatterpoint',
+  name: 'g2-scatter-point',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
@@ -25,10 +26,11 @@ export default {
         { x: 15, y: 20 }
       ]
     },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 300
+    colorMap: {
+      type: Array,
+      default: () => {
+        return ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#13C2C2', '#3436C7', '#F04864']
+      }
     },
     // 坐标轴名称
     axisName: {
@@ -106,41 +108,8 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 设置数据的显示别名
       let _this = this
       let scaleConfig = (function () {
@@ -211,22 +180,7 @@ export default {
           point.color('type')
         }
       }
-
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

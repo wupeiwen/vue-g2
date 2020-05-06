@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
-import DataSet from '@antv/data-set'
+import chartMix from '@/utils/chart.js'
 
 export default {
   name: 'g2-radar',
+  mixins: [chartMix],
   props: {
     data: {
     // 数据
@@ -40,11 +40,6 @@ export default {
           c: 11
         }]
       }
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 300
     },
     // 别名
     axisName: {
@@ -88,53 +83,8 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    },
-    DataSet: function () {
-      if (typeof window !== 'undefined' && window.DataSet) {
-        return window.DataSet
-      } else {
-        return DataSet
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      console.log(window)
-      console.log(window.G2)
-      console.log(this.G2)
-      console.log(this.G2.Chart)
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 设置数据的显示别名以及将指定字段展开
       const fields = []
       for (const key in this.axisName) {
@@ -225,26 +175,7 @@ export default {
         // 配置面积区域
         this.chart.area().position('item*score').color('user')
       }
-
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 17:32:25
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:34:04
+ * @Last Modified time: 2020-05-06 16:59:54
  * @Type: 进度条
  */
 <template>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
-import DataSet from '@antv/data-set'
+import chartMix from '@/utils/chart.js'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-progress-bar',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
@@ -27,11 +27,6 @@ export default {
         'name': '其他',
         'value': 0.12
       }]
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 45
     },
     // 图表颜色
     color: {
@@ -72,59 +67,23 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
   computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
+    padding: function () {
+      let paddingTop = 0
+      let labelSize = '14'
+      if (this.guide.showName || this.guide.showValue) {
+        labelSize = this.guide.labelSize || labelSize
+        paddingTop = parseInt(labelSize) + 5
       }
-    },
-    DataSet: function () {
-      if (typeof window !== 'undefined' && window.DataSet) {
-        return window.DataSet
-      } else {
-        return DataSet
+      if (this.markLine.use) {
+        labelSize = this.markLine.labelSize || labelSize
+        paddingTop = parseInt(labelSize) + 5
       }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
+      return [paddingTop, 0, 0, 0]
     }
   },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // padding top
-      let paddingTop = 0
-      if (this.guide.showName || this.guide.showValue) {
-        this.guide.labelSize = this.guide.labelSize || '14'
-        paddingTop = parseInt(this.guide.labelSize) + 5
-      }
-      if (this.markLine.use) {
-        this.markLine.labelSize = this.markLine.labelSize || '14'
-        paddingTop = parseInt(this.markLine.labelSize) + 5
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: [paddingTop, 0, 0, 0]
-      })
-
+    setChartConfig: function (data) {
       let ds = new this.DataSet()
       let dv = ds.createView().source(data)
       dv.transform({
@@ -216,22 +175,7 @@ export default {
           }
         })
       }
-
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-19 22:10:56
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:34:03
+ * @Last Modified time: 2020-05-06 15:09:43
  * @Description: 饼图
  */
 <template>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
-import DataSet from '@antv/data-set'
+import chartMix from '@/utils/chart.js'
 import { percentFormat } from '@/utils/index'
 
 export default {
   name: 'g2-pie',
+  mixins: [chartMix],
   props: {
     data: {
       type: Array,
@@ -24,10 +24,6 @@ export default {
         { name: '2017', value: 1 },
         { name: '2018', value: 3 }
       ]
-    },
-    height: {
-      type: Number,
-      default: 300
     },
     colorMap: {
       type: Array,
@@ -92,48 +88,8 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    },
-    DataSet: function () {
-      if (typeof window !== 'undefined' && window.DataSet) {
-        return window.DataSet
-      } else {
-        return DataSet
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 如果图形存在则销毁后再创建
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 生成占比数据percent
       const ds = new this.DataSet()
       const dv = ds.createView()
@@ -234,28 +190,7 @@ export default {
       } else {
         this.chart.legend(false)
       }
-
-      // 渲染
-      this.chart.render()
-
-      // 注册点击事件
-      this.chart.on('interval:click', ev => {
-        const data = ev.data._origin
-        _this.$emit('itemClick', data)
-      })
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

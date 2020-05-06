@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-27 14:29:48
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:33:59
+ * @Last Modified time: 2020-05-06 13:47:43
  * @Description: 液体填充
  */
 
@@ -11,11 +11,12 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
+import chartMix from '@/utils/chart.js'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-liquidfill',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
@@ -23,11 +24,6 @@ export default {
       default: () => {
         return [{ name: '中国', value: 0.3 }]
       }
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 300
     },
     // 坐标轴名称
     axisName: {
@@ -71,41 +67,8 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 设置数据的显示别名以及最大值、最小值
       let _this = this
       let scaleConfig = (function () {
@@ -164,22 +127,7 @@ export default {
           textAlign: 'center'
         }
       })
-
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

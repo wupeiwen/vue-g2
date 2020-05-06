@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-08 15:06:37
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:33:54
+ * @Last Modified time: 2020-05-06 15:17:46
  * @Description: 直方图
  */
 <template>
@@ -10,20 +10,16 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
-import DataSet from '@antv/data-set'
+import chartMix from '@/utils/chart.js'
 
 export default {
+  name: 'g2-histogram',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
       type: Array,
       default: () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 300
     },
     // 坐标轴名称
     axisName: {
@@ -69,48 +65,8 @@ export default {
       default: 4
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    },
-    DataSet: function () {
-      if (typeof window !== 'undefined' && window.DataSet) {
-        return window.DataSet
-      } else {
-        return DataSet
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 配置x轴
       this.chart.axis('x', {
         tickLine: null,
@@ -210,17 +166,7 @@ export default {
 
       // 配置图形
       this.chart.interval().position('x*y')
-
-      // 绘制
-      this.chart.render()
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-10-15 15:00:00
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:34:10
+ * @Last Modified time: 2020-05-06 14:14:53
  * @Type: 迷你图
  */
 <template>
@@ -10,11 +10,12 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
+import chartMix from '@/utils/chart.js'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-sparkline',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
@@ -33,11 +34,6 @@ export default {
         { name: '2018-11', value: 34447 },
         { name: '2018-12', value: 36865 }
       ]
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 500
     },
     // 坐标轴名称
     axisName: {
@@ -69,41 +65,13 @@ export default {
       default: true
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
   computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
+    padding: function () {
+      return 0
     }
   },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: 0
-      })
-
+    setChartConfig: function (data) {
       // 为 chart 装载数据
       this.chart.source(data)
 
@@ -147,21 +115,7 @@ export default {
       if (this.type) {
         this.chart[this.type]().position('name*value').color(this.color)
       }
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>

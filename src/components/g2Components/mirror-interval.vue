@@ -2,7 +2,7 @@
  * @Author: wupeiwen javapeiwen2010@gmail.com
  * @Date: 2018-08-21 13:44:57
  * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2019-12-31 10:33:59
+ * @Last Modified time: 2020-05-06 15:18:01
  * @Description: 镜像分面柱图
  */
 
@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import G2 from '@antv/g2'
+import chartMix from '@/utils/chart.js'
 
 export default {
-  name: 'g2-mirrorinterval',
+  name: 'g2-mirror-interval',
+  mixins: [chartMix],
   props: {
     // 数据
     data: {
@@ -27,11 +28,6 @@ export default {
         { name: '2007', value: 35715, type: 'China' },
         { name: '2017', value: 122503, type: 'China' }
       ]
-    },
-    // DOM 高度
-    height: {
-      type: Number,
-      default: 500
     },
     // 坐标轴名称
     axisName: {
@@ -65,41 +61,8 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      chart: null
-    }
-  },
-  computed: {
-    G2: function () {
-      if (typeof window !== 'undefined' && window.G2) {
-        return window.G2
-      } else {
-        return G2
-      }
-    }
-  },
-  watch: {
-    // 监控data，当发生变化时，重新绘制图表
-    data: function (val, oldVal) {
-      this.drawChart(val)
-    }
-  },
   methods: {
-    drawChart: function (data) {
-      // 销毁实例
-      if (this.chart) {
-        this.chart.destroy()
-      }
-
-      // 新建实例
-      this.chart = new this.G2.Chart({
-        container: this.id,
-        forceFit: true,
-        height: this.height,
-        padding: this.padding
-      })
-
+    setChartConfig: function (data) {
       // 设置数据设置别名并且设置为异步数据
       let _this = this
       let scaleConfig = (function () {
@@ -162,22 +125,7 @@ export default {
       } else {
         this.chart.tooltip(false)
       }
-
-      // 绘制
-      this.chart.render()
-
-      // 销毁实例
-      this.$once('hook:beforeDestroy', function () {
-        this.chart.destroy()
-      })
     }
-  },
-  created () {
-    const uuidv4 = require('uuid/v4')
-    this.id = uuidv4()
-  },
-  mounted () {
-    this.drawChart(this.data)
   }
 }
 </script>
