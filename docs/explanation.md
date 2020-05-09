@@ -1,9 +1,9 @@
 ## 高度、宽度以及内边距
 ------
 ### 1.高度和宽度
-所有图表均可通过`style="height: <Int>px; width: <Int>px; margin: 0 auto;"`配置高度；
+所有图表均可通过`style="height: <Int>px; width: <Int>px;"`配置高度和宽度；
 ```vue
- <g2-xxx style="height: 400px; width: 600px; margin: 0 auto;"></g2-xxx>
+ <g2-xxx style="height: 400px; width: 600px;"></g2-xxx>
 ```
 ### 2.内边距
 迷你图的内边距默认为0，除此之外的图表的通过`:padding="[<Int>/'auto', <Int>/'auto']`配置内边距;

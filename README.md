@@ -79,14 +79,17 @@ export default {
 </head>
 <body>
   <!-- 使用雷达图组件 -->
-  <g2-radar 
-   :is-show-area="false" 
-   :show-legend="false"
-   :axis-name="{a:'companya'}" 
-   :data="[{item: 'Design',a: 70},{item: 'Development',a: 60},
-    {item: 'Marketing',a: 50},{item: 'Users',a: 40},
-    {item: 'Test',a: 60}]">
-  </g2-radar>
+  <div id="example">
+    <g2-radar
+     style="width: 500px; height: 500px; margin: 0 auto;" 
+     :is-show-area="false" 
+     :show-legend="false"
+     :axis-name="{a:'companya'}" 
+     :data="[{item: 'Design',a: 70},{item: 'Development',a: 60},
+      {item: 'Marketing',a: 50},{item: 'Users',a: 40},
+      {item: 'Test',a: 60}]">
+    </g2-radar>
+  <div>
   <!-- CDN方式引入 vue -->
   <script src="//unpkg.com/vue"></script>
   <!-- CDN方式引入 @antv/g2 -->
@@ -95,6 +98,11 @@ export default {
   <script src="//unpkg.com/@antv/data-set@0.9.6/build/data-set.js"></script>
   <!-- CDN方式引入 vue-g2 -->
   <script src="//unpkg.com/vue-g2/lib/vue-g2.umd.js"></script>
+  <script>
+    new Vue({
+      el: '#example'
+    })
+  </script>
 </body>
 </html>
 ```

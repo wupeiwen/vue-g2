@@ -1,12 +1,13 @@
 # 自定义图表(g2-custom)
 >为了实现更多样的需求，目前可以通过`<g2-custom></g2-custom>`标签来实现自定义图表，实现过程可参考如下代码：
 ------
-<vuep :options="{ 'lineNumbers': true, mode: 'text/x-vue', theme: 'darcula' }" template="#demo"></vuep>
+<vuep style="width: 770px; margin: 0 auto;" :options="{ 'lineNumbers': true, mode: 'text/x-vue', theme: 'darcula' }" template="#demo"></vuep>
 
 <script v-pre type="text/x-template" id="demo">
 <!-- 通过<g2-custom>标签实现简单柱图 -->
 <template>
-  <g2-custom style="height: 300px; width: 800px; margin: 0 auto;" :data="data" :option="customOption"></g2-custom>
+  <g2-custom style="height: 300px; width: 760px; margin: 20px auto;" 
+  :data="data" :option="customOption"></g2-custom>
 </template>
 
 <script>
