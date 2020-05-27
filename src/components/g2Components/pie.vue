@@ -142,12 +142,12 @@ export default {
         this.chart.coord('theta', {
           innerRadius: this.innerRadius === null ? 0.75 : this.innerRadius
         })
-        interval = this.chart.intervalStack().position('value')
+        interval = this.chart.interval().adjust('stack').position('value')
       } else if (this.type === 'pie') {
         this.chart.coord('theta', {
           innerRadius: this.innerRadius === null ? 0 : this.innerRadius
         })
-        interval = this.chart.intervalStack().position('value')
+        interval = this.chart.interval().adjust('stack').position('value')
       } else if (this.type === 'nightingale') {
         this.chart.coord('polar', {
           innerRadius: this.innerRadius === null ? 0.2 : this.innerRadius

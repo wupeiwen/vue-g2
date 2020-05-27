@@ -150,7 +150,7 @@ export default {
         }
         // 类型为堆叠时的配置项
         if (this.type === 'fold') {
-          this.chart.intervalStack().position('name*value').color('type')
+          this.chart.interval().adjust('stack').position('name*value').color('type')
         }
       } else {
         this.chart.interval().position('name*value')

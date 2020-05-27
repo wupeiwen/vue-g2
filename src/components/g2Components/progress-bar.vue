@@ -108,7 +108,7 @@ export default {
       this.chart.axis(false)
 
       // 配置图表
-      this.chart.intervalStack().position('1*percent').color('name', this.color)
+      this.chart.interval().adjust('stack').position('1*percent').color('name', this.color)
 
       if (this.guide.showName) {
         // 配置辅助元素-name
