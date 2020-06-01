@@ -1,3 +1,9 @@
+/*
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
+ * @Date: 2020-05-11 09:00:49
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-01 09:26:02
+ */
 import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
 const uuidv4 = require('uuid/v4')
@@ -30,8 +36,7 @@ export default {
   watch: {
     // 监控data，当发生变化时，重新绘制图表
     data: function (val, oldVal) {
-      console.table(val)
-      // this.chart.changeData(val)
+      this.chart.changeData(val)
     }
   },
   methods: {
