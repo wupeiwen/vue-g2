@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-g2 可视化组件库</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/vuep/dist/vuep.css">
+  <link rel="stylesheet" href="//codemirror.net/theme/darcula.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'vue-g2 可视化组件库',
+      logo: '/logo.png',
+      repo: 'https://github.com/wupeiwen/vue-g2',
+      loadSidebar: 'sidebar.md',
+      subMaxLevel: 2,
+      auto2top: true,
+      themeColor: '#3F51B5',
+      coverpage: true,
+      coverpage: 'cover.md',
+      onlyCover: true
+    }
+  </script>
+  <script src="//unpkg.com/vue"></script>
+  <script src="//unpkg.com/vuep"></script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/@antv/g2@3.5.7/build/g2.js"></script>
+  <script src="//unpkg.com/@antv/data-set@0.9.6/build/data-set.js"></script>
+  <script src="//unpkg.com/vue-g2/lib/vue-g2.umd.min.js"></script>
+  <style>
+    .vuep {
+      flex-direction: column;
+      clear: both;
+      overflow: hidden;
+      box-shadow: 0 0 13px #a0a0a0;
+      height: auto;
+      margin: 30px 0;
+      width: 770px;
+    }
+    .vuep-editor,
+    .vuep-preview {
+      height: 400px;
+      width: 770px;
+      padding: 0;
+      margin-right: 0;
+    }
+  </style>
+</body>
+
+</html>
