@@ -61,7 +61,7 @@ export default {
 <style>
 </style>
 ```
-![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-pie.gif "饼图-外部标签")
+![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/develop/public/vue-g2-pie.gif "饼图-外部标签")
 
 ## 在nuxt.js(ssr)中使用
 ------
@@ -114,7 +114,7 @@ export default {
 }
 </script>
 ```
-![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-pie-nuxt.png "饼图")
+![饼图](https://raw.githubusercontent.com/wupeiwen/vue-g2/develop/public/vue-g2-pie-nuxt.png "饼图")
 
 ## 在浏览器中直接使用
 ------
@@ -157,4 +157,4 @@ export default {
 </body>
 </html>
 ```
-![雷达图](https://raw.githubusercontent.com/wupeiwen/vue-g2/dev/public/vue-g2-radar.png "雷达图")
+![雷达图](https://raw.githubusercontent.com/wupeiwen/vue-g2/develop/public/vue-g2-radar.png "雷达图")
