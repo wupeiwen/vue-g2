@@ -1,9 +1,10 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:10:34
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 19:21:58
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:12:38
+-->
+
 <template>
   <div>
     <g2-line
@@ -19,13 +20,13 @@
     <g2-mirror-interval style="height: 300px; width: 800px; margin: 0 auto;" :padding="[50, 100]"></g2-mirror-interval>
     <g2-liquidfill
       style="height: 300px; width: 300px; margin: 0 auto;"
-      :padding="[50, 'auto']"
+      :padding="[50, 0]"
       :maxValue="1"
       :isPercent="true"
       :data="[{ name: '中国', value: 0.6 }]"
       :axisName="{name:'国家', value:'GDP占比'}"
     ></g2-liquidfill>
-    <g2-bubble style="height: 300px; width: 800px; margin: 0 auto;" :padding="[60, 'auto']"></g2-bubble>
+    <g2-bubble style="height: 300px; width: 800px; margin: 0 auto;" :padding="[60, 0]"></g2-bubble>
     <g2-scatter-point
       style="height: 300px; width: 800px; margin: 0 auto;"
       :data="[{ x: 20, y: 5 },{ x: 30, y: 10 }]"
@@ -188,7 +189,7 @@ export default {
   methods: {
     customOption (chart, dataset, data) {
       let dv = dataset.createView().source(data)
-      chart.source(dv)
+      chart.data(dv.rows)
       chart.interval().position('name*value')
     }
   },

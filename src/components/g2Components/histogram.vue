@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-10-08 15:06:37
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:17:46
- * @Description: 直方图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:19:19
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -49,9 +48,9 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     },
     // 分组数
@@ -132,7 +131,8 @@ export default {
       }
 
       if (this.binWidth > 0) {
-        this.chart.source(dv, {
+        this.chart.data(dv.rows)
+        this.chart.scale({
           x: {
             sync: true,
             alias: this.axisName.x,
@@ -144,7 +144,8 @@ export default {
           }
         })
       } else {
-        this.chart.source(dv, {
+        this.chart.data(dv.rows)
+        this.chart.scale({
           x: {
             sync: true,
             alias: this.axisName.x

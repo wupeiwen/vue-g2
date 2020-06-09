@@ -2,9 +2,9 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2020-05-11 09:00:49
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-01 09:26:02
+ * @LastEditTime: 2020-06-09 15:53:29
  */
-import G2 from '@antv/g2'
+import { Chart } from '@antv/g2'
 import DataSet from '@antv/data-set'
 const uuidv4 = require('uuid/v4')
 
@@ -14,7 +14,7 @@ export default {
       if (typeof window !== 'undefined' && window.G2) {
         return window.G2
       } else {
-        return G2
+        return { Chart }
       }
     },
     DataSet: function () {
@@ -54,7 +54,7 @@ export default {
         container: this.id,
         width: dom.offsetWidth || 800,
         height: dom.offsetHeight || 500,
-        padding: this.padding || ['auto', 'auto']
+        padding: this.padding || 'auto'
       })
     },
     drawChart (data) {

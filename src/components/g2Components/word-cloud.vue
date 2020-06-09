@@ -1,11 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-09-28 10:56:50
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 19:39:17
- * @Description: 词云
- */
-
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:22:18
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -125,8 +123,10 @@ export default {
           return (d.value - min) / (max - min) * (32 - 8) + 8
         }
       })
-      // 挂载数据
-      _this.chart.source(dv, {
+      // 装载数据
+      _this.chart.data(dv.rows)
+
+      _this.chart.scale({
         x: {
           nice: false
         },
@@ -142,7 +142,7 @@ export default {
       _this.chart.axis(false)
 
       // 选择坐标系
-      _this.chart.coord().reflect()
+      _this.chart.coordinate().reflect()
 
       const point = _this.chart.point().position('x*y').color('text').shape('cloud')
 
@@ -151,7 +151,7 @@ export default {
         _this.chart.tooltip({
           showTitle: false
         })
-        point.tooltip('name*value')
+        // point.tooltip('name*value')
       } else {
         _this.chart.tooltip(false)
       }

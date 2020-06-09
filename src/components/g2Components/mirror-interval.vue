@@ -1,11 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-21 13:44:57
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:18:01
- * @Description: 镜像分面柱图
- */
-
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:20:35
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -55,14 +53,17 @@ export default {
     },
     // Canvas 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
   methods: {
     setChartConfig: function (data) {
+      // 为 chart 装载数据
+      this.chart.data(data)
+
       // 设置数据设置别名并且设置为异步数据
       let _this = this
       let scaleConfig = (function () {
@@ -76,8 +77,7 @@ export default {
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
+      this.chart.scale(scaleConfig)
 
       const labelColor = this.axisColor.labelColor
       // 设置 mirror 分面

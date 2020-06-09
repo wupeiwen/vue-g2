@@ -1,11 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-27 14:29:48
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 13:47:43
- * @Description: 液体填充
- */
-
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:20:13
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -51,9 +49,9 @@ export default {
     },
     // Canvas 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     },
     // 颜色配置
@@ -69,6 +67,9 @@ export default {
   },
   methods: {
     setChartConfig: function (data) {
+      // 为 chart 装载数据
+      this.chart.data(data)
+
       // 设置数据的显示别名以及最大值、最小值
       let _this = this
       let scaleConfig = (function () {
@@ -85,8 +86,7 @@ export default {
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
+      this.chart.scale(scaleConfig)
 
       // 隐藏图例
       this.chart.legend(false)
@@ -111,7 +111,7 @@ export default {
 
       // 添加文本辅助元素
       const guideContent = this.isPercent ? percentFormat(this.data[0].value) : floatIntFormat(this.data[0].value)
-      this.chart.guide().text({
+      this.chart.annotation().text({
         // 文本辅助元素位置
         top: true,
         position: {

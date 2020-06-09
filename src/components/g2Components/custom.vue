@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2019-03-29 13:50:04
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 17:00:01
- * @Type: 自定义图表
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 13:57:14
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -17,9 +16,9 @@ export default {
   props: {
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     },
     option: {

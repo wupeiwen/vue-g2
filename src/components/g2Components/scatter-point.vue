@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:54:27
-  * @Description: 散点图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:21:14
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -102,14 +101,17 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
   methods: {
     setChartConfig: function (data) {
+      // 为 chart 装载数据
+      this.chart.data(data)
+
       // 设置数据的显示别名
       let _this = this
       let scaleConfig = (function () {
@@ -129,8 +131,7 @@ export default {
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
+      this.chart.scale(scaleConfig)
 
       const point = this.chart.point().position('x*y').shape('circle')
 
@@ -150,17 +151,17 @@ export default {
         this.chart.tooltip({
           showTitle: false
         })
-        point.tooltip('x*y')
+        // point.tooltip('x*y')
       } else {
         this.chart.tooltip(false)
       }
 
       // 配置大小
-      point.size(5).opacity(0.8)
+      point.size(5)
 
       // 配置多类型时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
-        point.tooltip('type*x*y')
+        // point.tooltip('type*x*y')
         if (this.intervalRange.use) {
           // 基于区间范围分色
           point.color(this.intervalRange.axis, (value) => {

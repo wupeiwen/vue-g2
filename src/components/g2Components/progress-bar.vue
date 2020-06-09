@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-10-15 17:32:25
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 16:59:54
- * @Type: 进度条
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:21:05
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -93,10 +92,10 @@ export default {
         as: 'percent'
       })
       // 为 chart 装载数据
-      this.chart.source(dv)
+      this.chart.data(dv.rows)
 
       // x，y 轴交换
-      this.chart.coord().transpose()
+      this.chart.coordinate().transpose()
 
       // 隐藏图表tooltip
       this.chart.tooltip(false)
@@ -112,7 +111,7 @@ export default {
 
       if (this.guide.showName) {
         // 配置辅助元素-name
-        this.chart.guide().text({
+        this.chart.annotation().text({
           top: true,
           position: [0, 0],
           content: this.data[0].name,
@@ -129,9 +128,9 @@ export default {
         // 辅助元素-value 格式化-整数或百分比
         const value = this.isPercent ? percentFormat(this.data[0].value) : floatIntFormat(this.data[0].value)
         // 辅助元素-value x轴偏移量
-        const valueOffsetX = this.isPercent ? this.chart._attrs.width - (String(value).length * Number(this.guide.labelSize)) : this.chart._attrs.width - ((String(value).length - 1) * Number(this.guide.labelSize))
+        const valueOffsetX = this.isPercent ? this.chart.width - (String(value).length * Number(this.guide.labelSize)) : this.chart.width - ((String(value).length - 1) * Number(this.guide.labelSize))
         // 配置辅助元素-value
-        this.chart.guide().text({
+        this.chart.annotation().text({
           top: true,
           position: [0, 0],
           content: value,
@@ -157,7 +156,7 @@ export default {
             return 'center'
           }
         })()
-        this.chart.guide().line({
+        this.chart.annotation().line({
           start: [0, percent],
           end: [1, percent],
           lineStyle: {

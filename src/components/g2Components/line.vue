@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:09:38
- * @Type: 折线图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:19:45
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -87,16 +86,16 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
   methods: {
     setChartConfig: function (data) {
       // 为 chart 装载数据
-      this.chart.source(data)
+      this.chart.data(data)
 
       // 进行列定义
       let _this = this
@@ -119,10 +118,8 @@ export default {
       // 是否使用tooltip
       if (this.useTooltip) {
       // 配置图表tooltip
-        this.chart.tooltip(true, {
-          crosshairs: {
-            type: 'line'
-          }
+        this.chart.tooltip({
+          showCrosshairs: true
         })
       } else {
         this.chart.tooltip(false)

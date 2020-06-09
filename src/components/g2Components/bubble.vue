@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:55:44
-  * @Description: 气泡图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:18:10
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -94,14 +93,17 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
   methods: {
     setChartConfig: function (data) {
+      // 为 chart 装载数据
+      this.chart.data(data)
+
       // 设置数据的显示别名
       let _this = this
       let scaleConfig = (function () {
@@ -121,8 +123,7 @@ export default {
         }
         return obj
       }())
-      // 为 chart 装载数据
-      this.chart.source(data, scaleConfig)
+      this.chart.scale(scaleConfig)
 
       let bullle = this.chart.point().position('x*y').shape('circle')
 
@@ -144,13 +145,13 @@ export default {
         this.chart.tooltip({
           showTitle: false
         })
-        bullle.tooltip('type*x*y')
+        // bullle.tooltip('type*x*y')
       } else {
         this.chart.tooltip(false)
       }
 
       // 配置 颜色 大小
-      bullle.color('type', this.colorMap).size('size', [this.minSize, this.maxSize]).opacity(0.5)
+      bullle.color('type', this.colorMap).size('size', [this.minSize, this.maxSize])
     }
   }
 }

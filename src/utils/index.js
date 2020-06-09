@@ -1,3 +1,9 @@
+/*
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
+ * @Date: 2019-12-30 14:00:39
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 14:26:58
+ */
 // 时间格式化
 export let dateFormat = (dateTime, valueFormat) => {
   let newDate = new Date(dateTime)
@@ -68,9 +74,9 @@ export const color = ['#1890FF', '#2FC25B', '#FACC14', '#223273', '#8543E0', '#1
 // axis配置类
 export class AxisOption {
   constructor (type, axisColor, showGrid) {
-    let axisOption = { label: { textStyle: { fill: axisColor.labelColor } }, line: {} }
+    let axisOption = { label: { style: { fill: axisColor.labelColor } }, line: { style: {} } }
     if (type === 'x' || type === 'name') {
-      axisOption['line']['stroke'] = axisColor.lineColor
+      axisOption['line']['style']['stroke'] = axisColor.lineColor
       return axisOption
     } else {
       if (showGrid === false) {

@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+ <!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-10-15 15:00:00
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 14:14:53
- * @Type: 迷你图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:21:54
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -73,7 +72,7 @@ export default {
   methods: {
     setChartConfig: function (data) {
       // 为 chart 装载数据
-      this.chart.source(data)
+      this.chart.data(data)
 
       // 进行列定义
       let _this = this
@@ -96,10 +95,8 @@ export default {
       // 是否使用tooptip
       if (this.useTooltip) {
         // 配置图表tooltip
-        this.chart.tooltip(true, {
-          crosshairs: {
-            type: 'line'
-          }
+        this.chart.tooltip({
+          showCrosshairs: true
         })
       } else {
         this.chart.tooltip(false)

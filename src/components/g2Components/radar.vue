@@ -1,3 +1,9 @@
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
+ * @Date: 2018-08-19 22:18:59
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:21:32
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -46,7 +52,9 @@ export default {
       type: Object,
       default: () => {
         return {
-          a: 'a'
+          a: '类别a',
+          b: '类别b',
+          c: '类别c'
         }
       }
     },
@@ -77,9 +85,9 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
@@ -103,8 +111,10 @@ export default {
           value: 'score'
         })
 
+      // 为 chart 装载数据
+      this.chart.data(dv.rows)
       // 设置score数据的最大值、最小值
-      this.chart.source(dv, {
+      this.chart.scale({
         score: {
           min: this.min,
           max: this.max
@@ -112,7 +122,7 @@ export default {
       })
 
       // 配置极坐标系
-      this.chart.coord('polar', {
+      this.chart.coordinate('polar', {
         radius: 1
       })
 

@@ -1,10 +1,10 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 11:29:52
- * @Type: 柱状图/条形图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:18:21
+-->
+
 <template>
   <div :id="id"></div>
 </template>
@@ -87,16 +87,16 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
   methods: {
     setChartConfig: function (data) {
       // 为 chart 装载数据
-      this.chart.source(data)
+      this.chart.data(data)
 
       // 进行列定义
       let _this = this
@@ -138,7 +138,7 @@ export default {
       this.chart.axis('value', new AxisOption('value', this.axisColor, this.showGrid))
 
       if (this.isBar) {
-        this.chart.coord().transpose()
+        this.chart.coordinate().transpose()
       }
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
         // 类型为分组时的配置项

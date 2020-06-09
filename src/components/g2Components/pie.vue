@@ -1,10 +1,9 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:10:56
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:09:43
- * @Description: 饼图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-09 16:20:45
+-->
 <template>
   <div :id="id"></div>
 </template>
@@ -82,9 +81,9 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array,
+      type: Array || String,
       default: function () {
-        return ['auto', 'auto']
+        return 'auto'
       }
     }
   },
@@ -100,6 +99,9 @@ export default {
           dimension: 'name',
           as: 'percent'
         })
+
+      // 为 chart 装载数据
+      this.chart.data(dv.rows)
 
       // 设置数据的显示别名并格式化数据
       let _this = this
@@ -120,36 +122,53 @@ export default {
           return percentFormat(val)
         }
       }
-      // 为 chart 装载数据
-      this.chart.source(dv, scaleConfig)
+      this.chart.scale(scaleConfig)
 
       // 配置辅助元素
       if (this.guide.name || this.guide.value) {
-        this.chart.guide().html({
+        // this.chart.annotation().html({
+        //   position: ['50%', '50%'],
+        //   html: `<div style="text-align: center;width: 10em;">
+        //       <span style="color:rgba(0,0,0,0.65);font-size:${">${}</span><br>
+        //       <span style="color:#000000;font-size:${this.height / 10}px">${this.guide.value ? this.guide.value : ''}</span>
+        //     </div>`,
+        //   alignX: 'middle',
+        //   alignY: 'middle'
+        // })
+        this.chart.annotation().text({
           position: ['50%', '50%'],
-          html: `<div style="text-align: center;width: 10em;">
-              <span style="color:rgba(0,0,0,0.65);font-size:${this.height / 15}px">${this.guide.name ? this.guide.name : ''}</span><br>
-              <span style="color:#000000;font-size:${this.height / 10}px">${this.guide.value ? this.guide.value : ''}</span>
-            </div>`,
-          alignX: 'middle',
-          alignY: 'middle'
+          content: this.guide.name ? this.guide.name : '',
+          style: {
+            fontSize: this.height / 15,
+            fill: 'rgba(0,0,0,0.65)',
+            textAlign: 'center'
+          }
+        })
+        this.chart.annotation().text({
+          position: ['50%', '50%'],
+          content: this.guide.value ? this.guide.value : '',
+          style: {
+            fontSize: this.height / 10,
+            fill: '#000000',
+            textAlign: 'center'
+          }
         })
       }
 
       let interval = ''
       // 根据图表类型(ring,pie,nightingale)选择不同的坐标系(theta,polar)以及设置内半径
       if (this.type === 'ring') {
-        this.chart.coord('theta', {
+        this.chart.coordinate('theta', {
           innerRadius: this.innerRadius === null ? 0.75 : this.innerRadius
         })
         interval = this.chart.interval().adjust('stack').position('value')
       } else if (this.type === 'pie') {
-        this.chart.coord('theta', {
+        this.chart.coordinate('theta', {
           innerRadius: this.innerRadius === null ? 0 : this.innerRadius
         })
         interval = this.chart.interval().adjust('stack').position('value')
       } else if (this.type === 'nightingale') {
-        this.chart.coord('polar', {
+        this.chart.coordinate('polar', {
           innerRadius: this.innerRadius === null ? 0.2 : this.innerRadius
         })
         interval = this.chart.interval().position('name*value')
@@ -167,7 +186,7 @@ export default {
         this.chart.tooltip({
           showTitle: false
         })
-        interval.tooltip('name*value*percent')
+        // interval.tooltip('name*value*percent')
       } else {
         this.chart.tooltip(false)
       }
