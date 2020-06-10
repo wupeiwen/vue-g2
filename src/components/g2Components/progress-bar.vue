@@ -1,21 +1,20 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-10-15 17:32:25
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 16:59:54
- * @Type: 进度条
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 09:39:59
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-progress-bar',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 数据
     data: {

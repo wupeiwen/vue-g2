@@ -1,13 +1,19 @@
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
+ * @Date: 2018-08-19 22:10:56
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 09:53:16
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 
 export default {
   name: 'g2-radar',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     data: {
     // 数据

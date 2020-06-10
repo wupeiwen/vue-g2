@@ -1,21 +1,20 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 11:29:52
- * @Type: 柱状图/条形图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 10:09:15
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 import { percentFormat, floatIntFormat, AxisOption } from '@/utils/index'
 
 export default {
   name: 'g2-column',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 数据
     data: {

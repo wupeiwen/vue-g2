@@ -1,19 +1,18 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2019-03-29 13:50:04
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 17:00:01
- * @Type: 自定义图表
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 09:52:57
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 export default {
   name: 'g2-custom',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 内边距
     padding: {

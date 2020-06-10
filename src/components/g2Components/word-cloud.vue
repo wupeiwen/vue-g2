@@ -1,21 +1,19 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-09-28 10:56:50
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 19:39:17
- * @Description: 词云
- */
-
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 09:41:11
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 
 export default {
   name: 'g2-word-cloud',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 数据
     data: {

@@ -1,22 +1,20 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-27 14:29:48
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 13:47:43
- * @Description: 液体填充
- */
-
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 10:09:25
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 import { percentFormat, floatIntFormat } from '@/utils/index'
 
 export default {
   name: 'g2-liquidfill',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 数据
     data: {

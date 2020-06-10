@@ -1,21 +1,20 @@
-/*
- * @Author: wupeiwen javapeiwen2010@gmail.com
+<!--
+ * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
- * @Last Modified by: wupeiwen javapeiwen2010@gmail.com
- * @Last Modified time: 2020-05-06 15:54:27
-  * @Description: 散点图
- */
+ * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
+ * @LastEditTime: 2020-06-10 09:40:36
+-->
 <template>
   <div :id="id"></div>
 </template>
 
 <script>
-import chartMix from '@/utils/chart.js'
+import mixinChart from '@/mixins/chart.js'
 import { percentFormat, floatIntFormat, AxisOption } from '@/utils/index'
 
 export default {
   name: 'g2-scatter-point',
-  mixins: [chartMix],
+  mixins: [mixinChart],
   props: {
     // 数据
     data: {
