@@ -38,8 +38,6 @@
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-standard": "^3.0.3",
     "cross-env": "^6.0.0",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
   },
