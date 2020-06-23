@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 09:52:46
+ * @LastEditTime: 2020-06-23 17:30:25
 -->
 <template>
   <div :id="id"></div>
@@ -55,13 +55,23 @@ export default {
         }
       }
     },
+    // 单颜色
+    singleColor: {
+      type: Object,
+      default: () => {
+        return {
+          areaColor: 'l(270) 0:#ffffff 1:#1890ff',
+          lineColor: '#1890ff'
+        }
+      }
+    },
     // 是否显示图例
     showLegend: {
       type: Boolean,
       default: true
     },
     // 是否显示点
-    showPoint: {
+    showLine: {
       type: Boolean,
       default: true
     },
@@ -142,11 +152,10 @@ export default {
 
       // 配置折线和散点的颜色、形状等
       let area = this.chart.area().position('name*value')
-      let point
+      let line
 
-      if (this.showPoint) {
-        point = this.chart.point().position('name*value').size(4).shape('circle').style({
-          stroke: '#fff',
+      if (this.showLine) {
+        line = this.chart.line().position('name*value').style({
           lineWidth: 1
         })
       }
@@ -154,14 +163,20 @@ export default {
       // 配置多条折线时的颜色
       if (this.data.length > 0 && this.data[0].hasOwnProperty('type')) {
         area.color('type')
-        if (this.showPoint) {
-          point.color('type')
+        if (this.showLine) {
+          line.color('type')
+        }
+      } else {
+        area.color(this.singleColor.areaColor)
+        if (this.showLine) {
+          line.color(this.singleColor.lineColor)
         }
       }
 
       // 折线是否显示为曲线
       if (this.isSmooth) {
         area.shape('smooth')
+        line.shape('smooth')
       }
     }
   }
