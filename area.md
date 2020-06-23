@@ -1,6 +1,26 @@
 # 面积图(g2-area)
 >面积图又叫区域图。 它是在折线图的基础之上形成的, 它将折线图中折线与自变量坐标轴之间的区域使用颜色或者纹理填充，这样一个填充区域我们叫做面积，颜色的填充可以更好的突出趋势信息。
 ------
+
+## 基础面积图
+```vue
+<g2-area :is-smooth="true" :padding="['auto', 100]"
+ :data="[
+  { name: '1997', value: 9616 },
+  { name: '2007', value: 35715 },
+  { name: '2017', value: 122503 }
+ ]"
+ :axis-name="{name:'年份', value:'GDP(亿美元)', type:'国家'}"
+ :single-color="{areaColor: 'l(270) 0:#ffffff 1:#1890ff', lineColor: '#1890ff'}">
+</g2-area>
+```
+<g2-area :is-smooth="true" :padding="['auto', 100]" :axis-name="{name:'年份', value:'中国GDP(亿美元)'}" :data="[
+  { name: '1997', value: 9616 },
+  { name: '2007', value: 35715 },
+  { name: '2017', value: 122503 }
+ ]" :single-color="{areaColor: 'l(270) 0:#ffffff 1:#1890ff', lineColor: '#1890ff'}"></g2-area>
+
+## 多类别面积图
 ```vue
 <g2-area :is-smooth="true" :padding="['auto', 100]"
  :data="[{ name: '1997', value: 86085, type: 'America' },
