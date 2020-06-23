@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-09-28 10:56:50
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 09:41:11
+ * @LastEditTime: 2020-06-23 14:14:27
 -->
 <template>
   <div :id="id"></div>
@@ -48,7 +48,8 @@ export default {
       }
 
       function getTextAttrs (cfg) {
-        return Object.assign({}, {
+        return {
+          ...cfg.style,
           fillOpacity: cfg.opacity,
           fontSize: cfg.origin._origin.size,
           rotate: cfg.origin._origin.rotate,
@@ -57,7 +58,7 @@ export default {
           fontFamily: cfg.origin._origin.font,
           fill: cfg.color,
           textBaseline: 'Alphabetic'
-        }, cfg.style)
+        }
       }
 
       // 给point注册一个词云的shape
@@ -65,10 +66,11 @@ export default {
         drawShape: function drawShape (cfg, container) {
           var attrs = getTextAttrs(cfg)
           return container.addShape('text', {
-            attrs: Object.assign(attrs, {
+            attrs: {
+              ...attrs,
               x: cfg.x,
               y: cfg.y
-            })
+            }
           })
         }
       })
