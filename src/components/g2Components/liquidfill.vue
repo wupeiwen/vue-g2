@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-27 14:29:48
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 10:09:25
+ * @LastEditTime: 2020-06-24 15:06:11
 -->
 <template>
   <div :id="id"></div>
@@ -54,15 +54,20 @@ export default {
         return ['auto', 'auto']
       }
     },
-    // 颜色配置
-    color: {
+    // 辅助文本
+    guideText: {
       type: Object,
       default: function () {
         return {
-          labelColor: 'rgba(0,0,0,0.65)',
-          backgroundColor: '#1890FF'
+          color: 'rgba(0,0,0,0.65)',
+          fontSize: 30
         }
       }
+    },
+    // 背景色
+    backgroundColor: {
+      type: String,
+      default: '#1890FF'
     }
   },
   methods: {
@@ -93,7 +98,7 @@ export default {
       this.chart.axis(false)
 
       // 配置液体流动的边框颜色等
-      this.chart.interval().position('name*value').color('name', this.color.backgroundColor)
+      this.chart.interval().position('name*value').color(this.backgroundColor)
         .shape('liquid-fill-gauge').style({
           lineWidth: 2,
           opacity: 0.65
@@ -120,8 +125,8 @@ export default {
         content: guideContent,
         // 文本辅助元素样式
         style: {
-          fill: this.color.labelColor,
-          fontSize: this.height / 8,
+          fill: this.guideText.color,
+          fontSize: this.guideText.fontSize,
           textAlign: 'center'
         }
       })
