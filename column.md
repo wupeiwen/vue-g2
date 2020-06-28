@@ -6,10 +6,11 @@
 <g2-column :is-bar="false"
  :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
   ,{name: '2017', value: 193868}]"
- :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+ :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :single-color="'l(270) 0:#ffffff 1:#1890ff'">
 </g2-column>
 ```
-<g2-column :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]" :axis-name="{name:'年份', value:'GDP(亿美元)'}"></g2-column>
+<g2-column :is-bar="false" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]" :axis-name="{name:'年份', value:'GDP(亿美元)'}" :single-color="'l(270) 0:#ffffff 1:#1890ff'"></g2-column>
 
 ## 分组柱状图
 ```vue
@@ -58,10 +59,11 @@
 <g2-column :is-bar="true" 
  :data="[{name: '1997', value: 86085},{name: '2007', value: 144776}
   ,{name: '2017', value: 193868}]"
- :axis-name="{name:'年份', value:'GDP(亿美元)'}">
+ :axis-name="{name:'年份', value:'GDP(亿美元)'}"
+ :single-color="'l(90) 0:#ffffff 1:#1890ff'">
 </g2-column>
 ```
-<g2-column :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]"></g2-column>
+<g2-column :is-bar="true" :data="[{name: '1997', value: 86085},{name: '2007', value: 144776},{name: '2017', value: 193868}]" :single-color="'l(0) 0:#ffffff 1:#1890ff'"></g2-column>
 
 ## 分组条形图
 ```vue
