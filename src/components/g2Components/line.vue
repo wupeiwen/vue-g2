@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 09:53:04
+ * @LastEditTime: 2020-06-28 10:55:20
 -->
 <template>
   <div :id="id"></div>
@@ -54,6 +54,11 @@ export default {
           labelColor: '#999'
         }
       }
+    },
+    // 单颜色
+    singleColor: {
+      type: String,
+      default: '#1890ff'
     },
     // 是否显示图例
     showLegend: {
@@ -156,6 +161,11 @@ export default {
         line.color('type')
         if (this.showPoint) {
           point.color('type')
+        }
+      } else {
+        line.color(this.singleColor)
+        if (this.showPoint) {
+          point.color(this.singleColor)
         }
       }
 
