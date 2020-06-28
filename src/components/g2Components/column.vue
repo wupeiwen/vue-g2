@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:18:59
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 10:09:15
+ * @LastEditTime: 2020-06-28 10:52:51
 -->
 <template>
   <div :id="id"></div>
@@ -54,6 +54,11 @@ export default {
           labelColor: '#999'
         }
       }
+    },
+    // 单颜色
+    singleColor: {
+      type: String,
+      default: '#1890ff'
     },
     // 分组或堆叠(dodge、fold)
     type: {
@@ -152,7 +157,7 @@ export default {
           this.chart.interval().adjust('stack').position('name*value').color('type')
         }
       } else {
-        this.chart.interval().position('name*value')
+        this.chart.interval().position('name*value').color(this.singleColor)
       }
     }
   }
