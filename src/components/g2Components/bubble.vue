@@ -93,7 +93,7 @@ export default {
     },
     // 内边距
     padding: {
-      type: Array || String,
+      type: [Array, String],
       default: function () {
         return 'auto'
       }
