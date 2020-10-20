@@ -10,6 +10,7 @@
 
 <script>
 import chartMix from '@/utils/chart.js'
+import { registerShape } from '@antv/g2'  // 修改了按需引入
 
 export default {
   name: 'g2-word-cloud',
@@ -48,21 +49,23 @@ export default {
       }
 
       function getTextAttrs (cfg) {
+        // cfg.origin 在4.中为cfg.mappingData
         return Object.assign({}, {
           fillOpacity: cfg.opacity,
-          fontSize: cfg.origin._origin.size,
-          rotate: cfg.origin._origin.rotate,
-          text: cfg.origin._origin.text,
+          fontSize: cfg.mappingData._origin.size,
+          rotate: cfg.mappingData._origin.rotate,
+          text: cfg.mappingData._origin.text,
           textAlign: 'center',
-          fontFamily: cfg.origin._origin.font,
+          fontFamily: cfg.mappingData._origin.font,
           fill: cfg.color,
           textBaseline: 'Alphabetic'
         }, cfg.style)
       }
-
       // 给point注册一个词云的shape
-      this.G2.Shape.registerShape('point', 'cloud', {
-        drawShape: function drawShape (cfg, container) {
+      // this.G2.Shape.registerShape错误，因为在chart.js中的引入修改了，这里没有及时修改（改为按需手动引入registerShape）
+      registerShape('point', 'cloud', {
+        // drawShape: function drawShape (cfg, container) {
+        draw: function draw (cfg, container) {
           var attrs = getTextAttrs(cfg)
           return container.addShape('text', {
             attrs: Object.assign(attrs, {
