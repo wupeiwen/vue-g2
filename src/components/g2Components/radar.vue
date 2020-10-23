@@ -2,7 +2,7 @@
  * @Author: wupeiwen <javapeiwen2010@gmail.com>
  * @Date: 2018-08-19 22:10:56
  * @LastEditors: wupeiwen <javapeiwen2010@gmail.com>
- * @LastEditTime: 2020-06-10 09:53:16
+ * @LastEditTime: 2020-10-23 14:11:32
 -->
 <template>
   <div :id="id"></div>
@@ -53,6 +53,16 @@ export default {
       default: () => {
         return {
           a: 'a'
+        }
+      }
+    },
+    // 坐标轴颜色
+    axisColor: {
+      type: Object,
+      default: () => {
+        return {
+          lineColor: '#ccc',
+          labelColor: '#999'
         }
       }
     },
@@ -124,14 +134,15 @@ export default {
 
       // 配置item轴
       this.chart.axis('item', {
-        line: null,
+        line: { stroke: this.axisColor.lineColor },
         tickLine: null,
         grid: {
           lineStyle: {
             lineDash: null
           },
           hideFirstLine: false
-        }
+        },
+        label: { textStyle: { fill: this.axisColor.labelColor } }
       })
 
       // 配置score轴
@@ -141,7 +152,8 @@ export default {
         grid: {
           type: 'polygon',
           lineStyle: {
-            lineDash: null
+            lineDash: null,
+            stroke: this.axisColor.lineColor
           }
         },
         label: null
