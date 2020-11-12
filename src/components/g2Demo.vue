@@ -177,6 +177,10 @@
       :option="customOption"
       :data="[{ name: 'test1', value: 123 }, { name: 'test2', value: 246 }]"
     ></g2-custom>
+    <g2-map-bubble style="height: 500px; width: 500px; margin: 0 auto;"></g2-map-bubble>
+    <g2-map-fill :color="{type:'mapping', mapping: '#e5f5e0-#31a354'}" style="height: 500px; width: 500px; margin: 0 auto;"></g2-map-fill>
+    <g2-map-fill :color="{type:'specify'}" style="height: 500px; width: 500px; margin: 0 auto;"></g2-map-fill>
+
   </div>
 </template>
 
