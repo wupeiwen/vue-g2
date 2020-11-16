@@ -16,4 +16,5 @@
  * [进度条](progress.md)
  * [液体填充图](liquidfill.md)
  * [词云图](wordcloud.md)
+ * [地图](map.md)
  * [自定义图](custom.md)
