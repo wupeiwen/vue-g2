@@ -1,0 +1,21 @@
+name: build-punlish-bundle
+
+on:
+  push:
+    tags: 
+      - 'v[[0-9]].[0-9]+.[0-9]+'
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm run build-bundle
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
