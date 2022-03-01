@@ -1,4 +1,4 @@
->vue-g2 | 基于 [Vue](https://cn.vuejs.org/index.html) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html) 的可视化组件库
+>vue-g2 | 基于 [Vue](https://cn.vuejs.org/index.html)(2.x) 和 [AntV/G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html)(3.x) 的可视化组件库
 
 ![](https://travis-ci.com/wupeiwen/vue-g2.svg?branch=master)
 [![](https://img.shields.io/npm/v/vue-g2.svg)](https://www.npmjs.com/package/vue-g2)
@@ -118,7 +118,7 @@ export default {
 
 ## 在浏览器中直接使用
 ------
-目前可以通过`http://unpkg.com/vue-g2`获取最新版本，也可通过`http://unpkg.com/vue-g2@x.x.x/lib/vue-g2.umd.js`获取指定版本。在页面上引入 js 即可开始使用。(需要引入vue、g2、data-set等前置依赖)
+目前可以通过`http://unpkg.com/vue-g2`获取最新版本，也可通过`http://unpkg.com/vue-g2@x.x.x/lib/vue-g2.umd.js`获取指定版本。在页面上引入 js 即可开始使用。(需要引入vue2.x、g2、data-set等前置依赖)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -142,7 +142,7 @@ export default {
     </g2-radar>
   </div>
   <!-- CDN方式引入 vue -->
-  <script src="//unpkg.com/vue"></script>
+  <script src="//unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
   <!-- CDN方式引入 @antv/g2 -->
   <script src="//unpkg.com/@antv/g2@3.5.7/build/g2.js"></script>
   <!-- CDN方式引入 @antv/data-set -->
